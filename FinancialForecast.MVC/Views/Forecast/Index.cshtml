@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Financial Forecast";
+}
+
+<div id="Forecast">
+    <div class="row">
+@*        <div id="alert" class="alert fade-appear col-12 form-centered" v-bind:class="errorMessage ? 'alert-danger' : 'alert-success'" v-if="alertMessage">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{alertMessage}}
+        </div>*@
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <select class="form-control" v-model="SelectedPeriod">
+                @foreach (var period in ViewBag.Periods)
+                {
+                    <option value="@period.Value">@period.Text</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <label>Start Amount:</label>
+            <input class="form-control" type="text" placeholder="Start Amount" v-model="ItemNo" />
+        </div>
+        <div class="col-sm-3">
+             <label>Today's Amount:</label>
+            <input class="form-control" type="text" placeholder="Today's Amount'" v-model="OrderNumber" />
+        </div>
+    </div>
+@*    <div class="col-7 col-xl-7 col-lg-12">
+        {
+            <a role="button" href="@Url.Action("Create", "Items")" class="btn btn-success"><i class="fas fa-plus"></i> New Item</a>
+            <button class="btn btn-success" data-toggle="modal" data-target="#ItemAdditionConfirmation" v-bind:disabled="AddToScheduleDisabled"><i class="fas fa-plus"></i> Add To Schedule</button>
+            <button @@click="editItem()" class="btn btn-info" v-bind:disabled="selectedItem == null"><i class="fas fa-edit"></i> Item Properties</button>
+        }
+            <button @@click="viewItemSequence()" class="btn btn-info" v-bind:disabled="selectedItem == null"><i class="fas fa-clipboard-list"></i> Item Sequence</button>
+            <button @@click="ManualCuts()" class="btn btn-danger" v-bind:disabled="selectedItem == null"><i class="fas fa-cut"></i> Manual Cuts</button>
+    </div>*@
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-sm table-hover table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th v-for="col in columns">
+                                {{col}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in getAccountDetails()" v-on:click="ItemClicked(Item)" :class="{'row-highlight': (Item == selectedItem)}">
+                            <td v-for="col in columns">
+                                <input type="checkbox" v-bind:checked="Item['Scheduled'] == true" v-if="col == 'Scheduled'" disabled />
+                                <div v-if="col != 'Scheduled'">{{Item[col]}}</div>
+                            </td>                 
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*@Html.Partial("~/Views/Items/PartialViews/_ItemAddConfirmation.cshtml")*@
+
+@section Scripts{
+    @*@Styles.Render("~/Content/Custom/custom.css");*@
+    <script>
+    </script>
+    <script src="@Url.Content("~/js/FinancialForecast.Js?v="+DateTime.Now.Ticks)"></script>
+}

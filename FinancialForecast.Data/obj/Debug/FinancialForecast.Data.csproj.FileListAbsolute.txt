@@ -1,0 +1,6 @@
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.Data\bin\Debug\FinancialForecast.Data.dll
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.Data\bin\Debug\FinancialForecast.Data.pdb
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.Data\obj\Debug\FinancialForecast.Data.csproj.AssemblyReference.cache
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.Data\obj\Debug\FinancialForecast.Data.csproj.CoreCompileInputs.cache
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.Data\obj\Debug\FinancialForecast.Data.dll
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.Data\obj\Debug\FinancialForecast.Data.pdb

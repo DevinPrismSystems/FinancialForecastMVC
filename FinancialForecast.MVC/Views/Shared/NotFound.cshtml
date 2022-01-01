@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "404 - Not Found";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="list-sfs-holder">
+    <div class="alert alert-error">
+        Unfortunately, an unexpected error has occurred. Please contact the system administrator.
+    </div>
+
+    @if (Model == null)
+    {
+        <div class="alert alert-error">
+            <p>
+                <b>Exception:</b> The id used most likely does not exist. Please provide the administrator with a screenshot of this error and/or the URL below. <br />
+                @*<b>URL:</b> @Request.Url.AbsoluteUri  <br />*@
+            </p>
+        </div>
+    }
+</div>

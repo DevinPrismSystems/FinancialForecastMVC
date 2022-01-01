@@ -1,0 +1,45 @@
+﻿<div id="resetSecurityModal" class="modal fade" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <form class="security-validation" novalidate>
+                <div class="modal-header bg-primary">
+                    <h4 class="modal-title text-white"><i class="fas fa-user-lock" v-if="username !== ''"></i> {{User['Last Name']}}, {{User['First Name']}}</h4>
+                </div>
+                <div class="modal-body" v-if="User !== null">
+                    <div class="row form-group">
+                        <div class="col-sm-6">
+                            <label>Security Question:</label>
+                            <input type="text" class="form-control" v-model="User['Security Question']" />
+                            <div class="invalid-feedback">
+                                Please Select a Security Question
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label>Security Answer:</label>
+                            <input type="password" class="form-control" v-model="User['Security Answer']" required />
+                            <div class="invalid-feedback">
+                                Please enter an answer
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-6">
+                            <label>New Password:</label>
+                            <input type="password" class="form-control" v-model="User.Password" required>
+                            <div class="invalid-feedback">
+                                Please enter a password
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Submit</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"></i> Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

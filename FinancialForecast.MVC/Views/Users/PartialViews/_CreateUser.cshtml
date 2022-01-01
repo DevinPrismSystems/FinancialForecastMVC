@@ -1,0 +1,77 @@
+﻿<div id="userCreateModal" class="modal fade" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <form class="create-validation" novalidate>
+                <div class="modal-header bg-primary">
+                    <h4 class="modal-title text-white"><i class="fas fa-user"></i> New User</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row form-group">
+                        <div class="col-sm-6">
+                            <label>First Name:</label>
+                            <input type="text" class="form-control" v-model="user['First Name']" required />
+                            <div class="invalid-feedback">
+                                Please enter a First Name
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label>Last Name:</label>
+                            <input type="text" class="form-control" v-model="user['Last Name']" required />
+                            <div class="invalid-feedback">
+                                Please enter a Last Name
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-6">
+                            <label>Email:</label>
+                            <input type="text" v-model="user['Email Address']" class="form-control" />
+                        </div>
+                        <div class="col-sm-6">
+                            <label>Description:</label>
+                            <input type="text" v-model="user.Description" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-6">
+                            <label>Username:</label>
+                            <input type="text" v-model="user.Username" class="form-control" required />
+                            <div class="invalid-feedback">
+                                Please enter an username
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label>Password:</label>
+                            <input type="password" v-model="user.Password" class="form-control" required />
+                            <div class="invalid-feedback">
+                                Please enter a Password
+                            </div>
+                        </div>
+                    </div>
+@*                    <div class="row form-group">
+                        <div class="col-sm-6">
+                            <label>Security Question:</label>
+                            @Html.DropDownList("SecurityQuestion", (SelectList)ViewBag.SecurityQuestions, "Select a Security Question", new { @class = "form-select", @v_model = "user['Security Question']", @required="required"})
+                            <div class="invalid-feedback">
+                                Please Select a Security Question
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label>Security Answer:</label>
+                            <input type="password" v-model="user['Security Answer']" class="form-control" required />
+                            <div class="invalid-feedback">
+                                Please enter an answer
+                            </div>
+                        </div>
+                    </div>*@
+                </div>
+                <div class="modal-footer">
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Submit</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" @@click="resetForm()"><i class="fas fa-times"></i> Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

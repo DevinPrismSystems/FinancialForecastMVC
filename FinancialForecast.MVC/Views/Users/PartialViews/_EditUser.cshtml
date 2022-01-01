@@ -1,0 +1,58 @@
+﻿<div id="userEditModal" class="modal fade" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <form class="edit-validation" novalidate>
+                <div class="modal-header bg-primary">
+                    <h4 class="modal-title text-white"><i class="fas fa-user-edit"></i> {{editedUser['Last Name']}}, {{editedUser['First Name']}}</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row form-group">
+                        <div class="col-sm-6">
+                            <label>First Name:</label>
+                            <input type="text" class="form-control" v-model="editedUser['First Name']" required>
+                            <div class="invalid-feedback">
+                                Please enter a First Name
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label>Last Name:</label>
+                            <input type="text" class="form-control" v-model="editedUser['Last Name']" required />
+                            <div class="invalid-feedback">
+                                Please enter a Last Name
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-6">
+                            <label>Email:</label>
+                            <input type="text" class="form-control" v-model="editedUser['Email Address']" />
+                        </div>
+                        <div class="col-sm-6">
+                            <label>Description:</label>
+                            <input type="text" v-model="editedUser.Description" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-6">
+                            <label>Username:</label>
+                            <input type="text" class="form-control" v-model="editedUser.Username" required />
+                            <div class="invalid-feedback">
+                                Please enter an Username
+                            </div>
+                        </div>
+                        <div class="col-1">
+                            <label class="form-check-label">Active:</label>
+                            <input type="checkbox" class="form-check-input" v-model="editedUser.Active" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Submit</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" @@click="resetForm()"><i class="fas fa-times"></i> Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

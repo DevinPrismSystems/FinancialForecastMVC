@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <title>@ViewData["Title"]</title>
+
+    <environment>
+       <style src = "~/css/site.css"></style>
+      <style src = "~/lib/bootstrap/dist/css/bootstrap.css"></style>
+      <style src = "~/lib/bootstrap/dist/css/bootstrap-grid.css"></style>
+      <style src = "~/lib/bootstrap/dist/css/bootstrap-reboot.css"></style>
+      <style src = "~/css/bootstrap-utilities.css"></style>
+      <script src = "~/js/site.js"></script>
+      <script src = "~/js/vue.min.js"></script>
+      <script src = "~/js/Axios.min.js"></script>
+      <script src = "~/lib/bootstrap/dist//js//bootstrap.js"></script>
+      <script src = "~/lib/jquery/dist/jquery.js"></script>
+      <script src = "~/lib/jquery-validation/dist/jquery.validate.js"></script>
+       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    </environment>
+@*
+    @Scripts.Render("~/Content/bootstrap.css" + "?v=" + DateTime.Now.Ticks)
+    @Styles.Render("~/Content/Site.css" + "?v=" + DateTime.Now.Ticks)
+    @Styles.Render("~/Content/bootstrap.min.css")*@
+@*    @Styles.Render("~/Content/fontawesome.min.css" + "?v=" + DateTime.Now.Ticks)
+    @Styles.Render("~/Content/bootstrap-datetimepicker.min.css" + "?v=" + DateTime.Now.Ticks)*@
+    @*@Styles.Render("~/Content/bootstrap-datepicker3.css")*@
+@*    @Styles.Render("~/Content/materialdesignicons.min.css" + "?v=" + DateTime.Now.Ticks)*@
+    @*@Styles.Render("~/Content/css")*@
+@*    @Scripts.Render("~/Scripts/Jquery/jquery-3.4.1.min.js" + "?v=" + DateTime.Now.Ticks)
+    @Scripts.Render("~/Scripts/umd/popper.min.js" + "?v=" + DateTime.Now.Ticks)
+    @Scripts.Render("~/Scripts/Moment/moment.js" + "?v=" + DateTime.Now.Ticks)*@
+    @*@Scripts.Render("~/Scripts/Vue/vue.js")*@
+@*    @Scripts.Render("~/Scripts/Vue/vue-bootstrap-datetimepicker@5.js" + "?v=" + DateTime.Now.Ticks)
+    @Scripts.Render("~/Scripts/Axios.min.js" + "?v=" + DateTime.Now.Ticks)*@
+@*    @Scripts.Render("~/Scripts/Vue/vue.min.js")
+    @Scripts.Render("~/Scripts/Bootstrap/bootstrap.bundle.js" + "?v=" + DateTime.Now.Ticks)
+    @Scripts.Render("~/Scripts/Bootstrap/bootstrap-datetimepicker.min.js" + "?v=" + DateTime.Now.Ticks)*@
+    @*@Scripts.Render("~/Scripts/Bootstrap/bootstrap-datepicker.js")*@
+    @*@Scripts.Render("~/Scripts/fontawesome/all.js" + "?v=" + DateTime.Now.Ticks)*@
+@*    Scripts.Render("~/Scripts/BlueBird.js" + "?v=" + DateTime.Now.Ticks)
+    <meta http-equiv=“X-UA-Compatible” content=“IE =EmulateIE11" />*@
+    @*<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">*@
+    @*<link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css" />*@
+    @*<link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">*@
+    @*<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">*@
+    @*<script src="https://unpkg.com/axios/dist/axios.min.js"></script>*@
+    @*<script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>*@
+
+    <title> @ViewBag.Title </title>
+    @*<environment include="Development">
+            @Scripts.Render("~/Scripts/Vue/vue.js")
+        </environment>*@
+
+</head>
+
+<body data-controller="@ViewBag.ControllerName"
+      data-action="@ViewBag.ActionName"
+      data-standard-dotnet-date-format="@ViewBag.StandardDotNetDateFormat"
+      data-standard-javascript-date-format="@ViewBag.StandardJavaScriptDateFormat"
+      data-root-path="@Url.Content("~/")">
+    
+    <div id="standardDialog">
+        <table class="dialogTable">
+            <tr>
+                <td><img id="dialogIcon" /></td>
+                <td id="dialogMessage"></td>
+            </tr>
+        </table>
+    </div>
+    
+    <div id="ajaxDialog"></div>
+
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+
+    <div id="body-content" class="body-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="page-title">@ViewBag.Title</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <nav class="navbar fixed-bottom navbar-light footer-nav" />
+    </div>
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>
+

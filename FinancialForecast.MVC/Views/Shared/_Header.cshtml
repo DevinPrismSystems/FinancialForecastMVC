@@ -1,0 +1,68 @@
+﻿@{
+}
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container" style="margin-left:inherit">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+
+        @*            <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                            Coils
+                            <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="@Url.Action("Index", "Coils")">Coils</a>
+                            <a class="dropdown-item" href="@Url.Action("Suppliers", "Coils")">Suppliers</a>
+                            <a class="dropdown-item" href="@Url.Action("Grades", "Coils")">Grades</a>
+                        </div>
+                    </li>*@
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Forecast")" role="button">Forecast</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Deposits")" role="button">Deposits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Withdrawal")" role="button">Withdrawals </a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index","Budget")" role="button">Budget</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index","Options")" role="button">Options</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index","Users")" role="button">Users</a>
+                    </li>
+                    @*<li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index","Plates")" role="button">Plates</a>
+                    </li>*@
+        @*            <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                            System
+                            <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="@Url.Action("Index", "Users")">Users</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "Customers")">Customers</a>
+                        </div>
+                    </li>*@
+                </ul>
+            </div>
+        </div>
+        @if (!String.IsNullOrEmpty(ViewBag.CurrentUserName))
+        {
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item" id="currentUserText" role="tab">
+                    <a class="nav-link" href="#" role="tab"><i class="fas fa-user"></i> @ViewBag.CurrentUserName</a>
+                </li>
+                <li><a class="nav-link" href="@Url.Action("Logout", "Users")"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        }
+    </nav>
+</header>    
