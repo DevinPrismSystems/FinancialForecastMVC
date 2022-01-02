@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "c2390eae-910a-4a05-a894-20dc00aee2b6": {
+      "ProjectGuid": "c2390eae-910a-4a05-a894-20dc00aee2b6",
+      "DisplayName": "FinancialForecast.MVC",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

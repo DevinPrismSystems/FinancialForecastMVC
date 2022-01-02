@@ -10,7 +10,7 @@ namespace FinancialForecast.MVC.API
 {
     public class ForecastAPIController : Controller
     {
-        private FinancialForecastDBContext db;
+        public FinancialForecastDBContext db;
         private User user;
 
         public static string logFolderDateFormat;

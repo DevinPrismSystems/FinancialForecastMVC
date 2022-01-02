@@ -19,11 +19,6 @@
                     <button type="button" @@click="openEditModal()" class="btn btn-info" data-toggle="modal" data-target="#userEditModal" v-bind:disabled="selectedUser === null"><i class="fas fa-user-edit"></i> Edit User</button>
                   @*  <button type="button" @@click="openSecurityModal()" class="btn btn-danger" data-toggle="modal" data-target="#userSecurityModal" v-bind:disabled="selectedUser === null"><i class="fas fa-user-lock"></i> Reset Security Info</button>
                 }*@
-                <div class="d-inline-block checkbox ml-4">
-                    <i class="text-danger fas fa-ban"></i>
-                    <label>Show Inactive</label>
-                    <input type="checkbox" v-model="showInactive" />
-                </div>
             </div>
         </div>
         <div class="table-responsive">
