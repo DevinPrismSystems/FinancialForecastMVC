@@ -1,0 +1,12 @@
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.Data\bin\Release\FinancialForecast.Data.dll.config
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.Data\bin\Release\FinancialForecast.Data.dll
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.Data\bin\Release\FinancialForecast.Data.pdb
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.Data\bin\Release\EntityFramework.dll
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.Data\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.Data\bin\Release\EntityFramework.xml
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.Data\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.Data\obj\Release\FinancialForecast.Data.csproj.AssemblyReference.cache
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.Data\obj\Release\FinancialForecast.Data.csproj.CoreCompileInputs.cache
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.Data\obj\Release\FinancialForecast.Data.csproj.CopyComplete
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.Data\obj\Release\FinancialForecast.Data.dll
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.Data\obj\Release\FinancialForecast.Data.pdb

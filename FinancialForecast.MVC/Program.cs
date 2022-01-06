@@ -23,6 +23,7 @@ namespace FinancialForecast.MVC
                 var services = scope.ServiceProvider;
                 try
                 { 
+                   
                     var context = services.GetRequiredService<FinancialForecastDBContext>();
                     DbInitializer.Initialize(context);
                 }
@@ -59,6 +60,7 @@ namespace FinancialForecast.MVC
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.UseIISIntegration();
                 });
     }
 }

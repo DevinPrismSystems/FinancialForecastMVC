@@ -19,7 +19,7 @@ namespace FinancialForecast.MVC.Models
 
         public int Frequency { get; set; }
 
-        [ForeignKey("User")]
-        public int UserRefID { get; set; }
+        [ForeignKey("AspNetUsers")]
+        public String UserRefID { get; set; }
     }
 }

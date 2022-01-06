@@ -1,0 +1,60 @@
+﻿@model FinancialForecast.MVC.Models.LoginViewModel
+@{
+    ViewBag.Title = "Log into Your Financial Forecast";
+    //Layout = "~/Views/Shared/_LoginPartial.cshtml";
+}
+
+<div class="d-flex justify-content-center h-100 mt-5" id="Login">
+    <div class="card w-40 border-0 shadow p-3 mb-5 bg-white rounded">
+        <div class="card-header bg-transparent border-0">
+@*            <div id="alert" class="col-sm-12 alert fade-appear form-centered" v-bind:class="error ? 'alert-danger' : 'alert-success'" v-if="message">
+                <a href="#" class="btn-close" data-dismiss="alert" aria-label="close">&times;</a>
+                {{message}}
+            </div>*@
+            <div class="d-flex justify-content-center">
+                <img src="@Url.Content("~/Dollar.jpg")" class="brand_logo" alt="Logo" width="400" />
+            </div>
+        </div>
+        <div class="card-body bg-transparent border-0">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, true, new { @id = "webLogin", @class = "form-signin" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <span class="input-group-text bg-primary" style="padding:0.66rem"><i class="fas fa-user text-white"></i></span>
+                    </div>
+                    @Html.TextBoxFor(m => m.Username, new { @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.Username), @required = "", @autofocus = "", @v_model = "username" })
+                </div>
+                <div class="input-group mb-2">
+                    <div class="input-group-append">
+                        <span class="input-group-text bg-primary" style="padding:0.66rem"><i class="fas fa-key text-white"></i></span>
+                    </div>
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.Password), @required = "" })
+                </div>
+                <div class="d-flex justify-content-center mt-1">
+                    <form>
+                        <button asp-action="Login" asp-controller="Account" class="btn btn-primary"><i class="fas fa-sign-in-alt">Login</button>                        
+                    </form>
+                </div>
+                <div class="text-left text-danger">
+                    @ViewBag.Error
+                    @Html.ValidationSummary()
+                </div>
+            }
+            <div class="d-flex justify-content-center mt-1">
+                <form>                        
+                    <button asp-action="Register" asp-controller="Account" class="btn btn-danger"><i class="fas fa-sign-in-alt">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script>
+        var baseURL = '@System.Configuration.ConfigurationManager.AppSettings["BaseURL"]';
+    </script>
+   @* <script src="@Url.Content("~/VueControllers/LoginVueController.js?v="+DateTime.Now.Ticks)"></script>*@
+}

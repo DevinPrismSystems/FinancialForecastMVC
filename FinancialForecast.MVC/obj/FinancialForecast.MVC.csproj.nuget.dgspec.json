@@ -1,37 +1,56 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.MVC\\FinancialForecast.MVC.csproj": {}
+    "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\FinancialForecast.MVC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.MVC\\FinancialForecast.MVC.csproj": {
+    "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.Data\\FinancialForecast.Data.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.Data\\FinancialForecast.Data.csproj",
+        "projectName": "FinancialForecast.Data",
+        "projectPath": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.Data\\FinancialForecast.Data.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    },
+    "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\FinancialForecast.MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.MVC\\FinancialForecast.MVC.csproj",
+        "projectUniqueName": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\FinancialForecast.MVC.csproj",
         "projectName": "FinancialForecast.MVC",
-        "projectPath": "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.MVC\\FinancialForecast.MVC.csproj",
-        "packagesPath": "C:\\Users\\legen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.MVC\\obj\\",
+        "projectPath": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\FinancialForecast.MVC.csproj",
+        "packagesPath": "C:\\Users\\Devin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\legen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Devin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0-windows7.0"
+          "net6.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0-windows7.0": {
-            "targetAlias": "net6.0-windows",
-            "projectReferences": {}
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.Data\\FinancialForecast.Data.csproj": {
+                "projectPath": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.Data\\FinancialForecast.Data.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -41,8 +60,8 @@
         }
       },
       "frameworks": {
-        "net6.0-windows7.0": {
-          "targetAlias": "net6.0-windows",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "dependencies": {
             "Bootstrap.Datepicker": {
               "target": "Package",
@@ -52,17 +71,29 @@
               "target": "Package",
               "version": "[6.4.4, )"
             },
-            "ExceptionHandler": {
-              "target": "Package",
-              "version": "[1.0.1, )"
-            },
             "FontAwesome": {
               "target": "Package",
               "version": "[4.7.0, )"
             },
+            "Microsoft.AspNet.Identity.Core": {
+              "target": "Package",
+              "version": "[2.2.3, )"
+            },
+            "Microsoft.AspNet.Identity.Owin": {
+              "target": "Package",
+              "version": "[2.2.3, )"
+            },
+            "Microsoft.AspNet.WebApi.Core": {
+              "target": "Package",
+              "version": "[5.2.7, )"
+            },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.1, )"
+            },
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
@@ -71,6 +102,10 @@
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
               "version": "[6.0.1, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Formatters.Json": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             },
             "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
               "target": "Package",
@@ -104,6 +139,18 @@
               "target": "Package",
               "version": "[6.0.1, )"
             },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.Extensions.Identity.Core": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
               "version": "[1.14.0, )"
@@ -120,9 +167,17 @@
               "target": "Package",
               "version": "[6.0.1, )"
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
             "System.Net.Http": {
               "target": "Package",
               "version": "[4.3.4, )"
+            },
+            "System.Runtime.Serialization.Json": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             },
             "bootstrap": {
               "target": "Package",
