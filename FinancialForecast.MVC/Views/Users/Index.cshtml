@@ -11,8 +11,8 @@
                 {{alertMessage}}
             </div>
         </div>
-        <div class="row">
-            <div class="col-7">
+        <div class="row mt-5">
+            <div class="col-xs-12 text-center"> 
               @*  @if (isElevated || isAdmin)
                 {*@
                     <button type="button" @@click="openCreateModal()" class="btn btn-success" data-toggle="modal" data-target="#userCreateModal"><i class="fas fa-user"></i> New User</button>
@@ -21,25 +21,25 @@
                 }*@
             </div>
         </div>
-        <div class="table-responsive">
-            <table class="table table-sm table-hover table-striped">
-                <thead class="thead-dark">
-                    <tr>
-                        <th v-for="col in columns" v-if="col !== 'UserID' && col !== 'Password'" v-on:click="sortTable(col)">
-                            {{col}}
-                            <span class="arrow" v-if="col == sortColumn" v-bind:class="ascending ? 'arrow-top' : 'arrow-bottom'"></span>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="user in getUsers()" v-on:click="userClicked(user)" :class="{'row-highlight': (user == selectedUser)}">
-                        <td v-for="col in columns" v-if="col !== 'UserID' && col !== 'Password'" v-bind:type="user[col] == 'Active' ? 'checkbox': 'text'">
-                            <input type="checkbox" v-bind:checked="user['Active'] == true" v-if="col == 'Active'" disabled />
-                            <div v-if="col != 'Active'">{{user[col]}}</div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="row col-12 mt-5">
+            <div class="table-responsive">
+                <table class="table table-sm table-hover table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th v-for="col in columns" v-if="col !== 'UserID' && col !== 'Password'">
+                                {{col}}                            
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="user in users" v-on:click="userClicked(user)" :class="{'row-highlight': (user == selectedUser)}">
+                            <td v-for="col in columns" v-if="col !== 'UserID' && col !== 'Password'" v-bind:type="user[col] == 'Active' ? 'checkbox': 'text'">
+                                <div>{{user[col]}}</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
         

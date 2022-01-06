@@ -2,7 +2,9 @@
 axios.defaults.headers.get['Accepts'] = 'application/json';
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 axios.defaults.headers.common['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
-
+axios.defaults.headers.common = {
+    "Content-Type": "application/json"
+}
 
 
 
@@ -31,7 +33,7 @@ var UsersController = new Vue({
         axios.get(baseURL + 'api/users/all').then(function (response) {
             try {
                 this.users = response.data;
-                this.filteredUsers = response.data;
+                console.log(this.users);
             }
             catch (e) {
                 console.log(e);
@@ -58,29 +60,7 @@ var UsersController = new Vue({
             setTimeout(function () { UsersController.alertMessage = '' }, 3000);
         },
         "getUsers": function getUsers() {
-            var start = (this.currentPage - 1) * this.elementsPerPage;
-            var end = start + this.elementsPerPage;
-
-            this.startRange = start;
-            if (start + this.elementsPerPage > this.userCount)
-                this.endRange = this.userCount;
-            else
-                this.endRange = start + this.elementsPerPage;
-
-            if (this.filteredUsers.length > 0) {
-                this.userCount = this.filteredUsers.length;
-                return this.filteredUsers.slice(start, end);
-            }
-            else if (this.filteredUsers.length === 0 && this.query) {
-                this.userCount = 0;
-                return [];
-            }
-
-            else {
-                this.userCount = this.users.length;
-                this.filteredUsers = this.users;
-                return this.users.slice(start, end);
-            }
+             return this.users.slice(start, end);
         },
 
         "openCreateModal": function openCreateModal() {
@@ -94,9 +74,6 @@ var UsersController = new Vue({
             axios.get(baseURL + 'api/users/all').then(function (response) {
                 try {
                     this.users = response.data;
-                    this.filteredUsers = response.data;
-                    this.resortTable();
-
                 }
                 catch (e) {
                     console.log(e);
@@ -116,18 +93,7 @@ var UsersController = new Vue({
         "userClicked": function userClicked(user) {
             this.selectedUserID = user.UserID;
             this.selectedUser = user;
-
-            axios.get(baseURL + 'api/users/permissions/' + UsersController.selectedUserID).then(function (response) {
-                try {
-                    this.permissions = response.data;
-                }
-                catch (e) {
-                    console.log(e);
-                }
-            }.bind(this))
-                .catch(function (error) {
-                    console.log(error);
-                });
+            console.log(user);
         }
     },
 
@@ -143,8 +109,9 @@ var CreateModalController = new Vue({
             this.user = {}
         },
         "createNewUser": function createNewUser() {
+            console.log(this.user);
             axios.post(baseURL + 'api/users/new', this.user).then(function (response) {
-                try {
+                try {                    
                     UsersController.alertSuccessMessage("User was successfully added");
                     UsersController.refreshTable();
                 }
@@ -202,7 +169,9 @@ var EditModalController = new Vue({
     },
     methods: {
         "openEditModal": function openEditModal(user) {
+            console.log(user);
             this.editedUser = user;
+            console.log(user);
         },
         "editSelectedUser": function editSelectedUser() {
             axios.post(baseURL + 'api/users/edit/' + UsersController.selectedUserID, this.editedUser).then(function (response) {

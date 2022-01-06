@@ -1,5 +1,7 @@
-﻿@{
-}
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container" style="margin-left:inherit">
@@ -9,18 +11,6 @@
             </button>
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-
-        @*            <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                            Coils
-                            <span class="caret"></span>
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="@Url.Action("Index", "Coils")">Coils</a>
-                            <a class="dropdown-item" href="@Url.Action("Suppliers", "Coils")">Suppliers</a>
-                            <a class="dropdown-item" href="@Url.Action("Grades", "Coils")">Grades</a>
-                        </div>
-                    </li>*@
                     <li class="nav-item">
                         <a class="nav-link" href="@Url.Action("Index", "Forecast")" role="button">Forecast</a>
                     </li>
@@ -39,9 +29,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="@Url.Action("Index","Users")" role="button">Users</a>
                     </li>
-                    @*<li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index","Plates")" role="button">Plates</a>
-                    </li>*@
         @*            <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                             System
@@ -55,13 +42,18 @@
                 </ul>
             </div>
         </div>
-        @if (!String.IsNullOrEmpty(ViewBag.CurrentUserName))
+        @if (!String.IsNullOrEmpty(@UserManager.GetUserName(User)))
         {
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item" id="currentUserText" role="tab">
-                    <a class="nav-link" href="#" role="tab"><i class="fas fa-user"></i> @ViewBag.CurrentUserName</a>
+                    <a class="nav-link" href="#" role="tab"><i class="fas fa-user"></i> @UserManager.GetUserName(User)</a>
                 </li>
-                <li><a class="nav-link" href="@Url.Action("Logout", "Users")"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                <li class="nav-item">
+                    <form method = "post" asp-controller = "Account" asp-action = "Logout"> 
+                        @*<input type="submit" value = "Logout" class="nav-link" />*@
+                        <a type="submit" value= "Logout" class="nav-link" href="@Url.ActionLink("Logout", "Account")" role="tab"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </form> 
+                </li>
             </ul>
         }
     </nav>

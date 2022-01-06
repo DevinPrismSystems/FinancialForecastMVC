@@ -30,7 +30,7 @@ namespace FinancialForecast.MVC.Data
 
             var Deposits = new Deposit[]
             {
-            new Deposit{Description="PayCheck",Amount=2319,Date=DateTime.Parse("2021-12-03"), Active=true, isRecurring = true, Frequency = 14, UserRefID=1},
+            new Deposit{Description="PayCheck",Amount=2319,Date=DateTime.Parse("2021-12-03"), Active=true, isRecurring = true, Frequency = 14, UserRefID="72cdbd23-85a0-4ed6-96dd-657dbadbe9fc"},
             };
             foreach (Deposit s in Deposits)
             {
@@ -40,7 +40,7 @@ namespace FinancialForecast.MVC.Data
 
             var Withdrawals = new Withdrawal[]
             {
-            new Withdrawal{Description="Mazda",Amount=-655,Date=DateTime.Parse("2021-12-03"), Active=true, isRecurring = true, Frequency = 14, UserRefID=1},
+            new Withdrawal{Description="Mazda",Amount=-655,Date=DateTime.Parse("2021-12-03"), Active=true, isRecurring = true, Frequency = 14, UserRefID="72cdbd23-85a0-4ed6-96dd-657dbadbe9fc"},
             };
             foreach (Withdrawal c in Withdrawals)
             {
@@ -51,7 +51,7 @@ namespace FinancialForecast.MVC.Data
 
             var Periods = new Period[]
             {
-            new Period{StartDate=DateTime.Parse("2021-12-03"),EndDate=DateTime.Parse("2021-12-16"),StartAmount=7266, FinalAmount = 5856, UserRefID=1},
+            new Period{StartDate=DateTime.Parse("2021-12-03"),EndDate=DateTime.Parse("2021-12-16"),StartAmount=7266, FinalAmount = 5856, UserRefID="72cdbd23-85a0-4ed6-96dd-657dbadbe9fc"},
             };
             foreach (Period e in Periods)
             {

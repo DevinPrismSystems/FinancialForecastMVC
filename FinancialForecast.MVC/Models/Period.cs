@@ -15,7 +15,7 @@ namespace FinancialForecast.MVC.Models
 
         public Double FinalAmount { get; set; }
 
-        [ForeignKey("User")]
-        public int UserRefID { get; set; }
+        [ForeignKey("AspNetUsers")]
+        public String UserRefID { get; set; }
     }
 }

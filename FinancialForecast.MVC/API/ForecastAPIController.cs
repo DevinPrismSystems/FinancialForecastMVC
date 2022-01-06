@@ -5,12 +5,14 @@ using System;
 using System.Configuration;
 using System.IO;
 using System.Web;
+using System.Web.Http;
 
 namespace FinancialForecast.MVC.API
 {
-    public class ForecastAPIController : Controller
+    public class ForecastAPIController : ApiController
     {
         public FinancialForecastDBContext db;
+        public AppIdentityDbContext AppIdentityDbContext;
         private User user;
 
         public static string logFolderDateFormat;
@@ -26,6 +28,7 @@ namespace FinancialForecast.MVC.API
         private void instantiateDbContext()
         {
             this.db = new ForecastDB().FinancialForecastDbContext;
+            this.AppIdentityDbContext = new ForecastDB().AppIdentityDbContext; 
             //this.db.Database. = this.CommandTimeout;
         }
 

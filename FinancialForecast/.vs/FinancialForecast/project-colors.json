@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "0667dc2b-d99c-42b0-b43c-3d88bf8ac5df": {
+      "ProjectGuid": "0667dc2b-d99c-42b0-b43c-3d88bf8ac5df",
+      "DisplayName": "FinancialForecast.MVC",
+      "ColorIndex": 0
+    },
+    "73fbb3ce-5a07-49e5-acce-bbec135a436f": {
+      "ProjectGuid": "73fbb3ce-5a07-49e5-acce-bbec135a436f",
+      "DisplayName": "FinancialForecast.Data",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 2
+}

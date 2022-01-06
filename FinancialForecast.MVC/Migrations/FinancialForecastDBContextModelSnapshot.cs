@@ -49,8 +49,8 @@ namespace FinancialForecast.MVC.Migrations
                     b.Property<DateTime>("StopDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserRefID")
-                        .HasColumnType("int");
+                    b.Property<string>("UserRefID")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("isRecurring")
                         .HasColumnType("bit");
@@ -80,8 +80,9 @@ namespace FinancialForecast.MVC.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserRefID")
-                        .HasColumnType("int");
+                    b.Property<string>("UserRefID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
@@ -142,8 +143,8 @@ namespace FinancialForecast.MVC.Migrations
                     b.Property<DateTime>("StopDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserRefID")
-                        .HasColumnType("int");
+                    b.Property<string>("UserRefID")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("isRecurring")
                         .HasColumnType("bit");
