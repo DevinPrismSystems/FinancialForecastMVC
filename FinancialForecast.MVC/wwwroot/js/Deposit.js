@@ -103,15 +103,18 @@ var CreateModalController = new Vue({
     el: "#DepositCreateModal",
     data: {
         Deposit: {},
+
     },
     methods: {
         "openCreateModal": function openCreateModal() {
             this.Deposit = {}
+            this.Deposit.Date = new Date().getDate();
         },
         "createNewDeposit": function createNewDeposit() {
             console.log(this.Deposit);
-            axios.post(baseURL + 'api/Deposits/new', this.Deposit).then(function (response) {
+            axios.post(baseURL + 'api/deposits/new', this.Deposit).then(function (response) {
                 try {
+                    console.log("Deposit was successfully added");
                     DepositsController.alertSuccessMessage("Deposit was successfully added");
                     DepositsController.refreshTable();
                 }
@@ -171,7 +174,6 @@ var EditModalController = new Vue({
         "openEditModal": function openEditModal(Deposit) {
             console.log(Deposit);
             this.editedDeposit = Deposit;
-            console.log(Deposit);
         },
         "editSelectedDeposit": function editSelectedDeposit() {
             axios.post(baseURL + 'api/Deposits/edit/' + DepositsController.selectedDepositID, this.editedDeposit).then(function (response) {

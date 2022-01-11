@@ -3,10 +3,12 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System;
+using System.Data.Entity;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace FinancialForecast.MVC.API
 {
-    public class DepositsController : ForecastAPIController
+    public class DepositsController : FinancialForecastController
     {
         [HttpGet]
         [Route("api/deposits/all")]
@@ -18,11 +20,37 @@ namespace FinancialForecast.MVC.API
         [HttpPost]
 
         [Route("api/deposits/new")]
-        public Int32 Post([FromBody] Deposit newdeposit)
+        public Int32 Post([FromBody] Deposit newDeposit)
         {
-            this.db.Deposits.Add(newdeposit);
-            this.db.SaveChanges();
-            return Convert.ToInt32(newdeposit.ID);
+            IDbContextTransaction trans = this.db.Database.BeginTransaction();
+            try
+            {
+                newDeposit.ID = null;
+                newDeposit.UserRefID = CurrentUserID;
+                newDeposit.Active = true;
+                this.db.Deposits.Add(newDeposit);
+                this.db.SaveChanges();
+                if (newDeposit.isRecurring)
+                {
+                    newDeposit.Date = newDeposit.Date.AddDays(newDeposit.Frequency);
+                    newDeposit.ID = null;
+                    while (newDeposit.Date < newDeposit.StopDate)
+                    {
+                        this.db.Deposits.Add(newDeposit);
+                        this.db.SaveChanges();
+                        newDeposit.Date = newDeposit.Date.AddDays(newDeposit.Frequency);
+                    }
+                }
+                
+                trans.Commit();
+                return Convert.ToInt32(newDeposit.ID);
+                
+            }
+            catch
+            {
+                trans.Rollback();
+                return 0;
+            }
         }
 
         [HttpPost]

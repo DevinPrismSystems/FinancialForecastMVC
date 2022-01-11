@@ -1,59 +1,50 @@
-﻿<div id="userCreateModal" class="modal fade" role="dialog" tabindex="-1">
+﻿<div id="DepositCreateModal" class="modal fade" role="dialog" tabindex="-1">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <form class="create-validation" novalidate>
                 <div class="modal-header bg-primary">
-                    <h4 class="modal-title text-white"><i class="fas fa-user"></i> New User</h4>
+                    <h4 class="modal-title text-white"><i class="fas fa-user"></i> New Deposit</h4>
                 </div>
                 <div class="modal-body">
                     <div class="row form-group">
                         <div class="col-sm-6">
-                            <label>First Name:</label>
-                            <input type="text" class="form-control" v-model="user['First Name']" required />
+                            <label>Description:</label>
+                            <input type="text" class="form-control" v-model="Deposit.Description" required />
                             <div class="invalid-feedback">
-                                Please enter a First Name
+                                Please enter a Description
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <label>Last Name:</label>
-                            <input type="text" class="form-control" v-model="user['Last Name']" required />
+                            <label>Amount:</label>
+                            <input type="text" class="form-control" v-model="Deposit.Amount" required />
                             <div class="invalid-feedback">
-                                Please enter a Last Name
+                                Please enter an amount
                             </div>
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col-sm-6">
-                            <label>Username:</label>
-                            <input type="text" v-model="user.Username" class="form-control" required />
+                            <label>Date:</label>
+                            <input type="date" v-model="Deposit.Date" class="form-control" required />
                             <div class="invalid-feedback">
-                                Please enter an username
+                                Please enter a Date
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <label>Password:</label>
-                            <input type="password" v-model="user.Password" class="form-control" required />
-                            <div class="invalid-feedback">
-                                Please enter a Password
-                            </div>
+                            <input type="checkbox" v-model="Deposit.isRecurring" class="form-check-input"/>
+                            <label class="form-check-label">Is Recurring?</label>
                         </div>
                     </div>
-@*                    <div class="row form-group">
+                    <div class="row form-group">
                         <div class="col-sm-6">
-                            <label>Security Question:</label>
-                            @Html.DropDownList("SecurityQuestion", (SelectList)ViewBag.SecurityQuestions, "Select a Security Question", new { @class = "form-select", @v_model = "user['Security Question']", @required="required"})
-                            <div class="invalid-feedback">
-                                Please Select a Security Question
-                            </div>
+                            <label>Stop Date:</label>
+                            <input type="date" v-model="Deposit.StopDate" class="form-control" />
                         </div>
                         <div class="col-sm-6">
-                            <label>Security Answer:</label>
-                            <input type="password" v-model="user['Security Answer']" class="form-control" required />
-                            <div class="invalid-feedback">
-                                Please enter an answer
-                            </div>
+                            <label>Frequency:</label>
+                            <input type="number" v-model="Deposit.Frequency" class="form-control"/>
                         </div>
-                    </div>*@
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <div class="text-right">
