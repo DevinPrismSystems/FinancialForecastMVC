@@ -65,7 +65,7 @@ namespace FinancialForecast.MVC
             
             services.AddMvc().AddRazorPagesOptions(options =>
             {
-                options.Conventions.AddPageRoute("/Forecast/Index", "");
+                options.Conventions.AddPageRoute("/Deposit/Index", "");
             });
 
             //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => { options.LoginPath = "Account/Login"; options.LogoutPath = "Account/Logout"; });
@@ -104,6 +104,15 @@ namespace FinancialForecast.MVC
 
             app.UseHttpsRedirection();
             app.UseFileServer();
+
+            //Specify the MyCustomPage1.html as the default page
+            DefaultFilesOptions defaultFilesOptions = new DefaultFilesOptions();
+            defaultFilesOptions.DefaultFileNames.Clear();
+            defaultFilesOptions.DefaultFileNames.Add("/Deposit/Index.cshtml");
+            //Setting the Default Files
+            app.UseDefaultFiles(defaultFilesOptions);
+
+
             app.UseStaticFiles();
             app.UseRouting();
             app.UseCors();

@@ -4,7 +4,7 @@ using System.Web.Http;
 namespace FinancialForecast.MVC.Controllers
 {
     [Authorize]
-    public class DepositsController : Controller
+    public class DepositController : FinancialForecastController
     {
         public IActionResult Index()
         {
