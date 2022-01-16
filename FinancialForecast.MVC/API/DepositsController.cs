@@ -20,7 +20,7 @@ namespace FinancialForecast.MVC.API
         [HttpPost]
 
         [Route("api/deposits/new")]
-        public Int32 Post([FromBody] Deposit newDeposit)
+        public Int32 CreateDeposit([FromBody] Deposit newDeposit)
         {
             IDbContextTransaction trans = this.db.Database.BeginTransaction();
             try
@@ -55,7 +55,7 @@ namespace FinancialForecast.MVC.API
 
         [HttpPost]
         [Route("api/deposits/edit/{depositID:int}")]
-        public Int32 Post(Int32 depositID,[FromBody] Deposit editedDeposit)
+        public Int32 EditDeposit(Int32 depositID,[FromBody] Deposit editedDeposit)
         {
             Deposit original = this.db.Deposits.Where(x => x.ID == depositID).FirstOrDefault();
             original.Description = editedDeposit.Description;
@@ -65,6 +65,48 @@ namespace FinancialForecast.MVC.API
             original.isRecurring = editedDeposit.isRecurring;
             original.UserRefID = editedDeposit.UserRefID;
 
+            this.db.SaveChanges();
+            return Convert.ToInt32(original.ID);
+        }
+
+        [HttpPost]
+        [Route("api/deposits/editMultiple/{depositID:int}")]
+        public Int32 EditMultipleDeposits(Int32 depositID, [FromBody] Deposit editedDeposit)
+        {
+            if (editedDeposit.isRecurring) {
+                List<Deposit> deposits = new List<Deposit>();
+                deposits.AddRange(this.db.Deposits.Where(x => x.UserRefID == CurrentUserID && x.Description == editedDeposit.Description && 
+                x.Amount == editedDeposit.Amount && (x.Date >= editedDeposit.Date && x.Date <= x.StopDate)));
+                IDbContextTransaction trans = this.db.Database.BeginTransaction();
+                try
+                {                    
+                    this.db.Deposits.Add(newDeposit);
+                    this.db.SaveChanges();
+                    if (newDeposit.isRecurring)
+                    {
+                        newDeposit.Date = newDeposit.Date.AddDays(newDeposit.Frequency);
+                        while (newDeposit.Date < newDeposit.StopDate)
+                        {
+                            this.db.Deposits.Add(newDeposit);
+                            this.db.SaveChanges();
+                            newDeposit.Date = newDeposit.Date.AddDays(newDeposit.Frequency);
+                        }
+                    }
+
+                    trans.Commit();
+                    return Convert.ToInt32(newDeposit.ID);
+
+                }
+                catch
+                {
+                    trans.Rollback();
+                    return 0;
+                }
+            }
+            else
+            {
+
+            }
             this.db.SaveChanges();
             return Convert.ToInt32(original.ID);
         }
