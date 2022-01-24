@@ -7,7 +7,6 @@ axios.defaults.headers.common = {
 }
 
 
-
 var DepositsController = new Vue({
     el: "#Deposits",
     data: {
@@ -19,7 +18,13 @@ var DepositsController = new Vue({
         query: '',
         selectedDeposit: null,
         selectedDepositID: '',
-        Deposits: []
+        Deposits: [],
+        config: {
+            format: 'MM/DD/YYYY hh:mm:ss A',
+            useCurrent: false,
+            showClear: true,
+            showClose: true
+        }
     },
     computed: {
         "columns": function columns() {

@@ -14,9 +14,9 @@
         <div class="row mt-5">
             <div class="col-xs-12 text-center"> 
               @*  @if (isElevated || isAdmin)
-                {*@
-                    <button type="button" @@click="openCreateModal()" class="btn btn-success" data-toggle="modal" data-target="#DepositCreateModal"><i class="fas fa-Deposit"></i> New Deposit</button>
-                    <button type="button" @@click="openEditModal()" class="btn btn-info" data-toggle="modal" data-target="#DepositEditModal" v-bind:disabled="selectedDeposit === null"><i class="fas fa-Deposit-edit"></i> Edit Deposit</button>
+                {*@ 
+                    <button type="button" @@click="openCreateModal()" class="btn btn-success" data-toggle="modal" data-target="#DepositCreateModal"><i class="fas fa-dollar-sign"></i> New Deposit</button>
+                    <button type="button" @@click="openEditModal()" class="btn btn-info" data-toggle="modal" data-target="#DepositEditModal" v-bind:disabled="selectedDeposit === null"><i class="fas fa-money-bill-wave"></i> Edit Deposit</button>
                   @*  <button type="button" @@click="openSecurityModal()" class="btn btn-danger" data-toggle="modal" data-target="#DepositSecurityModal" v-bind:disabled="selectedDeposit === null"><i class="fas fa-Deposit-lock"></i> Reset Security Info</button>
                 }*@
             </div>
@@ -26,15 +26,17 @@
                 <table class="table table-sm table-hover table-striped">
                     <thead class="thead-dark">
                         <tr>
-                            <th v-for="col in columns" v-if="col !== 'DepositID' && col !== 'Password'">
+                            <th v-for="col in columns" v-if="col !== 'id' && col !== 'UserID'">                               
                                 {{col}}                            
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="Deposit in Deposits" v-on:click="DepositClicked(Deposit)" :class="{'row-highlight': (Deposit == selectedDeposit)}">
-                            <td v-for="col in columns" v-if="col !== 'DepositID' && col !== 'Password'" v-bind:type="Deposit[col] == 'Active' ? 'checkbox': 'text'">
-                                <div>{{Deposit[col]}}</div>
+                            <td v-for="col in columns" v-if="col !== 'id' && col !== 'UserID'" v-bind:type="Deposit[col] == 'Active' ? 'checkbox': 'text'">
+                                <input type="checkbox" v-bind:checked = "Deposit['Active'] == true" v-if ="col == 'Active'" disabled />
+                                <input type="checkbox" v-bind:checked = "Deposit['Recurring'] == true" v-if ="col == 'Recurring'" disabled />
+                                <div v-if="col != 'Active' && col != 'Recurring'">{{Deposit[col]}}</div>
                             </td>
                         </tr>
                     </tbody>

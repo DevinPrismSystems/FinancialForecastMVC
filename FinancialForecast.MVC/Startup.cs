@@ -14,12 +14,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 using Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using static FinancialForecast.MVC.Models.Deposit;
 
 namespace FinancialForecast.MVC
 {
@@ -67,14 +68,23 @@ namespace FinancialForecast.MVC
             {
                 options.Conventions.AddPageRoute("/Deposit/Index", "");
             });
-
+            
             //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => { options.LoginPath = "Account/Login"; options.LogoutPath = "Account/Logout"; });
             services.AddMvc(options =>
            {
                var policy = new AuthorizationPolicyBuilder().AddAuthenticationSchemes().RequireAuthenticatedUser().Build(); options.Filters.Add(new AuthorizeFilter(policy));
            }).AddXmlSerializerFormatters();
 
-            services.AddControllers(option => option.EnableEndpointRouting = true);
+            services.AddControllers(option => option.EnableEndpointRouting = true).AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Converters.Add(new DateTimeConverter());
+            });
+
+            //services.AddControllers()
+            //.AddNewtonsoftJson(options =>
+            //{
+            //    options.SerializerSettings.DateFormatHandling = DateFormatHandling.MicrosoftDateFormat;
+            //});
             //services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddOptions();
 
