@@ -30,6 +30,7 @@ namespace FinancialForecast.MVC.Data
                 entity.HasKey(e => e.ID);
                 entity.Property(e => e.Description).IsRequired();
                 entity.Property(e => e.ID).UseIdentityColumn();
+                
             });
 
             modelBuilder.Entity<Withdrawal>(entity =>
