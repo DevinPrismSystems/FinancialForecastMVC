@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nqB1+NYwBovmJ/DbOkcjfmCWhM3HlbziPIi59jqyx84=",
+  "Hash": "yhOSwq65EokpJQdbt9e7hOJDEYZwFXREH8WLPkg+SQQ=",
   "Source": "FinancialForecast.MVC",
   "BasePath": "_content/FinancialForecast.MVC",
   "Mode": "Default",
@@ -1836,12 +1836,12 @@
       "OriginalItemSpec": "wwwroot\\js\\Axios.min.js"
     },
     {
-      "Identity": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\wwwroot\\js\\LoginVueController.js",
+      "Identity": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\wwwroot\\js\\Deposit.js",
       "SourceId": "FinancialForecast.MVC",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\wwwroot\\",
       "BasePath": "_content/FinancialForecast.MVC",
-      "RelativePath": "js/LoginVueController.js",
+      "RelativePath": "js/Deposit.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1850,7 +1850,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\LoginVueController.js"
+      "OriginalItemSpec": "wwwroot\\js\\Deposit.js"
     },
     {
       "Identity": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\wwwroot\\js\\site.js",

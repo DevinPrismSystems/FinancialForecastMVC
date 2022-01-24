@@ -69,3 +69,236 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.row {
+    margin-bottom: 7px;
+}
+
+h1.page-title {
+    color: #465969;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+nav.footer-nav {
+    background: #999c9f;
+}
+
+.row-highlight {
+    background-color: #b7d8fc !important;
+}
+
+.table-overflow {
+    overflow: scroll;
+    table-layout: auto;
+}
+
+.table-responsive table thead tr th {
+    white-space: nowrap;
+    min-width: 120px;
+}
+
+.table-responsive table tbody tr td {
+    white-space: nowrap;
+}
+
+.table-footer nav .pagination {
+    margin-left: auto;
+}
+
+    .table-footer nav .pagination .page-link {
+        background-color: rgba(0,0,0,.03);
+        color: black;
+    }
+
+.glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.glyphicon-arrow-up:before {
+    content: "\e014"
+}
+
+.glyphicon-arrow-down:before {
+    content: "\e015"
+}
+
+.glyphicon-check {
+    color: #810052;
+    cursor: pointer;
+    background-color: white
+}
+
+.glyphicon-unchecked {
+    color: #666;
+    cursor: pointer;
+}
+
+
+/* arrow common style */
+.arrow {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-top: 2px solid #f8f9fa;
+    border-right: 2px solid #f8f9fa;
+    transform: rotate(-45deg);
+}
+
+.arrow-top {
+    transform: rotate(-45deg);
+}
+
+.arrow-right {
+    transform: rotate(45deg);
+}
+
+.arrow-bottom {
+    transform: rotate(135deg);
+}
+
+.arrow-left {
+    transform: rotate(-135deg);
+}
+
+.arrow-top-narrow {
+    transform: rotate(-45deg) skew(-15deg, -15deg);
+}
+
+.arrow-top-wide {
+    transform: rotate(-45deg) skew(7deg, 7deg);
+}
+
+.arrow-top-left {
+    transform: rotate(-90deg) skew(-10deg, -10deg);
+}
+
+.arrow-top-right {
+    transform: rotate(0) skew(-10deg, -10deg);
+}
+
+.arrow-bottom-left {
+    transform: rotate(180deg) skew(-10deg, -10deg);
+}
+
+.arrow-bottom-right {
+    transform: rotate(90deg) skew(-10deg, -10deg);
+}
+
+/* .invalid class prevents CSS from automatically applying */
+.invalid input:required:invalid {
+    background: #BE4C54;
+}
+
+/* Mark valid inputs during .invalid state */
+.invalid input:required:valid {
+    background: #17D654;
+}
+
+@media only screen and (max-height:1200px) {
+    .table-responsive {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-left: 0px;
+        margin-right: 1em;
+        padding-top: 15px;
+        margin-bottom: 15px;
+        max-height: 775px
+    }
+}
+
+@media only screen and (max-height:1100px) {
+    .table-responsive {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-left: 0px;
+        margin-right: 1em;
+        padding-top: 15px;
+        margin-bottom: 15px;
+        height: 700px
+    }
+}
+
+@media only screen and (max-height:1000px) {
+    .table-responsive {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-left: 0px;
+        margin-right: 1em;
+        padding-top: 15px;
+        margin-bottom: 15px;
+        height: 600px
+    }
+}
+
+@media only screen and (max-height: 900px) {
+    .table-responsive {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-left: 0px;
+        margin-right: 1em;
+        padding-top: 15px;
+        margin-bottom: 15px;
+        height: 500px
+    }
+}
+
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-left: 0px;
+    margin-right: 1em;
+    padding-top: 15px;
+    margin-bottom: 15px;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #fffeed;
+}
+
+.table-footer {
+    background-color: #efefef !important;
+}
+
+.card-footer {
+    margin-left: 0px;
+    padding: 0.75rem 1.25rem;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.save-section {
+    margin-top: 15px;
+}
+
+.section-title {
+    text-decoration: underline;
+}
+
+#standardDialog, #ajaxDialog {
+    display: none;
+}
+
+

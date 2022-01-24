@@ -23,6 +23,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Devin/Documents/GithubProjects/FinancialForecast/FinancialForecast.MVC/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Devin/Documents/GithubProjects/FinancialForecast/FinancialForecast.MVC/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Devin/Documents/GithubProjects/FinancialForecast/FinancialForecast.MVC/Views/Deposit/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwb3NpdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Devin/Documents/GithubProjects/FinancialForecast/FinancialForecast.MVC/Views/Deposit/PartialViews/_CreateDeposit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwb3NpdFxQYXJ0aWFsVmlld3NcX0NyZWF0ZURlcG9zaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Devin/Documents/GithubProjects/FinancialForecast/FinancialForecast.MVC/Views/Deposit/PartialViews/_EditDeposit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwb3NpdFxQYXJ0aWFsVmlld3NcX0VkaXREZXBvc2l0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Devin/Documents/GithubProjects/FinancialForecast/FinancialForecast.MVC/Views/Forecast/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9yZWNhc3RcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -59,10 +79,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Devin/Documents/GithubProjects/FinancialForecast/FinancialForecast.MVC/Views/Users/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcTG9naW4uY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Devin/Documents/GithubProjects/FinancialForecast/FinancialForecast.MVC/Views/Users/PartialViews/_CreateUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcUGFydGlhbFZpZXdzXF9DcmVhdGVVc2VyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -77,6 +93,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Devin/Documents/GithubProjects/FinancialForecast/FinancialForecast.MVC/Views/Users/PartialViews/_ResetSecurityInfo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcUGFydGlhbFZpZXdzXF9SZXNldFNlY3VyaXR5SW5mby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Devin/Documents/GithubProjects/FinancialForecast/FinancialForecast.MVC/Views/Withdrawal/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2l0aGRyYXdhbFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Devin/Documents/GithubProjects/FinancialForecast/FinancialForecast.MVC/Views/_ViewImports.cshtml]

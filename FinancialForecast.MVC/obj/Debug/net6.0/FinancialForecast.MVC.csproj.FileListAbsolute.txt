@@ -576,3 +576,4 @@ C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.Owin.Security.Cookies.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.Owin.Security.OAuth.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Owin.dll
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
