@@ -1,43 +1,51 @@
-﻿<div id="depositEditModal" class="modal fade" role="dialog" tabindex="-1">
+﻿<div id="DepositEditModal" class="modal fade" role="dialog" tabindex="-1">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <form class="edit-validation" novalidate>
                 <div class="modal-header bg-primary">
-                    <h4 class="modal-title text-white"><i class="fas fa-user-edit"></i> {{editedUser['Last Name']}}, {{editedUser['First Name']}}</h4>
+                    <h4 class="modal-title text-white"><i class="fas fa-money-bill-wave"></i> Edit Deposit</h4>
                 </div>
                 <div class="modal-body">
                     <div class="row form-group">
                         <div class="col-sm-6">
-                            <label>First Name:</label>
-                            <input type="text" class="form-control" v-model="editedUser['First Name']" required>
+                            <label>Description:</label>
+                            <input type="text" class="form-control" v-model="editedDeposit.Description" required />
                             <div class="invalid-feedback">
-                                Please enter a First Name
+                                Please enter a Description
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <label>Last Name:</label>
-                            <input type="text" class="form-control" v-model="editedUser['Last Name']" required />
+                            <label>Amount:</label>
+                            <input type="text" class="form-control" v-model="editedDeposit.Amount" required />
                             <div class="invalid-feedback">
-                                Please enter a Last Name
+                                Please enter an amount
                             </div>
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col-sm-6">
-                            <label>Username:</label>
-                            <input type="text" class="form-control" v-model="editedUser.Username" required />
+                            <label>Date:</label>       
+                            <input type="date" v-model="editedDeposit.Date" class="form-control" required />                            
                             <div class="invalid-feedback">
-                                Please enter a Username
+                                Please enter a Date
                             </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <label class="form-check-label">Is Recurring? </label>
+                            <input type="checkbox" v-model="editedDeposit.Recurring" class="form-check-input" style="width:40px; height:40px; margin-top:30px; margin-left:-90px"/>
+                            
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-6">
+                            <label>Frequency (Days):</label>
+                            <input type="number" v-model="editedDeposit.Frequency" class="form-control"/>
                         </div>
                         <div class="col-sm-6">
-                            <label>Password:</label>
-                            <input type="password" v-model="editedUser.Password" class="form-control" required />
-                            <div class="invalid-feedback">
-                                Please enter a Password
-                            </div>
+                            <label>Stop Date:</label>
+                            <input type="date" v-model="editedDeposit['Stop Date']" class="form-control" />
                         </div>
-                     </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <div class="text-right">
