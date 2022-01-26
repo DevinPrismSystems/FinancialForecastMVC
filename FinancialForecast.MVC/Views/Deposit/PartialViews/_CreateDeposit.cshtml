@@ -3,7 +3,7 @@
         <div class="modal-content">
             <form class="create-validation" novalidate>
                 <div class="modal-header bg-primary">
-                    <h4 class="modal-title text-white"><i class="fas fa-user"></i> New Deposit</h4>
+                    <h4 class="modal-title text-white"><i class="fas fa-dollar-sign"></i> New Deposit</h4>
                 </div>
                 <div class="modal-body">
                     <div class="row form-group">
@@ -30,20 +30,19 @@
                                 Please enter a Date
                             </div>
                         </div>
-                        <div class="col-sm-1">
+                        <div class="col-sm-2">
                             <label class="form-check-label">Is Recurring? </label>
-                            <input type="checkbox" v-model="Deposit.isRecurring" class="form-check-input"/>
-                            
+                            <input type="checkbox" v-model="Deposit.isRecurring" class="form-check-input" style="width:40px; height:40px; margin-top:30px; margin-left:-90px" />                            
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col-sm-6">
-                            <label>Stop Date:</label>
-                            <input type="date" v-model="Deposit.StopDate" class="form-control" />
-                        </div>
-                        <div class="col-sm-6">
                             <label>Frequency:</label>
                             <input type="number" v-model="Deposit.Frequency" class="form-control"/>
+                        </div>
+                        <div class="col-sm-6">
+                            <label>Stop Date:</label>
+                            <input type="date" v-model="Deposit.StopDate" class="form-control" />
                         </div>
                     </div>
                 </div>

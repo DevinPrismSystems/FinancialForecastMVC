@@ -107,8 +107,7 @@ var DepositsController = new Vue({
 var CreateModalController = new Vue({
     el: "#DepositCreateModal",
     data: {
-        Deposit: {},
-
+        Deposit: {}
     },
     methods: {
         "openCreateModal": function openCreateModal() {

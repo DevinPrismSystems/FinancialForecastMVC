@@ -32,7 +32,7 @@ namespace FinancialForecast.MVC.Models
         [JsonPropertyName("Stop Date")]       
         public DateTime StopDate { get; set; }
 
-        [JsonPropertyName("Frequency (Days)")]
+        [JsonPropertyName("Frequency")]
         public int Frequency { get; set; }
 
         [ForeignKey("AspNetUsers")]
@@ -78,7 +78,8 @@ namespace FinancialForecast.MVC.Models
 
             public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
             {
-                writer.WriteStringValue(value.ToUniversalTime().ToString("MM/dd/yyyy"));
+                //writer.WriteStringValue(value.ToUniversalTime().ToString("MM/dd/yyyy"));
+                writer.WriteStringValue(value.ToUniversalTime().ToString("yyyy-MM-dd"));
             }
         }
 

@@ -71,7 +71,7 @@ namespace FinancialForecast.MVC.API
 
         [HttpPost]
         [Route("api/deposits/editMultiple/{depositID:int}")]
-        public Int32 EditMultipleDeposits(Int32 depositID, [FromBody] Deposit editedDeposit)
+        public void EditMultipleDeposits(Int32 depositID, [FromBody] Deposit editedDeposit)
         {
             if (editedDeposit.isRecurring) {
                 List<Deposit> deposits = new List<Deposit>();
@@ -80,35 +80,34 @@ namespace FinancialForecast.MVC.API
                 IDbContextTransaction trans = this.db.Database.BeginTransaction();
                 try
                 {                    
-                    this.db.Deposits.Add(newDeposit);
+                    this.db.Deposits.Add(editedDeposit);
                     this.db.SaveChanges();
-                    if (newDeposit.isRecurring)
+                    if (editedDeposit.isRecurring)
                     {
-                        newDeposit.Date = newDeposit.Date.AddDays(newDeposit.Frequency);
-                        while (newDeposit.Date < newDeposit.StopDate)
+                        editedDeposit.Date = editedDeposit.Date.AddDays(editedDeposit.Frequency);
+                        while (editedDeposit.Date < editedDeposit.StopDate)
                         {
-                            this.db.Deposits.Add(newDeposit);
+                            this.db.Deposits.Add(editedDeposit);
                             this.db.SaveChanges();
-                            newDeposit.Date = newDeposit.Date.AddDays(newDeposit.Frequency);
+                            editedDeposit.Date = editedDeposit.Date.AddDays(editedDeposit.Frequency);
                         }
                     }
 
                     trans.Commit();
-                    return Convert.ToInt32(newDeposit.ID);
+                    return;
 
                 }
                 catch
                 {
                     trans.Rollback();
-                    return 0;
+                    return;
                 }
             }
             else
             {
 
             }
-            this.db.SaveChanges();
-            return Convert.ToInt32(original.ID);
+            this.db.SaveChanges();            
         }
     }
 }
