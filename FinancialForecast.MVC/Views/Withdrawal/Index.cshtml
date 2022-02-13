@@ -1,5 +1,90 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model FinancialForecast.MVC.Models.Withdrawal
+
 @{
+    ViewBag.Title = "Withdrawals";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div id="Withdrawals">
+        <div class="row">
+            <div id="alert" class="col-12 alert fade-appear form-centered" v-bind:class="errorMessage ? 'alert-danger' : 'alert-success'" v-if="alertMessage">
+                <a href="#" class="btn-close" data-dismiss="alert" aria-label="close">&times;</a>
+                {{alertMessage}}
+            </div>
+        </div>
+        <div class="row justify-content-center">            
+            <div class="col-sm-2" style="text-align:center">
+                <label>Date Options:</label>
+                <select v-model="SelectedDateID" class="form-select Date">
+                    <option v-for="option in options" v-bind:value="option.id">
+                        {{ option.text }}
+                    </option>
+                </select>
+            </div>
+            <div class="col-sm-2" style="text-align:center">               
+                <label>Start Date:</label>
+                <input type="date" v-model="startDate" class="form-control" />                                         
+            </div>
+            <div class="col-sm-2" style="text-align:center">               
+                    <label>End Date:</label>
+                    <input type="date" v-model="endDate" class="form-control" />                                            
+            </div>
+            <div class="col-sm-2" style="text-align:center">
+                <div class="input-group mb-2" style="margin-top:1.9rem">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-primary text-white" style="padding:0.66rem" id="filter-addon"><i class="fas fa-search"></i></span>
+                    </div>
+                    <input type="text" class="form-control" v-model="query" placeholder="Search" v-on:input="filterText(query)" />
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-xs-12 text-center"> 
+              @*  @if (isElevated || isAdmin)
+                {*@ 
+                    <button type="button" @@click="openCreateModal()" class="btn btn-success" data-toggle="modal" data-target="#WithdrawalCreateModal"><i class="fas fa-dollar-sign"></i> New Withdrawal</button>
+                    <button type="button" @@click="openEditModal()" class="btn btn-info" data-toggle="modal" data-target="#WithdrawalEditModal" v-bind:disabled="selectedWithdrawal === null"><i class="fas fa-money-check-alt"></i> Edit Withdrawal</button>
+                    <button type="button" @@click="openMultipleEditModal()" class="btn btn-info" data-toggle="modal" data-target="#WithdrawalMultipleEditModal" v-bind:disabled="selectedWithdrawal === null"><i class="fas fa-money-bill-wave"></i> Edit Multiple Withdrawals</button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#WithdrawalDeletionConfirmation" v-bind:disabled="selectedWithdrawal === null"><i class="fas fa-trash"></i> Delete Withdrawal</button>
+                    <button type="button" @@click="openMultipleDeleteModal()" class="btn btn-danger" data-toggle="modal" data-target="#multipleWithdrawalDeletionConfirmation" v-bind:disabled="selectedWithdrawal === null"><i class="fas fa-recycle"></i> Delete Recurring Withdrawals</button>
+            </div>
+        </div>
+        <div class="row col-12 mt-5">
+            <div class="table-responsive">
+                <table class="table table-sm table-hover table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th v-for="col in columns" v-if="col !== 'id' && col !== 'UserID'" v-on:click="sortTable(col)">                               
+                                {{col}}      
+                                <span class="arrow" v-if="col == sortColumn" v-bind:class="ascending ? 'arrow-top' : 'arrow-bottom'"></span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="Withdrawal in getWithdrawals()" v-on:click="WithdrawalClicked(Withdrawal)" :class="{'row-highlight': (Withdrawal == selectedWithdrawal)}">
+                            <td v-for="col in columns" v-if="col !== 'id' && col !== 'UserID'" v-bind:type="Withdrawal[col] == 'Active' ? 'checkbox': 'text'">
+                                <input type="checkbox" v-bind:checked = "Withdrawal['Active'] == true" v-if ="col == 'Active'" disabled />
+                                <input type="checkbox" v-bind:checked = "Withdrawal['Recurring'] == true" v-if ="col == 'Recurring'" disabled />
+                                <div v-if="col != 'Active' && col != 'Recurring'">{{Withdrawal[col]}}</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+        
+
+@Html.Partial("~/Views/Withdrawal/PartialViews/_CreateWithdrawal.cshtml")
+@Html.Partial("~/Views/Withdrawal/PartialViews/_EditWithdrawal.cshtml")
+@Html.Partial("~/Views/Withdrawal/PartialViews/_MultipleEditWithdrawals.cshtml")
+@Html.Partial("~/Views/Withdrawal/PartialViews/_DeleteWithdrawalConfirmation.cshtml")
+@Html.Partial("~/Views/Withdrawal/PartialViews/_MultipleWithdrawalDeleteConfirmation.cshtml")
+
+@section Scripts{
+    <script>
+        var baseURL = '@ViewBag.BaseURL';
+        //'@System.Configuration.ConfigurationManager.AppSettings["BaseURL"]';
+        //var SecurityQuestions = '@ViewBag.SecurityQuestions'
+    </script>
+    <script src="@Url.Content("~/js/Withdrawal.Js?v="+DateTime.Now.Ticks)"></script>
 }

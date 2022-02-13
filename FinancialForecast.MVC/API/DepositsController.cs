@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System;
 using System.Data.Entity;
 using Microsoft.EntityFrameworkCore.Storage;
+//using System.Web.Http;
 
 namespace FinancialForecast.MVC.API
 {
@@ -14,13 +15,29 @@ namespace FinancialForecast.MVC.API
         [Route("api/deposits/all")]
         public IEnumerable<Deposit> Get()
         {
-            return this.db.Deposits.Select(u => new Deposit(u)).ToArray();
+            return this.db.Deposits.Select(u => new Deposit(u)).ToArray().OrderBy(u => u.Date);
+        }
+
+        [HttpGet]
+        [Route("api/Deposits/getDepositsWithinRange/{start}/{end}")]
+        public IEnumerable<Deposit> Get(String start, String end)
+        {
+            DateTime startDateTime = DateTime.Parse(start);
+            DateTime endDateTime = DateTime.Parse(end);
+            return this.db.Deposits.Where(u => u.Date >= startDateTime && u.Date <= endDateTime).Select(u => new Deposit(u)).ToArray().OrderBy(u => u.Date);
+        }
+
+        [HttpGet]
+        [Route("api/deposits/getRecurringDeposits/{depositID:int}")]
+        public IEnumerable<Deposit> Get(Int32 depositID, Deposit editedDeposit)
+        {
+            return getRecurringDeposits(depositID, editedDeposit);
         }
 
         [HttpPost]
 
         [Route("api/deposits/new")]
-        public Int32 CreateDeposit([FromBody] Deposit newDeposit)
+        public void CreateDeposit([FromBody] Deposit newDeposit)
         {
             IDbContextTransaction trans = this.db.Database.BeginTransaction();
             try
@@ -28,34 +45,37 @@ namespace FinancialForecast.MVC.API
                 newDeposit.ID = null;
                 newDeposit.UserRefID = CurrentUserID;
                 newDeposit.Active = true;
-                this.db.Deposits.Add(newDeposit);
-                this.db.SaveChanges();
+                
                 if (newDeposit.isRecurring)
-                {
+                {                    
+                    //this.db.Deposits.AddRange(newDeposits);
+                    this.db.Deposits.Add(new Deposit(newDeposit));
                     newDeposit.Date = newDeposit.Date.AddDays(newDeposit.Frequency);
-                    newDeposit.ID = null;
                     while (newDeposit.Date < newDeposit.StopDate)
                     {
-                        this.db.Deposits.Add(newDeposit);
-                        this.db.SaveChanges();
+                        this.db.Deposits.Add(new Deposit(newDeposit));
                         newDeposit.Date = newDeposit.Date.AddDays(newDeposit.Frequency);
-                    }
+                    }                    
+                    this.db.SaveChanges();
                 }
-                
-                trans.Commit();
-                return Convert.ToInt32(newDeposit.ID);
-                
+                else
+                {
+                    this.db.Deposits.Add(newDeposit);
+                    this.db.SaveChanges();
+                }
+
+                trans.Commit();                
+
             }
             catch
             {
                 trans.Rollback();
-                return 0;
             }
         }
 
         [HttpPost]
         [Route("api/deposits/edit/{depositID:int}")]
-        public Int32 EditDeposit(Int32 depositID,[FromBody] Deposit editedDeposit)
+        public void EditDeposit(Int32 depositID, [FromBody] Deposit editedDeposit)
         {
             Deposit original = this.db.Deposits.Where(x => x.ID == depositID).FirstOrDefault();
             original.Description = editedDeposit.Description;
@@ -65,49 +85,88 @@ namespace FinancialForecast.MVC.API
             original.isRecurring = editedDeposit.isRecurring;
             original.UserRefID = editedDeposit.UserRefID;
 
-            this.db.SaveChanges();
-            return Convert.ToInt32(original.ID);
+            this.db.SaveChanges();            
         }
 
         [HttpPost]
-        [Route("api/deposits/editMultiple/{depositID:int}")]
+        [Route("api/deposits/multipleEdit/{depositID:int}")]
         public void EditMultipleDeposits(Int32 depositID, [FromBody] Deposit editedDeposit)
         {
-            if (editedDeposit.isRecurring) {
-                List<Deposit> deposits = new List<Deposit>();
-                deposits.AddRange(this.db.Deposits.Where(x => x.UserRefID == CurrentUserID && x.Description == editedDeposit.Description && 
-                x.Amount == editedDeposit.Amount && (x.Date >= editedDeposit.Date && x.Date <= x.StopDate)));
-                IDbContextTransaction trans = this.db.Database.BeginTransaction();
-                try
-                {                    
+            editedDeposit.ID = null;
+            IEnumerable<Deposit> deposits = getRecurringDeposits(depositID, editedDeposit);
+            IDbContextTransaction trans = this.db.Database.BeginTransaction();
+
+            try
+            {
+                if (editedDeposit.isRecurring)
+                {
+                    //this.db.Deposits.AddRange(newDeposits);
+                    this.db.Deposits.Add(new Deposit(editedDeposit));
+                    editedDeposit.Date = editedDeposit.Date.AddDays(editedDeposit.Frequency);
+                    while (editedDeposit.Date < editedDeposit.StopDate)
+                    {
+                        this.db.Deposits.Add(new Deposit(editedDeposit));
+                        editedDeposit.Date = editedDeposit.Date.AddDays(editedDeposit.Frequency);
+                    }
+                    //this.db.Deposits.AddRangeAsync(newDeposits);
+                    this.db.SaveChanges();
+                }
+                else
+                {
                     this.db.Deposits.Add(editedDeposit);
                     this.db.SaveChanges();
-                    if (editedDeposit.isRecurring)
-                    {
-                        editedDeposit.Date = editedDeposit.Date.AddDays(editedDeposit.Frequency);
-                        while (editedDeposit.Date < editedDeposit.StopDate)
-                        {
-                            this.db.Deposits.Add(editedDeposit);
-                            this.db.SaveChanges();
-                            editedDeposit.Date = editedDeposit.Date.AddDays(editedDeposit.Frequency);
-                        }
-                    }
-
-                    trans.Commit();
-                    return;
-
                 }
-                catch
-                {
-                    trans.Rollback();
-                    return;
-                }
+
+                this.db.Deposits.RemoveRange(deposits);
+                this.db.SaveChanges();
+                trans.Commit();
+                return;
+
             }
-            else
+            catch
             {
-
+                trans.Rollback();
+                return;
             }
-            this.db.SaveChanges();            
+        }
+
+        [HttpPost]
+        [Route("api/deposits/deleteDeposit/{depositID:int}")]
+        public void DeleteDeposit(Int32 depositID)
+        {
+            this.db.Deposits.Remove(this.db.Deposits.Where(x => x.ID == depositID).First());
+            this.db.SaveChanges();
+        }
+
+        [HttpPost]
+        [Route("api/deposits/deleteMultipleDeposits/{depositID:int}")]
+        public void DeleteMultipleDeposit(Int32 depositID)
+        {
+            Deposit original = this.db.Deposits.Where(x => x.ID == depositID).FirstOrDefault();
+            List<Deposit> deposits = new List<Deposit>();
+            deposits.AddRange(this.db.Deposits.Where(x => x.UserRefID == CurrentUserID && x.Description == original.Description &&
+            x.Amount == original.Amount && (x.Date >= original.Date && x.Date <= original.StopDate)));
+
+            this.db.Deposits.RemoveRange(deposits);
+            this.db.SaveChanges();
+        }
+
+        [HttpGet]
+        [Route("api/deposits/getDepositColumns")]
+        public Deposit GetDepositColumns()
+        {
+            return new Deposit();
+        }
+
+
+        public IEnumerable<Deposit> getRecurringDeposits(Int32 depositID, Deposit editedDeposit)
+        {
+            Deposit original = this.db.Deposits.Where(x => x.ID == depositID).FirstOrDefault();
+
+            IEnumerable<Deposit> recurringDeposits = this.db.Deposits.Where(x => x.UserRefID.Equals(CurrentUserID) && x.Description.Equals(original.Description) &&
+               x.Amount.Equals(original.Amount) && (x.Date >= original.Date && x.Date <= original.StopDate)).OrderBy(u => u.Date);
+
+            return recurringDeposits;
         }
     }
 }

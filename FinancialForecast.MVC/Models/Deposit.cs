@@ -39,7 +39,10 @@ namespace FinancialForecast.MVC.Models
         [JsonPropertyName("UserID")]
         public String UserRefID { get; set; }
 
-        public Deposit() { }
+        public Deposit() {
+            this.Active = true;
+            this.Date = DateTime.Now;
+        }
 
         public Deposit(int iD, string description, double amount, DateTime date, bool active, bool isRecurring, DateTime stopDate, int frequency, string userRefID)
         {
