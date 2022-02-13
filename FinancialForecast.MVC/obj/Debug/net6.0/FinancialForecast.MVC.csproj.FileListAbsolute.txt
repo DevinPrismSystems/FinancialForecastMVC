@@ -1,12 +1,7 @@
-C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\FinancialForecast.MVC.csproj.AssemblyReference.cache
-C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\FinancialForecast.MVC.AssemblyInfoInputs.cache
-C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\FinancialForecast.MVC.AssemblyInfo.cs
-C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\FinancialForecast.MVC.csproj.CoreCompileInputs.cache
-C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\FinancialForecast.MVC.RazorAssemblyInfo.cache
-C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\FinancialForecast.MVC.RazorAssemblyInfo.cs
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\appsettings.json
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\bundleconfig.json
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\libman.json
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\packages\EntityFramework.6.4.4\tools\netcoreapp3.0\any\ef6.runtimeconfig.json
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\FinancialForecast.MVC.staticwebassets.runtime.json
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\FinancialForecast.MVC.exe
@@ -304,6 +299,7 @@ C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\MessagePack.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\MessagePack.Annotations.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.AspNet.Identity.Owin.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\System.Net.Http.Formatting.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\System.Web.Http.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
@@ -312,6 +308,7 @@ C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.UI.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.AspNetCore.Razor.Language.dll
@@ -349,6 +346,10 @@ C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.Owin.dll
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.Owin.Security.dll
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.Owin.Security.OAuth.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.VisualStudio.Debugger.Contracts.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
@@ -369,6 +370,7 @@ C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\NuGet.ProjectModel.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\NuGet.Protocol.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\NuGet.Versioning.dll
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Owin.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\System.CodeDom.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\System.Composition.AttributedModel.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\System.Composition.Convention.dll
@@ -561,7 +563,13 @@ C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\FinancialForecast.Data.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\FinancialForecast.Data.pdb
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\FinancialForecast.Data.dll.config
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\FinancialForecast.MVC.csproj.AssemblyReference.cache
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\FinancialForecast.MVC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\FinancialForecast.MVC.AssemblyInfoInputs.cache
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\FinancialForecast.MVC.AssemblyInfo.cs
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\FinancialForecast.MVC.csproj.CoreCompileInputs.cache
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\FinancialForecast.MVC.RazorAssemblyInfo.cache
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\FinancialForecast.MVC.RazorAssemblyInfo.cs
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\scopedcss\bundle\FinancialForecast.MVC.styles.css
@@ -570,10 +578,3 @@ C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\ref\FinancialForecast.MVC.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\FinancialForecast.MVC.pdb
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\FinancialForecast.MVC.genruntimeconfig.cache
-C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.AspNet.Identity.Owin.dll
-C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.Owin.dll
-C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.Owin.Security.dll
-C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.Owin.Security.Cookies.dll
-C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.Owin.Security.OAuth.dll
-C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Owin.dll
-C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll

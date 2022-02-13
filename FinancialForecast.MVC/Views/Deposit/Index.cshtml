@@ -11,14 +11,41 @@
                 {{alertMessage}}
             </div>
         </div>
+        <div class="row justify-content-center">            
+            <div class="col-sm-2" style="text-align:center">
+                <label>Date Options:</label>
+                <select v-model="SelectedDateID" class="form-select Date">
+                    <option v-for="option in options" v-bind:value="option.id">
+                        {{ option.text }}
+                    </option>
+                </select>
+            </div>
+            <div class="col-sm-2" style="text-align:center">               
+                <label>Start Date:</label>
+                <input type="date" v-model="startDate" class="form-control" />                                         
+            </div>
+            <div class="col-sm-2" style="text-align:center">               
+                    <label>End Date:</label>
+                    <input type="date" v-model="endDate" class="form-control" />                                            
+            </div>
+            <div class="col-sm-2" style="text-align:center">
+                <div class="input-group mb-2" style="margin-top:1.9rem">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-primary text-white" style="padding:0.66rem" id="filter-addon"><i class="fas fa-search"></i></span>
+                    </div>
+                    <input type="text" class="form-control" v-model="query" placeholder="Search" v-on:input="filterText(query)" />
+                </div>
+            </div>
+        </div>
         <div class="row mt-5">
             <div class="col-xs-12 text-center"> 
               @*  @if (isElevated || isAdmin)
                 {*@ 
                     <button type="button" @@click="openCreateModal()" class="btn btn-success" data-toggle="modal" data-target="#DepositCreateModal"><i class="fas fa-dollar-sign"></i> New Deposit</button>
-                    <button type="button" @@click="openEditModal()" class="btn btn-info" data-toggle="modal" data-target="#DepositEditModal" v-bind:disabled="selectedDeposit === null"><i class="fas fa-money-bill-wave"></i> Edit Deposit</button>
-                  @*  <button type="button" @@click="openSecurityModal()" class="btn btn-danger" data-toggle="modal" data-target="#DepositSecurityModal" v-bind:disabled="selectedDeposit === null"><i class="fas fa-Deposit-lock"></i> Reset Security Info</button>
-                }*@
+                    <button type="button" @@click="openEditModal()" class="btn btn-info" data-toggle="modal" data-target="#DepositEditModal" v-bind:disabled="selectedDeposit === null"><i class="fas fa-money-check-alt"></i> Edit Deposit</button>
+                    <button type="button" @@click="openMultipleEditModal()" class="btn btn-info" data-toggle="modal" data-target="#DepositMultipleEditModal" v-bind:disabled="selectedDeposit === null"><i class="fas fa-money-bill-wave"></i> Edit Multiple Deposits</button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#depositDeletionConfirmation" v-bind:disabled="selectedDeposit === null"><i class="fas fa-trash"></i> Delete Deposit</button>
+                    <button type="button" @@click="openMultipleDeleteModal()" class="btn btn-danger" data-toggle="modal" data-target="#multipleDepositDeletionConfirmation" v-bind:disabled="selectedDeposit === null"><i class="fas fa-recycle"></i> Delete Recurring Deposits</button>
             </div>
         </div>
         <div class="row col-12 mt-5">
@@ -26,13 +53,14 @@
                 <table class="table table-sm table-hover table-striped">
                     <thead class="thead-dark">
                         <tr>
-                            <th v-for="col in columns" v-if="col !== 'id' && col !== 'UserID'">                               
-                                {{col}}                            
+                            <th v-for="col in columns" v-if="col !== 'id' && col !== 'UserID'" v-on:click="sortTable(col)">                               
+                                {{col}}      
+                                <span class="arrow" v-if="col == sortColumn" v-bind:class="ascending ? 'arrow-top' : 'arrow-bottom'"></span>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="Deposit in Deposits" v-on:click="DepositClicked(Deposit)" :class="{'row-highlight': (Deposit == selectedDeposit)}">
+                        <tr v-for="Deposit in getDeposits()" v-on:click="DepositClicked(Deposit)" :class="{'row-highlight': (Deposit == selectedDeposit)}">
                             <td v-for="col in columns" v-if="col !== 'id' && col !== 'UserID'" v-bind:type="Deposit[col] == 'Active' ? 'checkbox': 'text'">
                                 <input type="checkbox" v-bind:checked = "Deposit['Active'] == true" v-if ="col == 'Active'" disabled />
                                 <input type="checkbox" v-bind:checked = "Deposit['Recurring'] == true" v-if ="col == 'Recurring'" disabled />
@@ -48,7 +76,9 @@
 
 @Html.Partial("~/Views/Deposit/PartialViews/_CreateDeposit.cshtml")
 @Html.Partial("~/Views/Deposit/PartialViews/_EditDeposit.cshtml")
-@*@Html.Partial("~/Views/Deposits/PartialViews/_EditSecurityInfo.cshtml")*@
+@Html.Partial("~/Views/Deposit/PartialViews/_MultipleEditDeposits.cshtml")
+@Html.Partial("~/Views/Deposit/PartialViews/_DeleteDepositConfirmation.cshtml")
+@Html.Partial("~/Views/Deposit/PartialViews/_MultipleDepositDeleteConfirmation.cshtml")
 
 @section Scripts{
     <script>

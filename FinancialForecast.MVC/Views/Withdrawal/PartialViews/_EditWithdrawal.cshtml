@@ -1,22 +1,22 @@
-﻿<div id="DepositCreateModal" class="modal fade" role="dialog" tabindex="-1">
+﻿<div id="WithdrawalEditModal" class="modal fade" role="dialog" tabindex="-1">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
-            <form class="create-validation" novalidate>
+            <form class="edit-validation" novalidate>
                 <div class="modal-header bg-primary">
-                    <h4 class="modal-title text-white"><i class="fas fa-dollar-sign"></i> New Deposit</h4>
+                    <h4 class="modal-title text-white"><i class="fas fa-credit-card"></i> Edit Withdrawal</h4>
                 </div>
                 <div class="modal-body">
                     <div class="row form-group">
                         <div class="col-sm-6">
                             <label>Description:</label>
-                            <input type="text" class="form-control" v-model="Deposit.Description" required />
+                            <input type="text" class="form-control" v-model="editedWithdrawal.Description" required />
                             <div class="invalid-feedback">
                                 Please enter a Description
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <label>Amount:</label>
-                            <input type="text" class="form-control" v-model="Deposit.Amount" required />
+                            <input type="text" class="form-control" v-model="editedWithdrawal.Amount" required />
                             <div class="invalid-feedback">
                                 Please enter an amount
                             </div>
@@ -24,25 +24,26 @@
                     </div>
                     <div class="row form-group">
                         <div class="col-sm-6">
-                            <label>Date:</label>
-                            <input type="date" v-model="Deposit.Date" class="form-control" required />
+                            <label>Date:</label>       
+                            <input type="date" v-model="editedWithdrawal.Date" class="form-control" required />                            
                             <div class="invalid-feedback">
                                 Please enter a Date
                             </div>
                         </div>
                         <div class="col-sm-2">
                             <label class="form-check-label">Is Recurring? </label>
-                            <input type="checkbox" v-model="Deposit.Recurring" class="form-check-input" style="width:40px; height:40px; margin-top:30px; margin-left:-90px" />                            
+                            <input type="checkbox" v-model="editedWithdrawal.Recurring" class="form-check-input" style="width:40px; height:40px; margin-top:30px; margin-left:-90px"/>
+                            
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col-sm-6">
-                            <label>Frequency:</label>
-                            <input type="number" v-model="Deposit.Frequency" class="form-control"/>
+                            <label>Frequency (Days):</label>
+                            <input type="number" v-model="editedWithdrawal.Frequency" class="form-control"/>
                         </div>
-                        <div class="col-sm-6" id='StopDate'>
+                        <div class="col-sm-6">
                             <label>Stop Date:</label>
-                            <input type="date" v-model="Deposit['Stop Date']" class="form-control" />
+                            <input type="date" v-model="editedWithdrawal['Stop Date']" class="form-control" />
                         </div>
                     </div>
                 </div>

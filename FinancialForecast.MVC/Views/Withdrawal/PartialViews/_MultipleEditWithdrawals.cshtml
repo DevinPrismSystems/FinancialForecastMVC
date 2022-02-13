@@ -1,0 +1,82 @@
+﻿<div id="WithdrawalMultipleEditModal" class="modal fade" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-xl" style="max-width:900px">
+        <div class="modal-content">
+            <form class="multipleEdit-validation" novalidate>
+                <div class="modal-header bg-primary">
+                    <h4 class="modal-title text-white"><i class="fas fa-coins"></i> Edit Multiple Withdrawals</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row form-group">
+                        <div class="col-sm-6">
+                            <label>Description:</label>
+                            <input type="text" class="form-control" v-model="editedWithdrawal.Description" required />
+                            <div class="invalid-feedback">
+                                Please enter a Description
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label>Amount:</label>
+                            <input type="text" class="form-control" v-model="editedWithdrawal.Amount" required />
+                            <div class="invalid-feedback">
+                                Please enter an amount
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-6">
+                            <label>Date:</label>       
+                            <input type="date" v-model="editedWithdrawal.Date" class="form-control" required />                            
+                            <div class="invalid-feedback">
+                                Please enter a Date
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <label class="form-check-label">Is Recurring? </label>
+                            <input type="checkbox" v-model="editedWithdrawal.Recurring" class="form-check-input" style="width:40px; height:40px; margin-top:30px; margin-left:-90px"/>
+                            
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-6">
+                            <label>Frequency (Days):</label>
+                            <input type="number" v-model="editedWithdrawal.Frequency" class="form-control"/>
+                        </div>
+                        <div class="col-sm-6">
+                            <label>Stop Date:</label>
+                            <input type="date" v-model="editedWithdrawal['Stop Date']" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="table-responsive" style="max-height:350px">
+                        <table class="table table-sm table-hover table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th v-for="col in columns" v-if="col !== 'id' && col !== 'UserID'">                               
+                                        {{col}}                            
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="Withdrawal in recurringWithdrawals" @*v-on:click="WithdrawalClicked(Withdrawal)" :class="{'row-highlight': (Withdrawal == selectedWithdrawal)}"*@>
+                                    <td>                                        
+                                        <i class="fas fa-minus-circle" v-on:click="RemoveItem(Withdrawal)"/>
+                                    </td>
+                                    <td v-for="col in columns" v-if="col !== 'id' && col !== 'UserID'" v-bind:type="Withdrawal[col] == 'Active' ? 'checkbox': 'text'">
+                                        <input type="checkbox" v-bind:checked = "Withdrawal['Active'] == true" v-if ="col == 'Active'" disabled />
+                                        <input type="checkbox" v-bind:checked = "Withdrawal['Recurring'] == true" v-if ="col == 'Recurring'" disabled />
+                                        <div v-if="col != 'Active' && col != 'Recurring'">{{Withdrawal[col]}}</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Submit</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" @@click="resetForm()"><i class="fas fa-times"></i> Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

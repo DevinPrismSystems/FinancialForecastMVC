@@ -4,40 +4,35 @@
 
 <div id="Forecast">
     <div class="row">
-@*        <div id="alert" class="alert fade-appear col-12 form-centered" v-bind:class="errorMessage ? 'alert-danger' : 'alert-success'" v-if="alertMessage">
+        <div id="alert" class="alert fade-appear col-12 form-centered" v-bind:class="errorMessage ? 'alert-danger' : 'alert-success'" v-if="alertMessage">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             {{alertMessage}}
-        </div>*@
-    </div>
-    <div class="row">
-        <div class="col-sm-2">
-            <select class="form-control" v-model="SelectedPeriod">
-@*                @foreach (var period in ViewBag.Periods)
-                {
-                    <option value="@period.Value">@period.Text</option>
-                }*@
-            </select>
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-2">
-            <label>Start Amount:</label>
-            <input class="form-control" type="text" placeholder="Start Amount" v-model="ItemNo" />
-        </div>
+         <div class="col-sm-2" style="text-align:center">
+                <label>Date Range:</label>
+                <select v-model="SelectedDateID" class="form-select Date">
+                    <option v-for="option in options" v-bind:value="option.id">
+                        {{ option.text }}
+                    </option>
+                </select>
+            </div>
+            <div class="col-sm-2" style="text-align:center">               
+                <label>Start Date:</label>
+                <input type="date" v-model="startDate" class="form-control" />                                         
+            </div>
+            <div class="col-sm-2" style="text-align:center">               
+                    <label>End Date:</label>
+                    <input type="date" v-model="endDate" class="form-control" />                                            
+            </div>
+    </div>
+    <div class="row">
         <div class="col-sm-3">
              <label>Today's Amount:</label>
-            <input class="form-control" type="text" placeholder="Today's Amount'" v-model="OrderNumber" />
+            <input class="form-control" type="text" placeholder="Today's Amount" v-model="OrderNumber" />
         </div>
     </div>
-@*    <div class="col-7 col-xl-7 col-lg-12">
-        {
-            <a role="button" href="@Url.Action("Create", "Items")" class="btn btn-success"><i class="fas fa-plus"></i> New Item</a>
-            <button class="btn btn-success" data-toggle="modal" data-target="#ItemAdditionConfirmation" v-bind:disabled="AddToScheduleDisabled"><i class="fas fa-plus"></i> Add To Schedule</button>
-            <button @@click="editItem()" class="btn btn-info" v-bind:disabled="selectedItem == null"><i class="fas fa-edit"></i> Item Properties</button>
-        }
-            <button @@click="viewItemSequence()" class="btn btn-info" v-bind:disabled="selectedItem == null"><i class="fas fa-clipboard-list"></i> Item Sequence</button>
-            <button @@click="ManualCuts()" class="btn btn-danger" v-bind:disabled="selectedItem == null"><i class="fas fa-cut"></i> Manual Cuts</button>
-    </div>*@
     <div class="row">
         <div class="col-12">
             <div class="table-responsive">
@@ -64,6 +59,8 @@
 </div>
 
 @*@Html.Partial("~/Views/Items/PartialViews/_ItemAddConfirmation.cshtml")*@
+@Html.Partial("~/Views/Withdrawal/PartialViews/_EditWithdrawal.cshtml")
+@Html.Partial("~/Views/Deposit/PartialViews/_EditDeposit.cshtml")
 
 @section Scripts{
     @*@Styles.Render("~/Content/Custom/custom.css");*@
