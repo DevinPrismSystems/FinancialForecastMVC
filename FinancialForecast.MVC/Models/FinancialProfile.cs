@@ -1,11 +1,14 @@
-﻿namespace FinancialForecast.MVC.Models
+﻿using System;
+
+namespace FinancialForecast.MVC.Models
 {
     public class FinancialProfile
     {
-        public string UserID { get; set; }
+        public string UserRefID { get; set; }
 
         public double StartAmount { get; set; }
 
+        public DateTime DateEntered { get; set; }
 
     }
 }

@@ -56,7 +56,7 @@ namespace FinancialForecast.MVC.Data
 
             modelBuilder.Entity<FinancialProfile>(entity =>
             {
-                entity.HasKey(e => e.UserID);
+                entity.HasKey(e => e.UserRefID);
                 entity.Property(e => e.StartAmount);
             });
 
