@@ -27,34 +27,36 @@
                     <input type="date" v-model="endDate" class="form-control" />                                            
             </div>
     </div>
-    <div class="row">
-        <div class="col-sm-3">
-             <label>Today's Amount:</label>
-            <input class="form-control" type="text" placeholder="Today's Amount" v-model="OrderNumber" />
+    <div class="row" style="margin-top: 15px">
+        <div class="col-sm-2">
+            <label>Today's Amount:</label>
+            <input class="form-control" type="text" placeholder="Today's Amount" v-model="startAmount" />           
         </div>
+        <div class="col-sm-2">
+            <button class="btn btn-success" style="width:100px; height:40px; margin-top:30px" v-on:click="updateFinancialProfile()" ><i class="fas fa-save"></i> Update</button>
+        </div>    
     </div>
-    <div class="row">
-        <div class="col-12">
+        <div class="row col-12 mt-5">
             <div class="table-responsive">
                 <table class="table table-sm table-hover table-striped">
                     <thead class="thead-dark">
                         <tr>
-                            <th v-for="col in columns">
-                                {{col}}
+                            <th v-for="col in columns" v-if="col !== 'id' && col !== 'UserID'">                               
+                                {{col}}      
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="item in getAccountDetails()" v-on:click="ItemClicked(Item)" :class="{'row-highlight': (Item == selectedItem)}">
-                            <td v-for="col in columns">
-                                <input type="checkbox" v-bind:checked="Item['Scheduled'] == true" v-if="col == 'Scheduled'" disabled />
-                                <div v-if="col != 'Scheduled'">{{Item[col]}}</div>
-                            </td>                 
+                        <tr v-for="Item in getForecastedItems()" v-on:click="ItemClicked(Item)" :class="{'row-highlight': (Item == selectedItem)}">
+                            <td v-for="col in columns" v-if="col !== 'id' && col !== 'UserID'" v-bind:type="Item[col] == 'Active' ? 'checkbox': 'text'">
+                                <input type="checkbox" v-bind:checked = "Item['Active'] == true" v-if ="col == 'Active'" disabled />
+                                <input type="checkbox" v-bind:checked = "Item['Recurring'] == true" v-if ="col == 'Recurring'" disabled />
+                                <div v-if="col != 'Active' && col != 'Recurring'">{{Item[col]}}</div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-        </div>
     </div>
 </div>
 
@@ -65,6 +67,7 @@
 @section Scripts{
     @*@Styles.Render("~/Content/Custom/custom.css");*@
     <script>
+        var baseURL = '@ViewBag.BaseURL';
     </script>
     <script src="@Url.Content("~/js/FinancialForecast.Js?v="+DateTime.Now.Ticks)"></script>
 }

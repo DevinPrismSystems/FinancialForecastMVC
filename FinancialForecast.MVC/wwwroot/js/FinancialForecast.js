@@ -5,68 +5,86 @@ axios.defaults.headers.common['Access-Control-Allow-Headers'] = 'Origin, X-Reque
 axios.defaults.headers.common = {
     "Content-Type": "application/json"
 }
+
+Date.prototype.addDays = function (days) {
+    var date = new Date(this.valueOf());
+    date.setDate(date.getDate() + days);
+    return date;
+}
+
+
 var today = new Date()
-var initialEndDate = new Date(today.getFullYear(), today.getMonth() + 3, today.getDate(), 23, 59, 59, 0)
+var initialEndDate = new Date(today.addDays(14));
 const serverBus = new Vue();
 
-var DepositsController = new Vue({
-    el: "#Deposits",
+var ForecastController = new Vue({
+    el: "#Forecast",
     data: {
         errorMessage: false,
         alertMessage: '',
         ascending: false,
-        sortColumn: '',
+        startAmount: 0,
         //DepositCount: 0,
         //startRange: 0,
         //endRange: 0,
-        query: '',
-        filtering: false,
-        filteredDeposits: [],
-        selectedDeposit: null,
-        selectedDepositID: '',
+        selectedItem: null,
+        selectedItemID: '',
+        financialItemKeys: [],
         Deposits: [],
+        Withdrawals: [],
+        ForecastedItems: [],
         startDate: new Date().toISOString().slice(0, 10),
         endDate: initialEndDate.toISOString().slice(0, 10),
         SelectedDateID: 1,
         options: [{
-            id: 1, text: 'Next 3 Months'
+            id: 1, text: 'Next Two Weeks'
         },
         {
-            id: 2, text: 'Next 6 Months'
+            id: 2, text: 'This Month'
         },
         {
-            id: 3, text: 'Next 9 Months'
+            id: 3, text: 'Next Month'
         },
         {
-            id: 4, text: 'Next 12 Months'
+            id: 4, text: 'Next 3 Months'
         },
         {
-            id: 5, text: 'All'
+            id: 5, text: 'Next 6 Months'
         }]
     },
     computed: {
         "columns": function columns() {
-            if (this.Deposits.length === 0) {
-                axios.get(baseURL + 'api/deposits/getDepositColumns').then(function (response) {
-                    try {
-                        return Object.keys(response.data);
-                    }
-                    catch (e) {
-                        console.log(e);
-                    }
-                }.bind(this))
-                    .catch(function (error) {
-                        DepositsController.alertErrorMessage(error.response.data);
-                        console.log(error);
-                    });
-            }
-            else {
-                return Object.keys(this.Deposits[0]);
-            }
+            return Object.keys(this.financialItemKeys)            
         }
     },
-    mounted: function () {
-        axios.get(baseURL + 'api/Deposits/getDepositsWithinRange/' + this.startDate + '/' + this.endDate).then(function (response) {
+    mounted: async function () {
+        axios.get(baseURL + 'api/Forecast/getFinancialProfile').then(function (response) {
+            try {
+                this.startAmount = response.data;                
+            }
+            catch (e) {
+                console.log(e);
+            }
+        }.bind(this))
+            .catch(function (error) {
+                ForecastController.alertErrorMessage(error.response.data);
+                console.log(error);
+            });
+
+        axios.get(baseURL + 'api/forecast/getForecastColumns').then(function (response) {
+            try {
+                this.financialItemKeys = response.data;
+            }
+            catch (e) {
+                console.log(e);
+            }
+        }.bind(this))
+            .catch(function (error) {
+                return [];
+            });
+
+
+        await axios.get(baseURL + 'api/Forecast/getDeposits/' + this.startDate + '/' + this.endDate).then(function (response) {
             try {
                 this.Deposits = response.data;
                 console.log(this.Deposits);
@@ -76,11 +94,25 @@ var DepositsController = new Vue({
             }
         }.bind(this))
             .catch(function (error) {
-                DepositsController.alertErrorMessage(error.response.data);
+                ForecastController.alertErrorMessage(error.response.data);
                 console.log(error);
             });
 
-
+        await axios.get(baseURL + 'api/Forecast/getWithdrawals/' + this.startDate + '/' + this.endDate).then(function (response) {
+            try {
+                this.Withdrawals = response.data;
+                console.log(this.Withdrawals);
+                this.forecastedItems = this.Deposits.concat(this.Withdrawals);
+                console.log(this.ForecastedItems);
+            }
+            catch (e) {
+                console.log(e);
+            }
+        }.bind(this))
+            .catch(function (error) {
+                ForecastController.alertErrorMessage(error.response.data);
+                console.log(error);
+            });
     },
     methods: {
         "alertSuccessMessage": function alertSuccessMessage(text) {
@@ -88,52 +120,32 @@ var DepositsController = new Vue({
             //var notification = new Notification("Hi there!", { body: "some text" });
             //setTimeout(notification.close.bind(notification), 10000);
 
-            DepositsController.errorMessage = false;
-            DepositsController.alertMessage = text;
-            setTimeout(function () { DepositsController.resetAlertMessage() }, 5000);
+            ForecastController.errorMessage = false;
+            ForecastController.alertMessage = text;
+            setTimeout(function () { ForecastController.resetAlertMessage() }, 5000);
         },
         "alertErrorMessage": function alertErrorMessage(text) {
-            DepositsController.errorMessage = true;
-            DepositsController.alertMessage = text;
-            setTimeout(function () { DepositsController.alertMessage = '' }, 3000);
+            ForecastController.errorMessage = true;
+            ForecastController.alertMessage = text;
+            setTimeout(function () { ForecastController.alertMessage = '' }, 3000);
         },
-        "filterText": function filterText(query) {
-            this.selectedDeposit = null;
-            this.selectedDepositID = null;
 
-            if (query === '') {
-                this.filtering = false;
-                this.filteredDeposits = [];
-                //this.resortTable();
-                return;
-            }
-            else {
-                this.filtering = true;
-                this.filteredDeposits = this.Deposits.filter(function (items) {
-                    for (var item in items) {
-                        if (item !== "ID") {
-                            if (String(items[item]).toUpperCase().indexOf(query.toUpperCase()) !== -1) {
-                                return true;
-                            }
-                        }
-                    }
-                    return false;
-                }.bind(this));
-                //this.setfilteredDeposits(this.filteredDeposits);
-                //this.resortTable();
-            }
-        },
-        "getDeposits": function getDeposits() {
-            if (this.filteredDeposits.length > 0 && this.filtering === true) {
-                //this.coilCount = this.filteredCoils.length;
-                return this.filteredDeposits;
-            }
-            else if (this.filteredDeposits.length === 0 && this.filtering === true) {
-                return [];
-            }
-            else {
-                this.filteredDeposits = this.Deposits;
+        "getForecastedItems": function getForecastedItems() {
+            if (this.Deposits.length > 0 || this.Withdrawals.length > 0) {
                 return this.Deposits;
+            }
+            return [];
+        },
+        "ItemClicked": function ItemClicked(Item) {
+            if (Item.amount > 0) {
+                console.log("Deposit");
+                this.selectedDepositID = Item.id;
+                this.selectedDeposit = Item;
+            }
+            else {
+                console.log("Withdrawal");
+                this.selectedDepositID = Item.id;
+                this.selectedDeposit = Item;
             }
         },
         "openCreateModal": function openCreateModal() {
@@ -152,42 +164,50 @@ var DepositsController = new Vue({
                 MultipleDeleteModalController.openMultipleDeleteModal(this.selectedDeposit);
         },
         "refreshTable": function refreshTable() {
-            if (this.SelectedDateID == 5) {
-                axios.get(baseURL + 'api/Deposits/all').then(function (response) {
-                    try {
-                        this.Deposits = response.data;
-                        this.filteredDeposits = response.data;
-                    }
-                    catch (e) {
-                        console.log(e);
-                    }
-                }.bind(this))
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-            }
-            else {
-                axios.get(baseURL + 'api/Deposits/getDepositsWithinRange/' + this.startDate + '/' + this.endDate).then(function (response) {
-                    try {
-                        this.Deposits = response.data;
-                    }
-                    catch (e) {
-                        console.log(e);
-                    }
-                }.bind(this))
-                    .catch(function (error) {
-                        console.log(error);
-                    });
+            axios.get(baseURL + 'api/Forecast/getDeposits/' + this.startDate + '/' + this.endDate).then(function (response) {
+                try {
+                    this.Deposits = response.data;
+                    //console.log(this.Deposits);
+                }
+                catch (e) {
+                    console.log(e);
+                }
+            }.bind(this))
+                .catch(function (error) {
+                    ForecastController.alertErrorMessage(error.response.data);
+                    console.log(error);
+                });
+
+            axios.get(baseURL + 'api/Forecast/getWithdrawals/' + this.startDate + '/' + this.endDate).then(function (response) {
+                try {
+                    this.Withdrawals = response.data;
+                    //console.log(this.Deposits);
+                }
+                catch (e) {
+                    console.log(e);
+                }
+            }.bind(this))
+                .catch(function (error) {
+                    ForecastController.alertErrorMessage(error.response.data);
+                    console.log(error);
+                });
+
+            this.selectedItem = null;
+            this.selectedItemID = '';
+
+            for (let i = 0; i < this.Deposits.length; i++) {
+                this.ForecastedItems.push(this.Deposits[i]);
             }
 
-            this.selectedDeposit = null;
-            this.selectedDepositID = '';
+            for (let i = 0; i < this.Withdrawals.length; i++) {
+                this.ForecastedItems.push(this.Withdrawals[i]);
+            }
 
         },
 
         "resetAlertMessage": function resetAlertMessage() {
-            DepositsController.errorMessage = false;
-            DepositsController.alertMessage = '';
+            ForecastController.errorMessage = false;
+            ForecastController.alertMessage = '';
         },
         "resortTable": function resortTable() {
             col = this.sortColumn;
@@ -202,31 +222,22 @@ var DepositsController = new Vue({
                 return 0;
             });
         },
-        "sortTable": function sortTable(col) {
-            if (this.sortColumn === col) {
-                this.ascending = !this.ascending;
-            }
-            else {
-                this.ascending = true;
-                this.sortColumn = col;
-            }
-
-            var ascending = this.ascending;
-            //this.currentPage = 1;
-            this.filteredDeposits.sort(function (a, b) {
-                if (a[col] > b[col]) {
-                    return ascending ? 1 : -1;
-                } else if (a[col] < b[col]) {
-                    return ascending ? -1 : 1;
+        "updateFinancialProfile": function updateFinancialProfile() {            
+            axios.post(baseURL + 'api/Forecast/updateFinancialProfile' + '/' + ForecastController.startAmount).then(function (response) {
+                try {
+                    ForecastController.alertSuccessMessage("Changes were successful");
+                    ForecastController.refreshTable();
                 }
-
-                return 0;
+                catch (error) {
+                    ForecastController.refreshTable();
+                    ForecastController.alertErrorMessage(error);
+                    console.log(error);
+                }
+            }).catch(function (error) {
+                ForecastController.refreshTable();
+                ForecastController.alertErrorMessage(error.response.data);
+                console.log(error.response.data.InnerException.ExceptionMessage);
             });
-        },
-        "DepositClicked": function DepositClicked(Deposit) {
-            this.selectedDepositID = Deposit.id;
-            this.selectedDeposit = Deposit;
-            console.log(Deposit);
         }
     },
     watch: {
@@ -255,22 +266,22 @@ var CreateModalController = new Vue({
             axios.post(baseURL + 'api/deposits/new', this.Deposit).then(function (response) {
                 try {
                     console.log("Deposit was successfully added");
-                    DepositsController.alertSuccessMessage("Deposit was successfully added");
-                    DepositsController.refreshTable();
+                    ForecastController.alertSuccessMessage("Deposit was successfully added");
+                    ForecastController.refreshTable();
                 }
                 catch (error) {
-                    DepositsController.refreshTable();
-                    DepositsController.alertErrorMessage(error);
+                    ForecastController.refreshTable();
+                    ForecastController.alertErrorMessage(error);
                     console.log(error);
                 }
             }).catch(function (error) {
-                DepositsController.refreshTable();
-                DepositsController.alertErrorMessage(error.response.data);
+                ForecastController.refreshTable();
+                ForecastController.alertErrorMessage(error.response.data);
                 console.log(error);
             });
         },
         "resetForm": function resetForm() {
-            DepositsController.refreshTable();
+            ForecastController.refreshTable();
             this.Deposit = [];
         }
     },
@@ -316,24 +327,24 @@ var EditModalController = new Vue({
             this.editedDeposit = Deposit;
         },
         "editSelectedDeposit": function editSelectedDeposit() {
-            axios.post(baseURL + 'api/Deposits/edit/' + DepositsController.selectedDepositID, this.editedDeposit).then(function (response) {
+            axios.post(baseURL + 'api/Deposits/edit/' + ForecastController.selectedDepositID, this.editedDeposit).then(function (response) {
                 try {
-                    DepositsController.alertSuccessMessage("Changes were successful");
-                    DepositsController.refreshTable();
+                    ForecastController.alertSuccessMessage("Changes were successful");
+                    ForecastController.refreshTable();
                 }
                 catch (error) {
-                    DepositsController.refreshTable();
-                    DepositsController.alertErrorMessage(error);
+                    ForecastController.refreshTable();
+                    ForecastController.alertErrorMessage(error);
                     console.log(error);
                 }
             }).catch(function (error) {
-                DepositsController.refreshTable();
-                DepositsController.alertErrorMessage(error.response.data);
+                ForecastController.refreshTable();
+                ForecastController.alertErrorMessage(error.response.data);
                 console.log(error.response.data.InnerException.ExceptionMessage);
             });
         },
         "resetForm": function resetForm() {
-            DepositsController.refreshTable();
+            ForecastController.refreshTable();
         }
     },
     mounted: function () {
@@ -381,7 +392,7 @@ var MultipleEditModalController = new Vue({
             this.editedDeposit = Deposit;
             console.log(this.editedDeposit);
 
-            axios.get(baseURL + 'api/deposits/getRecurringDeposits/' + DepositsController.selectedDepositID, Deposit).then(function (response) {
+            axios.get(baseURL + 'api/deposits/getRecurringDeposits/' + ForecastController.selectedDepositID, Deposit).then(function (response) {
                 try {
                     this.recurringDeposits = response.data;
                 }
@@ -398,19 +409,19 @@ var MultipleEditModalController = new Vue({
             });
         },
         "MultipleEditSelectedDeposit": function MultipleEditSelectedDeposit() {
-            axios.post(baseURL + 'api/Deposits/multipleEdits/' + DepositsController.selectedDepositID, this.editedDeposit, this.recurringDeposits).then(function (response) {
+            axios.post(baseURL + 'api/Deposits/multipleEdits/' + ForecastController.selectedDepositID, this.editedDeposit, this.recurringDeposits).then(function (response) {
                 try {
-                    DepositsController.alertSuccessMessage("Changes were successful");
-                    DepositsController.refreshTable();
+                    ForecastController.alertSuccessMessage("Changes were successful");
+                    ForecastController.refreshTable();
                 }
                 catch (error) {
-                    DepositsController.refreshTable();
-                    DepositsController.alertErrorMessage(error);
+                    ForecastController.refreshTable();
+                    ForecastController.alertErrorMessage(error);
                     console.log(error);
                 }
             }).catch(function (error) {
-                DepositsController.refreshTable();
-                DepositsController.alertErrorMessage(error.response.data);
+                ForecastController.refreshTable();
+                ForecastController.alertErrorMessage(error.response.data);
                 console.log(error.response.data.InnerException.ExceptionMessage);
             });
         },
@@ -418,7 +429,7 @@ var MultipleEditModalController = new Vue({
 
         },
         "resetForm": function resetForm() {
-            DepositsController.refreshTable();
+            ForecastController.refreshTable();
         }
     },
     mounted: function () {
@@ -448,10 +459,10 @@ var MultipleEditModalController = new Vue({
     },
     computed: {
         "columns": function columns() {
-            if (DepositsController.Deposits.length === 0) {
+            if (ForecastController.Deposits.length === 0) {
                 return [];
             }
-            return Object.keys(DepositsController.Deposits[0]);
+            return Object.keys(ForecastController.Deposits[0]);
         }
     }
 });
@@ -461,19 +472,19 @@ var DeleteModalController = new Vue({
     el: "#depositDeletionConfirmation",
     methods: {
         "deleteDeposit": function deleteDeposit() {
-            axios.post(baseURL + 'api/deposits/deleteDeposit/' + DepositsController.selectedDepositID).then(function (response) {
+            axios.post(baseURL + 'api/deposits/deleteDeposit/' + ForecastController.selectedDepositID).then(function (response) {
                 try {
-                    DepositsController.alertSuccessMessage("Changes were successful");
-                    DepositsController.refreshTable();
+                    ForecastController.alertSuccessMessage("Changes were successful");
+                    ForecastController.refreshTable();
                 }
                 catch (error) {
-                    DepositsController.refreshTable();
-                    DepositsController.alertErrorMessage(error);
+                    ForecastController.refreshTable();
+                    ForecastController.alertErrorMessage(error);
                     console.log(error);
                 }
             }).catch(function (error) {
-                DepositsController.refreshTable();
-                DepositsController.alertErrorMessage(error.response.data);
+                ForecastController.refreshTable();
+                ForecastController.alertErrorMessage(error.response.data);
                 console.log(error);
             });
         }
@@ -489,7 +500,7 @@ var MultipleDeleteModalController = new Vue({
         "openMultipleDeleteModal": function openMultipleDeleteModal(Deposit) {
             console.log(this.Deposit);
 
-            axios.get(baseURL + 'api/deposits/getRecurringDeposits/' + DepositsController.selectedDepositID, Deposit).then(function (response) {
+            axios.get(baseURL + 'api/deposits/getRecurringDeposits/' + ForecastController.selectedDepositID, Deposit).then(function (response) {
                 try {
                     this.recurringDeposits = response.data;
                 }
@@ -506,99 +517,102 @@ var MultipleDeleteModalController = new Vue({
             });
         },
         "deleteMultipleDeposits": function deleteMultipleDeposits() {
-            axios.post(baseURL + 'api/deposits/deleteMultipleDeposits/' + DepositsController.selectedDepositID).then(function (response) {
+            axios.post(baseURL + 'api/deposits/deleteMultipleDeposits/' + ForecastController.selectedDepositID).then(function (response) {
                 try {
-                    DepositsController.alertSuccessMessage("Changes were successful");
-                    DepositsController.refreshTable();
+                    ForecastController.alertSuccessMessage("Changes were successful");
+                    ForecastController.refreshTable();
                 }
                 catch (error) {
-                    DepositsController.refreshTable();
-                    DepositsController.alertErrorMessage(error);
+                    ForecastController.refreshTable();
+                    ForecastController.alertErrorMessage(error);
                     console.log(error);
                 }
             }).catch(function (error) {
-                DepositsController.refreshTable();
-                DepositsController.alertErrorMessage(error.response.data);
+                ForecastController.refreshTable();
+                ForecastController.alertErrorMessage(error.response.data);
                 console.log(error);
             });
         }
     },
     computed: {
         "columns": function columns() {
-            if (DepositsController.Deposits.length === 0) {
+            if (ForecastController.Deposits.length === 0) {
                 return [];
             }
-            return Object.keys(DepositsController.Deposits[0]);
+            return Object.keys(ForecastController.Deposits[0]);
         }
     }
 });
 
-Date.prototype.addDays = function (days) {
-    var date = new Date(this.valueOf());
-    date.setDate(date.getDate() + days);
-    return date;
-}
 
 const dateHandler = function (selectedDateID) {
-    //Next 3 Months
+    //Next Two Weeks
     if (selectedDateID === 1) {
         today = new Date();
-        today.setDate(today.getDate() - 6);
         var StartDate = new Date(today.toDateString());
 
         today = new Date();
-        var EndDate = new Date(today.getFullYear(), today.getMonth() + 3, today.getDate(), 23, 59, 59, 0);
+        var EndDate = new Date(today.addDays(14));
 
-        DepositsController.startDate = new Date().toISOString().slice(0, 10);
-        DepositsController.endDate = EndDate.toISOString().slice(0, 10);
+        ForecastController.startDate = new Date().toISOString().slice(0, 10);
+        ForecastController.endDate = EndDate.toISOString().slice(0, 10);
+    }
+
+    //This Month
+    else if (selectedDateID === 2) {
+        today = new Date();
+        //today.setDate(today.getDate() - 6);
+        var StartDate = new Date(today.toDateString());
+
+        //today = new Date();
+        var EndDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+
+        ForecastController.startDate = new Date().toISOString().slice(0, 10);
+        ForecastController.endDate = EndDate.toISOString().slice(0, 10);
+    }
+
+    //Next Month
+    else if (selectedDateID === 3) {
+        today = new Date();
+        //today = new Date(today.getFullYear(), today.getMonth()+ 1, 1);
+        var StartDate = new Date(today.toDateString());
+
+       // today = new Date();
+        var EndDate = new Date(today.getFullYear(), today.getMonth() + 2, 0);
+
+        ForecastController.startDate = new Date().toISOString().slice(0, 10);
+        ForecastController.endDate = EndDate.toISOString().slice(0, 10);
+    }
+
+    //Next 3 Months
+    else if (selectedDateID === 4) {
+        today = new Date();
+        //today.setDate(today.getDate() - 6);
+        var StartDate = new Date(today.toDateString());
+
+        //today = new Date();
+        var EndDate = new Date(today.getFullYear(), today.getMonth() + 4, 0);
+
+        ForecastController.startDate = new Date().toISOString().slice(0, 10);
+        ForecastController.endDate = EndDate.toISOString().slice(0, 10);
     }
 
     //Next 6 Months
-    else if (selectedDateID === 2) {
-        today = new Date();
-        today.setDate(today.getDate() - 6);
-        var StartDate = new Date(today.toDateString());
-
-        today = new Date();
-        var EndDate = new Date(today.getFullYear(), today.getMonth() + 6, today.getDate(), 23, 59, 59, 0);
-
-        DepositsController.startDate = new Date().toISOString().slice(0, 10);
-        DepositsController.endDate = EndDate.toISOString().slice(0, 10);
-    }
-
-    //Next 9 Months
-    else if (selectedDateID === 3) {
-        today = new Date();
-        today.setDate(today.getDate() - 6);
-        var StartDate = new Date(today.toDateString());
-
-        today = new Date();
-        var EndDate = new Date(today.getFullYear(), today.getMonth() + 9, today.getDate(), 23, 59, 59, 0);
-
-        DepositsController.startDate = new Date().toISOString().slice(0, 10);
-        DepositsController.endDate = EndDate.toISOString().slice(0, 10);
-    }
-
-    //Next 12 Months
-    else if (selectedDateID === 4) {
-        today = new Date();
-        today.setDate(today.getDate() - 6);
-        var StartDate = new Date(today.toDateString());
-
-        today = new Date();
-        var EndDate = new Date(today.getFullYear() + 1, today.getMonth(), today.getDate(), 23, 59, 59, 0);
-
-        DepositsController.startDate = new Date().toISOString().slice(0, 10);
-        DepositsController.endDate = EndDate.toISOString().slice(0, 10);
-    }
-
-    //All
     else if (selectedDateID === 5) {
+        today = new Date();
+        //today.setDate(today.getDate() - 6);
+        var StartDate = new Date(today.toDateString());
+
+        //today = new Date();
+        var EndDate = new Date(today.getFullYear(), today.getMonth() + 7, 0);
+
+        ForecastController.startDate = new Date().toISOString().slice(0, 10);
+        ForecastController.endDate = EndDate.toISOString().slice(0, 10);
     }
 
-    DepositsController.refreshTable();
-    DepositsController.filtering = false;
-    DepositsController.query = '';
+    ForecastController.refreshTable();
+    ForecastController.filtering = false;
+    ForecastController.query = '';
 };
 
 serverBus.$on('dateSelected', dateHandler);

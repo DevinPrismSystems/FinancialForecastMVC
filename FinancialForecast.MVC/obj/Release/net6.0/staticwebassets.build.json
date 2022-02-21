@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0zvI+hNmF7OY4K8qWBSX6cABES0Lc4iypvOyKTsItc0=",
+  "Hash": "+ENtSrQQEbiWuZIRJmfNJxYariNOgzFZPOV2wvBX1FM=",
   "Source": "FinancialForecast.MVC",
   "BasePath": "_content/FinancialForecast.MVC",
   "Mode": "Default",
@@ -1987,6 +1987,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\Vue-DateTimePicker.js"
+    },
+    {
+      "Identity": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\wwwroot\\js\\Withdrawal.js",
+      "SourceId": "FinancialForecast.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\wwwroot\\",
+      "BasePath": "_content/FinancialForecast.MVC",
+      "RelativePath": "js/Withdrawal.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Withdrawal.js"
     },
     {
       "Identity": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",

@@ -6,7 +6,7 @@ using System;
 
 namespace FinancialForecast.MVC.API
 {
-    public class UsersController : ForecastAPIController
+    public class UsersController : FinancialForecastController
     {
         [HttpGet]
         [Route("api/users/all")]
