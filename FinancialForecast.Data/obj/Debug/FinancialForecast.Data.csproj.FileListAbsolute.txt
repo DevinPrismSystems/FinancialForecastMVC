@@ -5,6 +5,7 @@ C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.Data
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.Data\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.Data\bin\Debug\EntityFramework.xml
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.Data\obj\Debug\FinancialForecast.Data.csproj.AssemblyReference.cache
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.Data\obj\Debug\FinancialForecast.Data.csproj.CoreCompileInputs.cache
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.Data\obj\Debug\FinancialForecast.Data.csproj.CopyComplete
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.Data\obj\Debug\FinancialForecast.Data.dll
