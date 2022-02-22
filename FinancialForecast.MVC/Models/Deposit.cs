@@ -17,14 +17,15 @@ namespace FinancialForecast.MVC.Models
         [JsonPropertyName("Description")]
         public string Description { get; set; }
 
+        [JsonPropertyName("Active")]
+        public bool Active { get; set; }
+
+        [JsonPropertyName("Date")]
+        public DateTime Date { get; set; }
+
         [JsonPropertyName("Amount")]
         public double Amount { get; set; }
 
-        [JsonPropertyName("Date")]        
-        public DateTime Date { get; set; }
-
-        [JsonPropertyName("Active")]
-        public bool Active { get; set; }
 
         [JsonPropertyName("Recurring")]
         public bool isRecurring { get; set; }
