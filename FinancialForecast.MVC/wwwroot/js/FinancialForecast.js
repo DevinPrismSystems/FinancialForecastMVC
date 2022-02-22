@@ -23,7 +23,7 @@ var ForecastController = new Vue({
         errorMessage: false,
         alertMessage: '',
         ascending: false,
-        startAmount: 0,
+        remainingBalance: 0,
         //DepositCount: 0,
         //startRange: 0,
         //endRange: 0,
@@ -54,13 +54,13 @@ var ForecastController = new Vue({
     },
     computed: {
         "columns": function columns() {
-            return Object.keys(this.financialItemKeys)            
+            return Object.keys(this.financialItemKeys)
         }
     },
     mounted: async function () {
         axios.get(baseURL + 'api/Forecast/getFinancialProfile').then(function (response) {
             try {
-                this.startAmount = response.data;                
+                this.remainingBalance = response.data;
             }
             catch (e) {
                 console.log(e);
@@ -102,8 +102,8 @@ var ForecastController = new Vue({
             try {
                 this.Withdrawals = response.data;
                 console.log(this.Withdrawals);
-                this.forecastedItems = this.Deposits.concat(this.Withdrawals);
-                console.log(this.ForecastedItems);
+                //this.forecastedItems = this.Deposits.concat(this.Withdrawals);
+                //console.log(this.ForecastedItems);                                
             }
             catch (e) {
                 console.log(e);
@@ -113,6 +113,18 @@ var ForecastController = new Vue({
                 ForecastController.alertErrorMessage(error.response.data);
                 console.log(error);
             });
+
+        for (let i = 0; i < this.Deposits.length; i++) {
+            this.ForecastedItems.push(this.Deposits[i]);
+        }
+
+        for (let i = 0; i < this.Withdrawals.length; i++) {
+            this.ForecastedItems.push(this.Withdrawals[i]);
+        }
+
+        this.sortItems();
+        this.calculateRemainingBalance();
+        console.log(this.ForecastedItems);
     },
     methods: {
         "alertSuccessMessage": function alertSuccessMessage(text) {
@@ -129,11 +141,17 @@ var ForecastController = new Vue({
             ForecastController.alertMessage = text;
             setTimeout(function () { ForecastController.alertMessage = '' }, 3000);
         },
-
-        "getForecastedItems": function getForecastedItems() {
-            if (this.Deposits.length > 0 || this.Withdrawals.length > 0) {
-                return this.Deposits;
+        "calculateRemainingBalance": function calculateRemainingBalance() {
+            for (let i = 0; i < this.ForecastedItems.length; i++){
+                this.ForecastedItems[i][remainingBalance] = this.remainingBalance + this.ForecastedItems[i].Amount;
+                this.remainingBalance = this.remainingBalance - this.ForecastedItems[i].Amount;
             }
+        },
+        "getForecastedItems": function getForecastedItems() {
+            if (this.ForecastedItems.length > 0) {
+                return this.ForecastedItems;
+            }
+            
             return [];
         },
         "ItemClicked": function ItemClicked(Item) {
@@ -209,21 +227,20 @@ var ForecastController = new Vue({
             ForecastController.errorMessage = false;
             ForecastController.alertMessage = '';
         },
-        "resortTable": function resortTable() {
-            col = this.sortColumn;
-            var ascending = this.ascending;
+        "sortItems": function sortItems() {
             //this.currentPage = 1;
-            this.filteredDeposits.sort(function (a, b) {
-                if (a[col] > b[col]) {
-                    return ascending ? 1 : -1;
-                } else if (a[col] < b[col]) {
-                    return ascending ? -1 : 1;
+            this.ForecastedItems.sort(function (a, b) {
+                if (a['Date'] > b['Date']) {
+                    return 1;
+                } else if (a['Date'] < b['Date']) {
+                    return -1;
                 }
+
                 return 0;
-            });
+            });               
         },
         "updateFinancialProfile": function updateFinancialProfile() {            
-            axios.post(baseURL + 'api/Forecast/updateFinancialProfile' + '/' + ForecastController.startAmount).then(function (response) {
+            axios.post(baseURL + 'api/Forecast/updateFinancialProfile' + '/' + ForecastController.remainingBalance).then(function (response) {
                 try {
                     ForecastController.alertSuccessMessage("Changes were successful");
                     ForecastController.refreshTable();
