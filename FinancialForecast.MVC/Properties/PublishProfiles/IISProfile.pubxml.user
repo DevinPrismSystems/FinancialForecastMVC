@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAfR+N+D1sY0WoEKCt+MiXbQAAAAACAAAAAAAQZgAAAAEAACAAAADQ35XyG2+TsI2sFTkx5Ct5G20m4xhmkxe/SK61YAQ6ogAAAAAOgAAAAAIAACAAAAAjDkpMbO248Anz5L4sY5SAoy1uzMGy0LpU3ZF813ixM1AAAAAefmzMXKkrCBjuiJJSpRi8FkFW5zT8fFy4yK4yXvFABB4kpe8o+yOnd3r8F8uoWnRhgl/P4Tjf0iMO3wDO3DzO6OTOO6PlVYXRX+DS4sMpAkAAAAC9qH/Rj/GYwod06W4PNAPOpyDZ5eyhG2zxB4CyVSzv78EF649mJmQnBM4hV6pRyFAjNlZ+UBLoZwqC1w7PW6Gx</EncryptedPassword>
+    <History>True|2022-03-06T09:50:43.5411050Z;True|2022-03-03T00:55:18.1675819-06:00;True|2022-03-02T02:00:08.4549122-06:00;False|2022-03-02T01:54:48.6388718-06:00;True|2022-02-23T15:45:43.6697375-06:00;False|2022-02-23T13:16:57.7453500-06:00;True|2022-02-23T12:49:18.8386518-06:00;False|2022-02-23T12:12:52.6783979-06:00;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Server=tcp:3.128.159.71\AMAZONDB,1434%3bDatabase=FinancialForecast%3bUser ID=Devin%3bPassword=prism%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

@@ -1,14 +1,14 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.MVC\\FinancialForecast.MVC.csproj": {}
+    "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\FinancialForecast.MVC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.Data\\FinancialForecast.Data.csproj": {
+    "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.Data\\FinancialForecast.Data.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.Data\\FinancialForecast.Data.csproj",
+        "projectUniqueName": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.Data\\FinancialForecast.Data.csproj",
         "projectName": "FinancialForecast.Data",
-        "projectPath": "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.Data\\FinancialForecast.Data.csproj",
+        "projectPath": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.Data\\FinancialForecast.Data.csproj",
         "frameworks": {
           "net48": {
             "projectReferences": {}
@@ -19,20 +19,20 @@
         "net48": {}
       }
     },
-    "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.MVC\\FinancialForecast.MVC.csproj": {
+    "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\FinancialForecast.MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.MVC\\FinancialForecast.MVC.csproj",
+        "projectUniqueName": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\FinancialForecast.MVC.csproj",
         "projectName": "FinancialForecast.MVC",
-        "projectPath": "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.MVC\\FinancialForecast.MVC.csproj",
-        "packagesPath": "C:\\Users\\legen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.MVC\\obj\\",
+        "projectPath": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\FinancialForecast.MVC.csproj",
+        "packagesPath": "C:\\Users\\Devin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\legen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Devin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -47,8 +47,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.Data\\FinancialForecast.Data.csproj": {
-                "projectPath": "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.Data\\FinancialForecast.Data.csproj"
+              "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.Data\\FinancialForecast.Data.csproj": {
+                "projectPath": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.Data\\FinancialForecast.Data.csproj"
               }
             }
           }
@@ -214,7 +214,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

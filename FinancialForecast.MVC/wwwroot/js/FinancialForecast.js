@@ -12,6 +12,15 @@ Date.prototype.addDays = function (days) {
     return date;
 }
 
+// Create our number formatter.
+var formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+
+    // These options are needed to round to whole numbers if that's what you want.
+    //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+    //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+});
 
 var today = new Date()
 var initialEndDate = new Date(today.addDays(14));
@@ -22,8 +31,7 @@ var ForecastController = new Vue({
     data: {
         errorMessage: false,
         alertMessage: '',
-        ascending: false,
-        remainingBalance: 0,
+        todaysAmount: 0,
         //DepositCount: 0,
         //startRange: 0,
         //endRange: 0,
@@ -57,10 +65,10 @@ var ForecastController = new Vue({
             return Object.keys(this.financialItemKeys)
         }
     },
-    mounted: async function () {
+    mounted: function () {
         axios.get(baseURL + 'api/Forecast/getFinancialProfile').then(function (response) {
             try {
-                this.remainingBalance = response.data;
+                this.todaysAmount = response.data;
             }
             catch (e) {
                 console.log(e);
@@ -84,10 +92,10 @@ var ForecastController = new Vue({
             });
 
 
-        await axios.get(baseURL + 'api/Forecast/getDeposits/' + this.startDate + '/' + this.endDate).then(function (response) {
+        axios.get(baseURL + 'api/forecast/getItems/' + this.startDate + '/' + this.endDate).then(function (response) {
             try {
-                this.Deposits = response.data;
-                console.log(this.Deposits);
+                this.ForecastedItems = response.data;
+                console.log(this.ForecastedItems);
             }
             catch (e) {
                 console.log(e);
@@ -98,32 +106,8 @@ var ForecastController = new Vue({
                 console.log(error);
             });
 
-        await axios.get(baseURL + 'api/Forecast/getWithdrawals/' + this.startDate + '/' + this.endDate).then(function (response) {
-            try {
-                this.Withdrawals = response.data;
-                console.log(this.Withdrawals);
-                //this.forecastedItems = this.Deposits.concat(this.Withdrawals);
-                //console.log(this.ForecastedItems);                                
-            }
-            catch (e) {
-                console.log(e);
-            }
-        }.bind(this))
-            .catch(function (error) {
-                ForecastController.alertErrorMessage(error.response.data);
-                console.log(error);
-            });
-
-        for (let i = 0; i < this.Deposits.length; i++) {
-            this.ForecastedItems.push(this.Deposits[i]);
-        }
-
-        for (let i = 0; i < this.Withdrawals.length; i++) {
-            this.ForecastedItems.push(this.Withdrawals[i]);
-        }
-
-        this.sortItems();
-        this.calculateRemainingBalance();
+        //this.sortItems();
+        //this.calculateRemainingBalance();
         console.log(this.ForecastedItems);
     },
     methods: {
@@ -141,29 +125,33 @@ var ForecastController = new Vue({
             ForecastController.alertMessage = text;
             setTimeout(function () { ForecastController.alertMessage = '' }, 3000);
         },
-        "calculateRemainingBalance": function calculateRemainingBalance() {
-            for (let i = 0; i < this.ForecastedItems.length; i++){
-                this.ForecastedItems[i][remainingBalance] = this.remainingBalance + this.ForecastedItems[i].Amount;
-                this.remainingBalance = this.remainingBalance - this.ForecastedItems[i].Amount;
-            }
-        },
         "getForecastedItems": function getForecastedItems() {
             if (this.ForecastedItems.length > 0) {
+                for (let i = 0; i < this.ForecastedItems.length; i++) {
+                    var amount = this.ForecastedItems[i].Amount;
+                    if (amount > 0) {
+                        this.ForecastedItems[i].DepositAmount = formatter.format(amount)
+                    }
+                    else {
+                        this.ForecastedItems[i].WithdrawalAmount = formatter.format(amount)
+                    }
+                    console.log(this.ForecastedItems[i]);
+                }
+
                 return this.ForecastedItems;
             }
-            
             return [];
         },
         "ItemClicked": function ItemClicked(Item) {
             if (Item.amount > 0) {
                 console.log("Deposit");
-                this.selectedDepositID = Item.id;
-                this.selectedDeposit = Item;
+                this.selectedItemID = Item.id;
+                this.selectedItem = Item;
             }
             else {
                 console.log("Withdrawal");
-                this.selectedDepositID = Item.id;
-                this.selectedDeposit = Item;
+                this.selectedItemID = Item.id;
+                this.selectedItem = Item;
             }
         },
         "openCreateModal": function openCreateModal() {
@@ -182,24 +170,10 @@ var ForecastController = new Vue({
                 MultipleDeleteModalController.openMultipleDeleteModal(this.selectedDeposit);
         },
         "refreshTable": function refreshTable() {
-            axios.get(baseURL + 'api/Forecast/getDeposits/' + this.startDate + '/' + this.endDate).then(function (response) {
+            axios.get(baseURL + 'api/forecast/getItems/' + this.startDate + '/' + this.endDate).then(function (response) {
                 try {
-                    this.Deposits = response.data;
-                    //console.log(this.Deposits);
-                }
-                catch (e) {
-                    console.log(e);
-                }
-            }.bind(this))
-                .catch(function (error) {
-                    ForecastController.alertErrorMessage(error.response.data);
-                    console.log(error);
-                });
-
-            axios.get(baseURL + 'api/Forecast/getWithdrawals/' + this.startDate + '/' + this.endDate).then(function (response) {
-                try {
-                    this.Withdrawals = response.data;
-                    //console.log(this.Deposits);
+                    this.ForecastedItems = response.data;
+                    console.log(this.ForecastedItems);
                 }
                 catch (e) {
                     console.log(e);
@@ -212,14 +186,6 @@ var ForecastController = new Vue({
 
             this.selectedItem = null;
             this.selectedItemID = '';
-
-            for (let i = 0; i < this.Deposits.length; i++) {
-                this.ForecastedItems.push(this.Deposits[i]);
-            }
-
-            for (let i = 0; i < this.Withdrawals.length; i++) {
-                this.ForecastedItems.push(this.Withdrawals[i]);
-            }
 
         },
 
@@ -239,8 +205,8 @@ var ForecastController = new Vue({
                 return 0;
             });               
         },
-        "updateFinancialProfile": function updateFinancialProfile() {            
-            axios.post(baseURL + 'api/Forecast/updateFinancialProfile' + '/' + ForecastController.remainingBalance).then(function (response) {
+        "updateFinancialProfile": function updateFinancialProfile() {
+            axios.post(baseURL + 'api/Forecast/updateFinancialProfile' + '/' + ForecastController.todaysAmount).then(function (response) {
                 try {
                     ForecastController.alertSuccessMessage("Changes were successful");
                     ForecastController.refreshTable();
@@ -628,8 +594,6 @@ const dateHandler = function (selectedDateID) {
     }
 
     ForecastController.refreshTable();
-    ForecastController.filtering = false;
-    ForecastController.query = '';
 };
 
 serverBus.$on('dateSelected', dateHandler);
