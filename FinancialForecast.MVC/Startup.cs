@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using Owin;
@@ -113,15 +114,22 @@ namespace FinancialForecast.MVC
             }
 
             app.UseHttpsRedirection();
-            app.UseFileServer();
+
+            //FileServerOptions fileServerOptions = new FileServerOptions();
+            //fileServerOptions.DefaultFilesOptions.DefaultFileNames.Clear();
+            //fileServerOptions.DefaultFilesOptions.DefaultFileNames.Add("/Forecast/Index.cshtml");
+            //app.UseFileServer(fileServerOptions);
+
+            //app.UseFileServer();
+
 
             //Specify the MyCustomPage1.html as the default page
             DefaultFilesOptions defaultFilesOptions = new DefaultFilesOptions();
             defaultFilesOptions.DefaultFileNames.Clear();
-            defaultFilesOptions.DefaultFileNames.Add("/Deposit/Index.cshtml");
+            defaultFilesOptions.DefaultFileNames.Add("/Forecast/Index.cshtml");
             //Setting the Default Files
             app.UseDefaultFiles(defaultFilesOptions);
-
+            app.UseDefaultFiles();
 
             app.UseStaticFiles();
             app.UseRouting();
@@ -148,6 +156,11 @@ namespace FinancialForecast.MVC
                 endpoints.MapControllerRoute(
                     name: "Login",
                     pattern: "{controller=Users}/{action=Login}");
+            });
+
+            app.Run(async (context) =>
+            {
+                await context.Response.WriteAsync("Request handled and response generated");
             });
         }
         //public void ConfigureAuth(IAppBuilder app)

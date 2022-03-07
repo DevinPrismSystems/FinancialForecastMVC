@@ -30,7 +30,7 @@
     <div class="row" style="margin-top: 15px">
         <div class="col-sm-2">
             <label>Today's Amount:</label>
-            <input class="form-control" type="text" placeholder="Today's Amount" v-model="remainingBalance" />           
+            <input class="form-control" type="text" placeholder="Today's Amount" v-model="todaysAmount" />           
         </div>
         <div class="col-sm-2">
             <button class="btn btn-success" style="width:100px; height:40px; margin-top:30px" v-on:click="updateFinancialProfile()" ><i class="fas fa-save"></i> Update</button>
@@ -44,24 +44,24 @@
                             <th v-for="col in columns" v-if="col !== 'id' && col !== 'UserID' && col !== 'Recurring' && col !== 'Stop Date' && col !== 'Frequency'">                               
                                 {{col}}      
                             </th>
-                            <th>
+@*                            <th>
                                 Remaining Balance
-                            </th>
+                            </th>*@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="Item in getForecastedItems()" v-on:click="ItemClicked(Item)" :class="{'row-highlight': (Item == selectedItem)}">
-                            <td v-for="col in columns" v-if="col !== 'id' && col !== 'UserID' && col !== 'Recurring' && col !== 'Stop Date' && col !== 'Frequency'" v-bind:type="Item[col] == 'Active' ? 'checkbox': 'text'">
+                        <tr v-for="Item in getForecastedItems()" v-on:click="ItemClicked(Item)">
+                            <td v-for="col in columns" v-if="col !== 'id' && col !== 'UserID'" v-bind:type="Item[col] == 'Active' ? 'checkbox': 'text'"
+                            :class="{'deposit-highlight': (col == 'Amount' && Item.Amount > 0),'withdraw-highlight': (col == 'Amount' && Item.Amount < 0)}">
                                 <input type="checkbox" v-bind:checked = "Item['Active'] == true" v-if ="col == 'Active'" disabled />
-                                <input type="checkbox" v-bind:checked = "Item['Recurring'] == true" v-if ="col == 'Recurring'" disabled />
-                                <div v-if="col != 'Active' && col != 'Recurring'">{{Item[col]}}</div>
+                                <div v-if="col != 'Active'">{{Item[col]}}</div>
                             </td>
+@*                            <td>{{Item.balance}}</td>*@
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-    </div>
 </div>
 
 @*@Html.Partial("~/Views/Items/PartialViews/_ItemAddConfirmation.cshtml")*@

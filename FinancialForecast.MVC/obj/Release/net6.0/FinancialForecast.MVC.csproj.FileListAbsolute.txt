@@ -578,3 +578,4 @@ C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Release\net6.0\FinancialForecast.MVC.genruntimeconfig.cache
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Release\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Release\net6.0\libman.json
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Release\net6.0\web.config

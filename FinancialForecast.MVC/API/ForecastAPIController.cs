@@ -9,12 +9,26 @@ using Microsoft.EntityFrameworkCore.Storage;
 namespace FinancialForecast.MVC.API
 {
     public class ForecastAPIController : FinancialForecastController
-    {
+    {       
+
         [HttpGet]
         [Route("api/forecast/getFinancialProfile")]
         public double getFinancialInformation()
         {
-            return this.db.FinancialProfiles.OrderByDescending(u => u.DateEntered).Select(u => u.StartAmount).First();
+            FinancialProfile profile = this.db.FinancialProfiles.OrderByDescending(u => u.DateEntered).First();
+            IEnumerable<Deposit> deposits = this.db.Deposits.Where(x => x.Date > profile.DateEntered && x.Date < DateTime.Now && x.Active == true).Select(x => new Deposit(x)).ToArray();            
+            IEnumerable<Withdrawal> withdrawals = this.db.Withdrawals.Where(x => x.Date > profile.DateEntered && x.Date < DateTime.Now && x.Active == true).Select(x => new Withdrawal(x)).ToArray();
+            
+            foreach(Deposit deposit in deposits)
+            {
+                profile.StartAmount += deposit.Amount;
+            }
+            foreach(Withdrawal withdrawal in withdrawals)
+            {
+                profile.StartAmount -= withdrawal.Amount;
+            }
+
+            return profile.StartAmount;
         }
 
         [HttpPost]
@@ -46,12 +60,54 @@ namespace FinancialForecast.MVC.API
             return withdrawals;
         }
 
+        [HttpGet]
+        [Route("api/forecast/getItems/{start}/{end}")]
+        public IEnumerable<ForecastObject> getForecastItems(DateTime start, DateTime end)
+        {
+            IEnumerable<Withdrawal> withdrawals = this.db.Withdrawals.Where(u => u.Date >= start && u.Date <= end).Select(u => new Withdrawal(u)).ToArray().OrderBy(u => u.Date);
+            IEnumerable<Deposit> deposits = this.db.Deposits.Where(u => u.Date >= start && u.Date <= end).Select(u => new Deposit(u)).ToArray().OrderBy(u => u.Date);
+            IEnumerable<ForecastObject> forecastItems = new List<ForecastObject>();
+            foreach (var withdrawal in withdrawals)
+            {
+                forecastItems = forecastItems.Append(new ForecastObject(withdrawal));
+            }
+            foreach (var deposit in deposits)
+            {
+                forecastItems = forecastItems.Append(new ForecastObject(deposit));
+            }
+            forecastItems = forecastItems.OrderBy(u => u.Date);
+            calculateRemainingBalances(forecastItems);
+            return forecastItems;
+        }
 
         [HttpGet]
         [Route("api/forecast/getForecastColumns")]
-        public Deposit getForecastColumns()
+        public ForecastObject getForecastColumns()
         {
-            return new Deposit();
+            return new ForecastObject();
+        }
+
+        public void calculateRemainingBalances(IEnumerable<ForecastObject> items)
+        {
+            FinancialProfile profile = this.db.FinancialProfiles.OrderByDescending(u => u.DateEntered).First();
+            
+            foreach(ForecastObject item in items)
+            {
+                if(item.Active == false)
+                {
+                    item.remainingBalance = profile.StartAmount;
+                }
+                else if(item.Date < profile.DateEntered)
+                {
+                    item.remainingBalance = profile.StartAmount - item.Amount;
+                    profile.StartAmount -= item.Amount;
+                }
+                else
+                {
+                    item.remainingBalance = profile.StartAmount + item.Amount;
+                    profile.StartAmount += item.Amount;
+                }
+            }
         }
     }
 }
