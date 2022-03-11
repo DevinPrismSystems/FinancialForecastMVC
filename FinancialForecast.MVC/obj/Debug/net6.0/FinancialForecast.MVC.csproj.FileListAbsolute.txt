@@ -1164,3 +1164,4 @@ C:\Users\legen\Documents\GithubProjects\FinancialForecastMVC\FinancialForecast.M
 C:\Users\legen\Documents\GithubProjects\FinancialForecastMVC\FinancialForecast.MVC\obj\Debug\net6.0\FinancialForecast.MVC.genruntimeconfig.cache
 C:\Users\legen\Documents\GithubProjects\FinancialForecastMVC\FinancialForecast.MVC\obj\Debug\net6.0\ref\FinancialForecast.MVC.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\web.config
+C:\Users\legen\Documents\GithubProjects\FinancialForecastMVC\FinancialForecast.MVC\bin\Debug\net6.0\web.config
