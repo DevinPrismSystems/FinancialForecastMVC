@@ -9,23 +9,11 @@
         "projectUniqueName": "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.Data\\FinancialForecast.Data.csproj",
         "projectName": "FinancialForecast.Data",
         "projectPath": "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.Data\\FinancialForecast.Data.csproj",
-        "packagesPath": "C:\\Users\\legen\\.nuget\\packages\\",
-        "projectStyle": "PackagesConfig",
-        "configFilePaths": [
-          "C:\\Users\\legen\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
         "frameworks": {
           "net48": {
             "projectReferences": {}
           }
-        },
-        "packagesConfigPath": "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.Data\\packages.config"
+        }
       },
       "frameworks": {
         "net48": {}
