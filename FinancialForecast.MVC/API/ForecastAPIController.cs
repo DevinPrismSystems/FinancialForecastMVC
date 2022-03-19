@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System;
 using System.Data.Entity;
 using Microsoft.EntityFrameworkCore.Storage;
+using System.Globalization;
 
 namespace FinancialForecast.MVC.API
 {
@@ -95,16 +96,16 @@ namespace FinancialForecast.MVC.API
             {
                 if(item.Active == false)
                 {
-                    item.remainingBalance = profile.StartAmount;
+                    item.remainingBalance = profile.StartAmount.ToString("C", CultureInfo.CurrentCulture); ;
                 }
                 else if(item.Date < profile.DateEntered)
                 {
-                    item.remainingBalance = profile.StartAmount - item.Amount;
+                    item.remainingBalance = (profile.StartAmount - item.Amount).ToString("C", CultureInfo.CurrentCulture); 
                     profile.StartAmount -= item.Amount;
                 }
                 else
                 {
-                    item.remainingBalance = profile.StartAmount + item.Amount;
+                    item.remainingBalance = (profile.StartAmount + item.Amount).ToString("C", CultureInfo.CurrentCulture); ;
                     profile.StartAmount += item.Amount;
                 }
             }

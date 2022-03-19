@@ -41,7 +41,8 @@
                 <table class="table table-sm table-hover table-striped">
                     <thead class="thead-dark">
                         <tr>
-                            <th v-for="col in columns" v-if="col !== 'id' && col !== 'UserID' && col !== 'Recurring' && col !== 'Stop Date' && col !== 'Frequency'">                               
+                            <th v-for="col in columns" v-if="col !== 'id' && col !== 'UserID' && col !== 'Recurring' && 
+                                col !== 'Stop Date' && col !== 'Frequency' && col !== 'Amount' ">                               
                                 {{col}}      
                             </th>
 @*                            <th>
@@ -51,8 +52,8 @@
                     </thead>
                     <tbody>
                         <tr v-for="Item in getForecastedItems()" v-on:click="ItemClicked(Item)">
-                            <td v-for="col in columns" v-if="col !== 'id' && col !== 'UserID'" v-bind:type="Item[col] == 'Active' ? 'checkbox': 'text'"
-                            :class="{'deposit-highlight': (col == 'Amount' && Item.Amount > 0),'withdraw-highlight': (col == 'Amount' && Item.Amount < 0)}">
+                            <td v-for="col in columns" v-if="col !== 'id' && col !== 'UserID' && col !== 'Amount'" v-bind:type="Item[col] == 'Active' ? 'checkbox': 'text'"
+                            :class="{'deposit-highlight': (col == 'Deposits' && Item.Amount > 0),'withdraw-highlight': (col == 'Withdrawals/Debits' && Item.Amount < 0)}">
                                 <input type="checkbox" v-bind:checked = "Item['Active'] == true" v-if ="col == 'Active'" disabled />
                                 <div v-if="col != 'Active'">{{Item[col]}}</div>
                             </td>

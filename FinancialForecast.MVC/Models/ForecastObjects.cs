@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
+using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -26,9 +27,6 @@ namespace FinancialForecast.MVC.Models
         [JsonPropertyName("Amount")]
         public double Amount { get; set; }
 
-        [JsonPropertyName("StringAmount")]
-        public String StringAmount { get; set; }
-
         [JsonPropertyName("Deposits")]
         public String DepositAmount { get; set; }
 
@@ -40,7 +38,8 @@ namespace FinancialForecast.MVC.Models
         public String UserRefID { get; set; }
 
         [JsonPropertyName("Remaining Balance")]
-        public double remainingBalance { get; set; }
+        public string remainingBalance { get; set; }
+
 
         public ForecastObject()
         {
@@ -52,7 +51,7 @@ namespace FinancialForecast.MVC.Models
         {
             this.ID = iD;
             this.Description = description;
-            this.Amount = amount;
+            this.Amount = amount;            
             this.Date = date;
             this.Active = active;
             this.UserRefID = userRefID;
@@ -62,7 +61,8 @@ namespace FinancialForecast.MVC.Models
         {
             this.ID = deposit.ID;
             this.Description = deposit.Description;
-            this.Amount = deposit.Amount;
+            this.Amount = deposit.Amount;            
+            this.DepositAmount = deposit.Amount.ToString("C", CultureInfo.CurrentCulture);
             this.Date = deposit.Date;
             this.Active = deposit.Active;
             this.UserRefID = deposit.UserRefID;
@@ -73,7 +73,8 @@ namespace FinancialForecast.MVC.Models
         {
             this.ID = withdrawal.ID;
             this.Description = withdrawal.Description;
-            this.Amount = -(withdrawal.Amount);
+            this.Amount = -(withdrawal.Amount);            
+            this.WithdrawalAmount = withdrawal.Amount.ToString("C", CultureInfo.CurrentCulture);
             this.Date = withdrawal.Date;
             this.Active = withdrawal.Active;
             this.UserRefID = withdrawal.UserRefID;
