@@ -20,6 +20,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\css\Dollar.jpg" />
     <Content Remove="wwwroot\Dollar.jpg" />
     <Content Remove="wwwroot\js\FinancialForecast.js" />
   </ItemGroup>
@@ -71,6 +72,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\css\Dollar.jpg" />
     <None Include="wwwroot\Dollar.jpg" />
     <None Include="wwwroot\js\FinancialForecast.js" />
   </ItemGroup>

@@ -41,6 +41,10 @@ var ForecastController = new Vue({
         Deposits: [],
         Withdrawals: [],
         ForecastedItems: [],
+        SumOfDeposits: 0,
+        SumOfWithdrawals: 0,
+        NetDifference: 0,
+        StringNetDifference: '',
         startDate: new Date().toISOString().slice(0, 10),
         endDate: initialEndDate.toISOString().slice(0, 10),
         SelectedDateID: 1,
@@ -63,6 +67,28 @@ var ForecastController = new Vue({
     computed: {
         "columns": function columns() {
             return Object.keys(this.financialItemKeys)
+        },
+        "isDeposit": function isDeposit() {
+            if (this.selectedItem === null) {
+                return true;
+            }
+            else {
+                if (this.selectedItem.Amount < 0)
+                    return true;
+                else
+                    return false;
+            }
+        },
+        "isWithdrawal": function isWithdrawal() {
+            if (this.selectedItem === null) {
+                return true;
+            }
+            else {
+                if (this.selectedItem.Amount > 0)
+                    return true;
+                else
+                    return false;
+            }
         }
     },
     mounted: function () {
@@ -92,19 +118,7 @@ var ForecastController = new Vue({
             });
 
 
-        axios.get(baseURL + 'api/forecast/getItems/' + this.startDate + '/' + this.endDate).then(function (response) {
-            try {
-                this.ForecastedItems = response.data;
-                console.log(this.ForecastedItems);
-            }
-            catch (e) {
-                console.log(e);
-            }
-        }.bind(this))
-            .catch(function (error) {
-                ForecastController.alertErrorMessage(error.response.data);
-                console.log(error);
-            });
+        this.getAPIForecasItems();
 
         //this.sortItems();
         //this.calculateRemainingBalance();
@@ -125,55 +139,27 @@ var ForecastController = new Vue({
             ForecastController.alertMessage = text;
             setTimeout(function () { ForecastController.alertMessage = '' }, 3000);
         },
-        "getForecastedItems": function getForecastedItems() {
-            if (this.ForecastedItems.length > 0) {
-                for (let i = 0; i < this.ForecastedItems.length; i++) {
-                    var amount = this.ForecastedItems[i].Amount;
-                    if (amount > 0) {
-                        this.ForecastedItems[i].DepositAmount = formatter.format(amount)
-                    }
-                    else {
-                        this.ForecastedItems[i].WithdrawalAmount = formatter.format(amount)
-                    }
-                    console.log(this.ForecastedItems[i]);
-                }
-
-                return this.ForecastedItems;
-            }
-            return [];
-        },
-        "ItemClicked": function ItemClicked(Item) {
-            if (Item.amount > 0) {
-                console.log("Deposit");
-                this.selectedItemID = Item.id;
-                this.selectedItem = Item;
-            }
-            else {
-                console.log("Withdrawal");
-                this.selectedItemID = Item.id;
-                this.selectedItem = Item;
-            }
-        },
-        "openCreateModal": function openCreateModal() {
-            CreateModalController.openCreateModal();
-        },
-        "openEditModal": function openEditModal() {
-            if (this.selectedDeposit !== null)
-                EditModalController.openEditModal(this.selectedDeposit);
-        },
-        "openMultipleEditModal": function openEditModal() {
-            if (this.selectedDeposit !== null)
-                MultipleEditModalController.openMultipleEditModal(this.selectedDeposit);
-        },
-        "openMultipleDeleteModal": function openMultipleDeleteModal() {
-            if (this.selectedDeposit !== null)
-                MultipleDeleteModalController.openMultipleDeleteModal(this.selectedDeposit);
-        },
-        "refreshTable": function refreshTable() {
+        "getAPIForecasItems": function getAPIForecasItems() {
             axios.get(baseURL + 'api/forecast/getItems/' + this.startDate + '/' + this.endDate).then(function (response) {
                 try {
                     this.ForecastedItems = response.data;
-                    console.log(this.ForecastedItems);
+                    this.SumOfDeposits = 0;
+                    this.SumOfWithdrawals = 0;
+                    for (let i = 0; i < this.ForecastedItems.length; i++) {
+                        var amount = this.ForecastedItems[i].Amount;
+                        if (amount > 0) {
+                            this.SumOfDeposits += amount;
+                        }
+                        else {
+                            this.SumOfWithdrawals += Math.abs(amount);
+                        }
+                    }
+                    this.NetDifference = this.SumOfDeposits - this.SumOfWithdrawals;
+
+
+                    this.StringNetDifference = formatter.format(this.NetDifference);
+                    this.SumOfWithdrawals = formatter.format(this.SumOfWithdrawals);
+                    this.SumOfDeposits = formatter.format(this.SumOfDeposits);
                 }
                 catch (e) {
                     console.log(e);
@@ -184,6 +170,67 @@ var ForecastController = new Vue({
                     console.log(error);
                 });
 
+
+        },
+        "getForecastedItems": function getForecastedItems() {
+
+            if (this.ForecastedItems.length > 0) {
+                for (let i = 0; i < this.ForecastedItems.length; i++) {
+                    var amount = this.ForecastedItems[i].Amount;
+                    if (amount > 0) {
+                        this.ForecastedItems[i].DepositAmount = formatter.format(amount);
+                    }
+                    else {
+                        this.ForecastedItems[i].WithdrawalAmount = formatter.format(amount);
+                    }
+                }
+
+                return this.ForecastedItems;
+            }
+            return [];
+        },
+        "ItemClicked": function ItemClicked(Item) {
+            if (Item.amount > 0) {
+                this.selectedItemID = Item.id;
+                this.selectedItem = Item;
+            }
+            else {
+                this.selectedItemID = Item.id;
+                this.selectedItem = Item;
+            }
+        },
+        "openCreateDepositModal": function openCreateDepositModal() {
+            CreateModalController.openCreateModal();
+        },
+        "openEditDepositModal": function openEditDepositModal() {
+            if (this.selectedItem !== null && this.selectedItem.Amount > 0)
+                EditDepositModalController.openEditModal(this.selectedItem);
+        },
+        "openMultipleEditDepositModal": function openEditDepositModal() {
+            if (this.selectedItem !== null && this.selectedItem.Amount > 0)
+                MultipleEditDepositModalController.openMultipleEditModal(this.selectedItem);
+        },
+        "openMultipleDeleteDepositModal": function openMultipleDeleteDepositModal() {
+            if (this.selectedItem !== null && this.selectedItem.Amount > 0)
+                MultipleDeleteDepositModalController.openMultipleDeleteModal(this.selectedItem);
+        },
+        "openCreateWithdrawalModal": function openCreateWithdrawalModal() {
+            CreateModalController.openCreateModal();
+        },
+        "openEditWithdrawalModal": function openEditWithdrawalModal() {
+            if (this.selectedItem !== null && this.selectedItem.Amount < 0) 
+                EditWithdrawalModalController.openEditModal(this.selectedItem);
+        },
+        "openMultipleEditWithdrawalModal": function openEditWithdrawalModal() {
+            if (this.selectedItem !== null && this.selectedItem.Amount < 0) 
+                MultipleEditWithdrawalModalController.openMultipleEditModal(this.selectedItem);
+        },
+        "openMultipleDeleteWithdrawalModal": function openMultipleDeleteWithdrawalModal() {
+            if (this.selectedItem !== null && this.selectedItem.Amount < 0) 
+                MultipleDeleteWithdrawalModalController.openMultipleDeleteModal(this.selectedItem);      
+        },
+        "refreshTable": function refreshTable() {
+            this.getAPIForecasItems();
             this.selectedItem = null;
             this.selectedItemID = '';
 
@@ -226,11 +273,17 @@ var ForecastController = new Vue({
     watch: {
         SelectedDateID: function (value) {
             serverBus.$emit('dateSelected', this.SelectedDateID);
+        },
+        startDate: function (value) {
+            this.refreshTable();
+        },
+        endDate: function (value) {
+            this.refreshTable();
         }
     }
 });
 
-var CreateModalController = new Vue({
+var CreateDepositModalController = new Vue({
     el: "#DepositCreateModal",
     data: {
         Deposit: {}
@@ -297,7 +350,7 @@ var CreateModalController = new Vue({
     }
 });
 
-var EditModalController = new Vue({
+var EditDepositModalController = new Vue({
     el: "#DepositEditModal",
     data: {
         editedDeposit: {},
@@ -309,8 +362,8 @@ var EditModalController = new Vue({
             console.log(Deposit);
             this.editedDeposit = Deposit;
         },
-        "editSelectedDeposit": function editSelectedDeposit() {
-            axios.post(baseURL + 'api/Deposits/edit/' + ForecastController.selectedDepositID, this.editedDeposit).then(function (response) {
+        "editselectedItem": function editselectedItem() {
+            axios.post(baseURL + 'api/Deposits/edit/' + ForecastController.selectedItemID, this.editedDeposit).then(function (response) {
                 try {
                     ForecastController.alertSuccessMessage("Changes were successful");
                     ForecastController.refreshTable();
@@ -345,7 +398,7 @@ var EditModalController = new Vue({
                     }
                     else {
                         form.classList.add('was-validated');
-                        EditModalController.editSelectedDeposit();
+                        EditModalController.editselectedItem();
                         $('#DepositEditModal').modal('hide');
                         form.classList.remove('was-validated');
                     }
@@ -361,11 +414,12 @@ var EditModalController = new Vue({
     }
 });
 
-var MultipleEditModalController = new Vue({
+var MultipleEditDepositModalController = new Vue({
     el: "#DepositMultipleEditModal",
     data: {
         editedDeposit: {},
         recurringDeposits: {},
+        columns: {},
         error: false,
         errorMessage: ''
     },
@@ -375,9 +429,11 @@ var MultipleEditModalController = new Vue({
             this.editedDeposit = Deposit;
             console.log(this.editedDeposit);
 
-            axios.get(baseURL + 'api/deposits/getRecurringDeposits/' + ForecastController.selectedDepositID, Deposit).then(function (response) {
+            axios.get(baseURL + 'api/deposits/getRecurringDeposits/' + ForecastController.selectedItemID, Deposit).then(function (response) {
                 try {
                     this.recurringDeposits = response.data;
+                    console.log(this.recurringDeposits);
+                    this.columns = Object.keys(response.data[0]);
                 }
                 catch (e) {
                     console.log(e);
@@ -387,12 +443,14 @@ var MultipleEditModalController = new Vue({
                     console.log(error);
                 });
 
+
+
             $("#DepositMultipleEditModal").submit(function (event) {
                 event.preventDefault();
             });
         },
-        "MultipleEditSelectedDeposit": function MultipleEditSelectedDeposit() {
-            axios.post(baseURL + 'api/Deposits/multipleEdits/' + ForecastController.selectedDepositID, this.editedDeposit, this.recurringDeposits).then(function (response) {
+        "MultipleEditselectedItem": function MultipleEditselectedItem() {
+            axios.post(baseURL + 'api/Deposits/multipleEdits/' + ForecastController.selectedItemID, this.editedDeposit, this.recurringDeposits).then(function (response) {
                 try {
                     ForecastController.alertSuccessMessage("Changes were successful");
                     ForecastController.refreshTable();
@@ -409,7 +467,8 @@ var MultipleEditModalController = new Vue({
             });
         },
         "RemoveItem": function RemoveItem(Deposit) {
-
+            index = this.recurringDeposits.findIndex(x => x.id === Deposit.id);
+            this.recurringDeposits.splice(index, 1);
         },
         "resetForm": function resetForm() {
             ForecastController.refreshTable();
@@ -430,7 +489,7 @@ var MultipleEditModalController = new Vue({
                     }
                     else {
                         form.classList.add('was-validated');
-                        MultipleEditModalController.MultipleEditSelectedDeposit();
+                        MultipleEditModalController.MultipleEditselectedItem();
                         $('#DepositMultipleEditModal').modal('hide');
                         form.classList.remove('was-validated');
                     }
@@ -439,23 +498,15 @@ var MultipleEditModalController = new Vue({
         }, false);
 
 
-    },
-    computed: {
-        "columns": function columns() {
-            if (ForecastController.Deposits.length === 0) {
-                return [];
-            }
-            return Object.keys(ForecastController.Deposits[0]);
-        }
     }
 });
 
 
-var DeleteModalController = new Vue({
+var DeleteDepositModalController = new Vue({
     el: "#depositDeletionConfirmation",
     methods: {
         "deleteDeposit": function deleteDeposit() {
-            axios.post(baseURL + 'api/deposits/deleteDeposit/' + ForecastController.selectedDepositID).then(function (response) {
+            axios.post(baseURL + 'api/deposits/deleteDeposit/' + ForecastController.selectedItemID).then(function (response) {
                 try {
                     ForecastController.alertSuccessMessage("Changes were successful");
                     ForecastController.refreshTable();
@@ -474,18 +525,19 @@ var DeleteModalController = new Vue({
     }
 });
 
-var MultipleDeleteModalController = new Vue({
+var MultipleDeleteDepositModalController = new Vue({
     el: "#multipleDepositDeletionConfirmation",
     data: {
-        recurringDeposits: {}
+        recurringDeposits: {},
+        columns: {}
     },
     methods: {
         "openMultipleDeleteModal": function openMultipleDeleteModal(Deposit) {
-            console.log(this.Deposit);
 
-            axios.get(baseURL + 'api/deposits/getRecurringDeposits/' + ForecastController.selectedDepositID, Deposit).then(function (response) {
+            axios.get(baseURL + 'api/deposits/getRecurringDeposits/' + ForecastController.selectedItemID, Deposit).then(function (response) {
                 try {
                     this.recurringDeposits = response.data;
+                    this.columns = Object.keys(response.data[0]);
                 }
                 catch (e) {
                     console.log(e);
@@ -500,7 +552,250 @@ var MultipleDeleteModalController = new Vue({
             });
         },
         "deleteMultipleDeposits": function deleteMultipleDeposits() {
-            axios.post(baseURL + 'api/deposits/deleteMultipleDeposits/' + ForecastController.selectedDepositID).then(function (response) {
+            axios.post(baseURL + 'api/deposits/deleteMultipleDeposits/' + ForecastController.selectedItemID).then(function (response) {
+                try {
+                    ForecastController.alertSuccessMessage("Changes were successful");
+                    ForecastController.refreshTable();
+                }
+                catch (error) {
+                    ForecastController.refreshTable();
+                    ForecastController.alertErrorMessage(error);
+                    console.log(error);
+                }
+            }).catch(function (error) {
+                ForecastController.refreshTable();
+                ForecastController.alertErrorMessage(error.response.data);
+                console.log(error);
+            });
+        },
+        "RemoveItem": function RemoveItem(Deposit) {
+            index = this.recurringDeposits.findIndex(x => x.id === Deposit.id);
+            this.recurringDeposits.splice(index, 1);
+        }
+    }
+});
+
+var CreateWithdrawalModalController = new Vue({
+    el: "#WithdrawalCreateModal",
+    data: {
+        Withdrawal: {}
+    },
+    methods: {
+        "openCreateModal": function openCreateModal() {
+            this.Withdrawal = {}
+            this.Withdrawal.Date = new Date().toISOString().slice(0, 10);
+            var date = new Date();
+            this.Withdrawal['Stop Date'] = date.addDays(365).toISOString().slice(0, 10);
+
+            console.log(this.Withdrawal);
+        },
+        "createNewWithdrawal": function createNewWithdrawal() {
+            console.log(this.Withdrawal);
+            axios.post(baseURL + 'api/Withdrawals/new', this.Withdrawal).then(function (response) {
+                try {
+                    console.log("Withdrawal was successfully added");
+                    ForecastController.alertSuccessMessage("Withdrawal was successfully added");
+                    ForecastController.refreshTable();
+                }
+                catch (error) {
+                    ForecastController.refreshTable();
+                    ForecastController.alertErrorMessage(error);
+                    console.log(error);
+                }
+            }).catch(function (error) {
+                ForecastController.refreshTable();
+                ForecastController.alertErrorMessage(error.response.data);
+                console.log(error);
+            });
+        },
+        "resetForm": function resetForm() {
+            ForecastController.refreshTable();
+            this.Withdrawal = [];
+        }
+    },
+    mounted: function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('create-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        form.classList.add('was-validated');
+                    }
+                    else {
+                        form.classList.add('was-validated');
+                        CreateModalController.createNewWithdrawal();
+                        $('#WithdrawalCreateModal').modal('hide');
+                        form.classList.remove('was-validated');
+                    }
+                }, false);
+            });
+        }, false);
+
+        $("#WithdrawalCreateModal").submit(function (event) {
+            event.preventDefault();
+        });
+    }
+});
+
+var EditWithdrawalModalController = new Vue({
+    el: "#WithdrawalEditModal",
+    data: {
+        editedWithdrawal: {},
+        error: false,
+        errorMessage: ''
+    },
+    methods: {
+        "openEditModal": function openEditModal(Withdrawal) {
+            Withdrawal.Amount = Math.abs(Withdrawal.Amount);
+            this.editedWithdrawal = Withdrawal;
+        },
+        "editselectedItem": function editselectedItem() {
+            axios.post(baseURL + 'api/Withdrawals/edit/' + ForecastController.selectedItemID, this.editedWithdrawal).then(function (response) {
+                try {
+                    ForecastController.alertSuccessMessage("Changes were successful");
+                    ForecastController.refreshTable();
+                }
+                catch (error) {
+                    ForecastController.refreshTable();
+                    ForecastController.alertErrorMessage(error);
+                    console.log(error);
+                }
+            }).catch(function (error) {
+                ForecastController.refreshTable();
+                ForecastController.alertErrorMessage(error.response.data);
+                console.log(error.response.data.InnerException.ExceptionMessage);
+            });
+        },
+        "resetForm": function resetForm() {
+            ForecastController.refreshTable();
+        }
+    },
+    mounted: function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('edit-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        form.classList.add('was-validated');
+                    }
+                    else {
+                        form.classList.add('was-validated');
+                        EditModalController.editselectedItem();
+                        $('#WithdrawalEditModal').modal('hide');
+                        form.classList.remove('was-validated');
+                    }
+                }, false);
+            });
+        }, false);
+
+        $("#WithdrawalEditModal").submit(function (event) {
+            event.preventDefault();
+        });
+
+
+    }
+});
+
+var MultipleEditWithdrawalModalController = new Vue({
+    el: "#WithdrawalMultipleEditModal",
+    data: {
+        columns: {},
+        editedWithdrawal: {},
+        recurringWithdrawals: {},
+        error: false,
+        errorMessage: ''
+    },
+    methods: {
+        "openMultipleEditModal": function openMultipleEditModal(Withdrawal) {
+            Withdrawal.Amount = Math.abs(Withdrawal.Amount);
+            this.editedWithdrawal = Withdrawal;
+            console.log(this.editedWithdrawal);
+
+            axios.get(baseURL + 'api/Withdrawals/getRecurringWithdrawals/' + ForecastController.selectedItemID, Withdrawal).then(function (response) {
+                try {
+                    this.recurringWithdrawals = response.data;
+                    this.columns = Object.keys(response.data[0]);
+                }
+                catch (e) {
+                    console.log(e);
+                }
+            }.bind(this))
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+            $("#WithdrawalMultipleEditModal").submit(function (event) {
+                event.preventDefault();
+            });
+        },
+        "MultipleEditselectedItem": function MultipleEditselectedItem() {
+            axios.post(baseURL + 'api/Withdrawals/multipleEdits/' + ForecastController.selectedItemID, this.editedWithdrawal, this.recurringWithdrawals).then(function (response) {
+                try {
+                    ForecastController.alertSuccessMessage("Changes were successful");
+                    ForecastController.refreshTable();
+                }
+                catch (error) {
+                    ForecastController.refreshTable();
+                    ForecastController.alertErrorMessage(error);
+                    console.log(error);
+                }
+            }).catch(function (error) {
+                ForecastController.refreshTable();
+                ForecastController.alertErrorMessage(error.response.data);
+                console.log(error.response.data.InnerException.ExceptionMessage);
+            });
+        },
+        "RemoveItem": function RemoveItem(Withdrawal) {
+            index = this.recurringWithdrawals.findIndex(x => x.id === Withdrawal.id);
+            this.recurringWithdrawals.splice(index, 1);
+        },
+        "resetForm": function resetForm() {
+            ForecastController.refreshTable();
+        }
+    },
+    mounted: function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('multipleEdit-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        form.classList.add('was-validated');
+                    }
+                    else {
+                        form.classList.add('was-validated');
+                        MultipleEditModalController.MultipleEditselectedItem();
+                        $('#WithdrawalMultipleEditModal').modal('hide');
+                        form.classList.remove('was-validated');
+                    }
+                }, false);
+            });
+        }, false);
+
+
+    }
+});
+
+
+var DeleteModalWithdrawalController = new Vue({
+    el: "#WithdrawalDeletionConfirmation",
+    methods: {
+        "deleteWithdrawal": function deleteWithdrawal() {
+            axios.post(baseURL + 'api/Withdrawals/deleteWithdrawal/' + ForecastController.selectedItemID).then(function (response) {
                 try {
                     ForecastController.alertSuccessMessage("Changes were successful");
                     ForecastController.refreshTable();
@@ -516,17 +811,61 @@ var MultipleDeleteModalController = new Vue({
                 console.log(error);
             });
         }
-    },
-    computed: {
-        "columns": function columns() {
-            if (ForecastController.Deposits.length === 0) {
-                return [];
-            }
-            return Object.keys(ForecastController.Deposits[0]);
-        }
     }
 });
 
+var MultipleDeleteWithdrawalModalController = new Vue({
+    el: "#multipleWithdrawalDeletionConfirmation",
+    data: {
+        columns: {},
+        recurringWithdrawals: {}
+    },
+    methods: {
+        "openMultipleDeleteModal": function openMultipleDeleteModal(Withdrawal) {
+            Withdrawal.Amount = Math.abs(Withdrawal.Amount);
+            axios.get(baseURL + 'api/Withdrawals/getRecurringWithdrawals/' + ForecastController.selectedItemID, Withdrawal).then(function (response) {
+                try {
+                    this.recurringWithdrawals = response.data;
+                    this.columns = Object.keys(response.data[0]);
+                }
+                catch (e) {
+                    console.log(e);
+                }
+            }.bind(this))
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+            $("#multipleWithdrawalDeletionConfirmation").submit(function (event) {
+                event.preventDefault();
+            });
+        },
+        "deleteMultipleWithdrawals": function deleteMultipleWithdrawals() {
+            axios.post(baseURL + 'api/Withdrawals/deleteMultipleWithdrawals/' + ForecastController.selectedItemID).then(function (response) {
+                try {
+                    ForecastController.alertSuccessMessage("Changes were successful");
+                    ForecastController.refreshTable();
+                }
+                catch (error) {
+                    ForecastController.refreshTable();
+                    ForecastController.alertErrorMessage(error);
+                    console.log(error);
+                }
+            }).catch(function (error) {
+                ForecastController.refreshTable();
+                ForecastController.alertErrorMessage(error.response.data);
+                console.log(error);
+            });
+        },
+        "RemoveItem": function RemoveItem(Withdrawal) {
+            index = this.recurringWithdrawals.findIndex(x => x.id === Withdrawal.id);
+            this.recurringWithdrawals.splice(index, 1);
+        },
+        "resetForm": function resetForm() {
+            ForecastController.refreshTable();
+        }
+    }
+});
 
 const dateHandler = function (selectedDateID) {
     //Next Two Weeks

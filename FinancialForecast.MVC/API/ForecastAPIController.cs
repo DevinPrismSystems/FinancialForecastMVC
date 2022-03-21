@@ -76,7 +76,7 @@ namespace FinancialForecast.MVC.API
             {
                 forecastItems = forecastItems.Append(new ForecastObject(deposit));
             }
-            forecastItems = forecastItems.OrderBy(u => u.Date);
+            forecastItems = forecastItems.OrderBy(u => u.Date).ThenBy(x => x.Amount);
             calculateRemainingBalances(forecastItems);
             return forecastItems;
         }
@@ -91,23 +91,27 @@ namespace FinancialForecast.MVC.API
         public void calculateRemainingBalances(IEnumerable<ForecastObject> items)
         {
             FinancialProfile profile = this.db.FinancialProfiles.OrderByDescending(u => u.DateEntered).First();
-            
-            foreach(ForecastObject item in items)
+            ForecastObject[] pastItems = items.Where(x => x.Active == true && x.Date < profile.DateEntered).OrderByDescending(x => x.Date).ThenByDescending(x => x.Amount).ToArray();
+            double startAmount = profile.StartAmount;
+            for(int i = 0; i < pastItems.Length; i++)
             {
-                if(item.Active == false)
+                ForecastObject item = pastItems[i];
+                if(i == 0)
                 {
-                    item.remainingBalance = profile.StartAmount.ToString("C", CultureInfo.CurrentCulture); ;
-                }
-                else if(item.Date < profile.DateEntered)
-                {
-                    item.remainingBalance = (profile.StartAmount - item.Amount).ToString("C", CultureInfo.CurrentCulture); 
-                    profile.StartAmount -= item.Amount;
+                    item.remainingBalance = startAmount.ToString("C", CultureInfo.CurrentCulture);
+                    startAmount -= (item.Amount);
                 }
                 else
                 {
-                    item.remainingBalance = (profile.StartAmount + item.Amount).ToString("C", CultureInfo.CurrentCulture); ;
-                    profile.StartAmount += item.Amount;
+                    item.remainingBalance = (startAmount).ToString("C", CultureInfo.CurrentCulture);
+                    startAmount -= (item.Amount);
                 }
+            }
+            startAmount = profile.StartAmount;
+            foreach (ForecastObject item in items.Where(x => x.Date > profile.DateEntered).OrderBy(x => x.Date))
+            {
+                item.remainingBalance = (startAmount + item.Amount).ToString("C", CultureInfo.CurrentCulture);
+                startAmount += item.Amount;
             }
         }
     }

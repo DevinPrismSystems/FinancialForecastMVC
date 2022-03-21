@@ -1,18 +1,18 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.MVC\\FinancialForecast.MVC.csproj": {}
+    "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\FinancialForecast.MVC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.Data\\FinancialForecast.Data.csproj": {
+    "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.Data\\FinancialForecast.Data.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.Data\\FinancialForecast.Data.csproj",
+        "projectUniqueName": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.Data\\FinancialForecast.Data.csproj",
         "projectName": "FinancialForecast.Data",
-        "projectPath": "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.Data\\FinancialForecast.Data.csproj",
-        "packagesPath": "C:\\Users\\legen\\.nuget\\packages\\",
+        "projectPath": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.Data\\FinancialForecast.Data.csproj",
+        "packagesPath": "C:\\Users\\Devin\\.nuget\\packages\\",
         "projectStyle": "PackagesConfig",
         "configFilePaths": [
-          "C:\\Users\\legen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Devin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -25,26 +25,26 @@
             "projectReferences": {}
           }
         },
-        "packagesConfigPath": "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.Data\\packages.config"
+        "packagesConfigPath": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.Data\\packages.config"
       },
       "frameworks": {
         "net48": {}
       }
     },
-    "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.MVC\\FinancialForecast.MVC.csproj": {
+    "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\FinancialForecast.MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.MVC\\FinancialForecast.MVC.csproj",
+        "projectUniqueName": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\FinancialForecast.MVC.csproj",
         "projectName": "FinancialForecast.MVC",
-        "projectPath": "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.MVC\\FinancialForecast.MVC.csproj",
-        "packagesPath": "C:\\Users\\legen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.MVC\\obj\\publish\\win-x64\\",
+        "projectPath": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\FinancialForecast.MVC.csproj",
+        "packagesPath": "C:\\Users\\Devin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\obj\\publish\\win-x64\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\legen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Devin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -59,8 +59,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.Data\\FinancialForecast.Data.csproj": {
-                "projectPath": "C:\\Users\\legen\\Documents\\GithubProjects\\FinancialForecastMVC\\FinancialForecast.Data\\FinancialForecast.Data.csproj"
+              "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.Data\\FinancialForecast.Data.csproj": {
+                "projectPath": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.Data\\FinancialForecast.Data.csproj"
               }
             }
           }
@@ -217,19 +217,19 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-              "version": "[6.0.2, 6.0.2]"
+              "version": "[6.0.1, 6.0.1]"
             },
             {
               "name": "Microsoft.NETCore.App.Crossgen2.win-x64",
-              "version": "[6.0.2, 6.0.2]"
+              "version": "[6.0.1, 6.0.1]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-x64",
-              "version": "[6.0.2, 6.0.2]"
+              "version": "[6.0.1, 6.0.1]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-              "version": "[6.0.2, 6.0.2]"
+              "version": "[6.0.1, 6.0.1]"
             }
           ],
           "frameworkReferences": {
@@ -240,7 +240,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {

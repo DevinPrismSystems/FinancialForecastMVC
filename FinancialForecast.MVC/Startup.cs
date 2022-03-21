@@ -54,7 +54,11 @@ namespace FinancialForecast.MVC
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             //    .AddEntityFrameworkStores<FinancialForecastDBContext>();
 
-            
+            services.Configure<CookieAuthenticationOptions>(o =>
+            {
+                o.LoginPath = PathString.Empty;
+            });
+
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddIdentity<IdentityUser, IdentityRole>(options => {
@@ -156,6 +160,9 @@ namespace FinancialForecast.MVC
                 endpoints.MapControllerRoute(
                     name: "Login",
                     pattern: "{controller=Users}/{action=Login}");
+                endpoints.MapControllerRoute(
+                    name: "Register",
+                    pattern: "{controller=Action}/{action=Register}");
             });
 
             app.Run(async (context) =>
@@ -163,11 +170,11 @@ namespace FinancialForecast.MVC
                 await context.Response.WriteAsync("Request handled and response generated");
             });
         }
-        //public void ConfigureAuth(IAppBuilder app)
+        //public void configureauth(iappbuilder app)
         //{
 
-        //    app.CreatePerOwinContext<UserManager>(UserManager.Create);
-        //    app.CreatePerOwinContext<SignInManager>(SignInManager.Create);
+        //    app.createperowincontext<UserManager>(usermanager.create);
+        //    app.createperowincontext<SignInManager>(signinmanager.create);
         //}
     }
 }

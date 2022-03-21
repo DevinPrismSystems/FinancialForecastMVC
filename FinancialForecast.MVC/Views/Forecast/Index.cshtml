@@ -34,6 +34,20 @@
         </div>
         <div class="col-sm-2">
             <button class="btn btn-success" style="width:100px; height:40px; margin-top:30px" v-on:click="updateFinancialProfile()" ><i class="fas fa-save"></i> Update</button>
+        </div>
+        <div class="row mt-5">
+            <div class="col-xs-12 text-center"> 
+                <button type="button" @@click="openCreateDepositModal()" class="btn btn-success" data-toggle="modal" data-target="#DepositCreateModal"><i class="fas fa-coins"></i> New Deposit</button>
+                <button type="button" @@click="openCreateWithdrawalModal()" class="btn btn-success" data-toggle="modal" data-target="#WithdrawalCreateModal"><i class="fas fa-wallet"></i> New Withdrawal</button>
+                <button type="button" @@click="openEditDepositModal()" class="btn btn-info" data-toggle="modal" data-target="#DepositEditModal" v-bind:hidden="isDeposit"><i class="fas fa-comment-dollar"></i> Edit Deposit</button>           
+                <button type="button" @@click="openMultipleEditDepositModal()" class="btn btn-info" data-toggle="modal" data-target="#DepositMultipleEditModal" v-bind:hidden="isDeposit"><i class="fas fa-money-bill-trend-up"></i> Edit Multiple Deposits</button>
+                <button type="button" @@click="openEditWithdrawalModal()" class="btn btn-info" data-toggle="modal" data-target="#WithdrawalEditModal" v-bind:hidden="isWithdrawal"><i class="fas fa-sack-xmark"></i> Edit Withdrawal</button>  
+                <button type="button" @@click="openMultipleEditWithdrawalModal()" class="btn btn-info" data-toggle="modal" data-target="#WithdrawalMultipleEditModal" v-bind:hidden="isWithdrawal"><i class="fas fa-funnel-dollar"></i> Edit Multiple Withdrawals</button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#depositDeletionConfirmation" v-bind:hidden="isDeposit"><i class="fas fa-trash"></i> Delete Deposit</button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#WithdrawalDeletionConfirmation" v-bind:hidden="isWithdrawal"><i class="fas fa-trash"></i> Delete Withdrawal</button>            
+                <button type="button" @@click="openMultipleDeleteDepositModal()" class="btn btn-danger" data-toggle="modal" data-target="#multipleDepositDeletionConfirmation" v-bind:hidden="isDeposit"><i class="fas fa-recycle"></i> Delete Recurring Deposits</button>
+                <button type="button" @@click="openMultipleDeleteWithdrawalModal()" class="btn btn-danger" data-toggle="modal" data-target="#multipleWithdrawalDeletionConfirmation" v-bind:hidden="isWithdrawal"><i class="fas fa-recycle"></i> Delete Recurring Withdrawals</button>        
+            </div>
         </div>    
     </div>
         <div class="row col-12 mt-5">
@@ -51,13 +65,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="Item in getForecastedItems()" v-on:click="ItemClicked(Item)">
-                            <td v-for="col in columns" v-if="col !== 'id' && col !== 'UserID' && col !== 'Amount'" v-bind:type="Item[col] == 'Active' ? 'checkbox': 'text'"
+                        <tr v-for="Item in getForecastedItems()" v-on:click="ItemClicked(Item)"  :class="{'row-highlight': (Item == selectedItem)}">
+                            <td v-for="col in columns" v-if="col !== 'id' && col !== 'UserID' && col !== 'Amount' && col !== 'Recurring' && 
+                                col !== 'Stop Date' && col !== 'Frequency'" v-bind:type="Item[col] == 'Active' ? 'checkbox': 'text'"
                             :class="{'deposit-highlight': (col == 'Deposits' && Item.Amount > 0),'withdraw-highlight': (col == 'Withdrawals/Debits' && Item.Amount < 0)}">
                                 <input type="checkbox" v-bind:checked = "Item['Active'] == true" v-if ="col == 'Active'" disabled />
                                 <div v-if="col != 'Active'">{{Item[col]}}</div>
                             </td>
 @*                            <td>{{Item.balance}}</td>*@
+                        </tr>
+                        <tr>
+                            <td v-for="col in columns" v-if="col !== 'id' && col !== 'UserID' && col !== 'Amount' && col !== 'Recurring' && 
+                                col !== 'Stop Date' && col !== 'Frequency'"></td>
+                        </tr>
+                        <tr style="font-style:italic">
+                            <td>Totals</td>                 
+                            <td></td>
+                            <td></td>
+                            <td class="deposit-highlight">{{SumOfDeposits}}</td>
+                            <td class="withdraw-highlight">{{SumOfWithdrawals}}</td>
+                            <td :class="{'deposit-highlight': NetDifference > 0,'withdraw-highlight': (NetDifference < 0)}"> {{StringNetDifference}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -66,8 +93,17 @@
 </div>
 
 @*@Html.Partial("~/Views/Items/PartialViews/_ItemAddConfirmation.cshtml")*@
-@Html.Partial("~/Views/Withdrawal/PartialViews/_EditWithdrawal.cshtml")
+
+@Html.Partial("~/Views/Deposit/PartialViews/_CreateDeposit.cshtml")
+@Html.Partial("~/Views/Withdrawal/PartialViews/_CreateWithdrawal.cshtml")
 @Html.Partial("~/Views/Deposit/PartialViews/_EditDeposit.cshtml")
+@Html.Partial("~/Views/Deposit/PartialViews/_MultipleEditDeposits.cshtml")
+@Html.Partial("~/Views/Withdrawal/PartialViews/_EditWithdrawal.cshtml")
+@Html.Partial("~/Views/Withdrawal/PartialViews/_MultipleEditWithdrawals.cshtml")
+@Html.Partial("~/Views/Deposit/PartialViews/_DeleteDepositConfirmation.cshtml")
+@Html.Partial("~/Views/Withdrawal/PartialViews/_DeleteWithdrawalConfirmation.cshtml")
+@Html.Partial("~/Views/Deposit/PartialViews/_MultipleDepositDeleteConfirmation.cshtml")
+@Html.Partial("~/Views/Withdrawal/PartialViews/_MultipleWithdrawalDeleteConfirmation.cshtml")
 
 @section Scripts{
     @*@Styles.Render("~/Content/Custom/custom.css");*@

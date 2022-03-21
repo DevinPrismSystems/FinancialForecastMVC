@@ -9,6 +9,7 @@
                     <table class="table table-sm table-hover table-striped">
                         <thead class="thead-dark">
                             <tr>
+                                <th></th>
                                 <th v-for="col in columns" v-if="col !== 'id' && col !== 'UserID'">                               
                                     {{col}}                            
                                 </th>
@@ -16,6 +17,11 @@
                         </thead>
                         <tbody>
                             <tr v-for="Deposit in recurringDeposits">
+                                <td>
+                                    <span v-on:click="RemoveItem(Deposit)">
+                                        <i class= "fas fa-minus-circle"></i>
+                                    </span>
+                                 </td>
                                 <td v-for="col in columns" v-if="col !== 'id' && col !== 'UserID'" v-bind:type="Deposit[col] == 'Active' ? 'checkbox': 'text'">
                                     <input type="checkbox" v-bind:checked = "Deposit['Active'] == true" v-if ="col == 'Active'" disabled />
                                     <input type="checkbox" v-bind:checked = "Deposit['Recurring'] == true" v-if ="col == 'Recurring'" disabled />
