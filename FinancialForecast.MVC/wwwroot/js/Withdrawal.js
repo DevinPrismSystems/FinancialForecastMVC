@@ -417,7 +417,8 @@ var MultipleEditModalController = new Vue({
             });
         },
         "RemoveItem": function RemoveItem(Withdrawal) {
-
+            index = this.recurringWithdrawals.findIndex(x => x.id === Withdrawal.id);
+            this.recurringWithdrawals.splice(index, 1);
         },
         "resetForm": function resetForm() {
             WithdrawalsController.refreshTable();
@@ -445,8 +446,6 @@ var MultipleEditModalController = new Vue({
                 }, false);
             });
         }, false);
-
-
     },
     computed: {
         "columns": function columns() {
@@ -489,7 +488,6 @@ var MultipleDeleteModalController = new Vue({
     },
     methods: {
         "openMultipleDeleteModal": function openMultipleDeleteModal(Withdrawal) {
-            console.log(this.Withdrawal);
 
             axios.get(baseURL + 'api/Withdrawals/getRecurringWithdrawals/' + WithdrawalsController.selectedWithdrawalID, Withdrawal).then(function (response) {
                 try {
@@ -523,6 +521,10 @@ var MultipleDeleteModalController = new Vue({
                 WithdrawalsController.alertErrorMessage(error.response.data);
                 console.log(error);
             });
+        },
+        "RemoveItem": function RemoveItem(Withdrawal) {
+            index = this.recurringWithdrawals.findIndex(x => x.id === Withdrawal.id);            
+            this.recurringWithdrawals.splice(index, 1);
         }
     },
     computed: {

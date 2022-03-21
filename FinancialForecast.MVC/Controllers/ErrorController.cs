@@ -15,7 +15,7 @@ namespace FinancialForecast.MVC.Controllers
         }
         public ViewResult Unauthorized()
         {
-            //Response.StatusCode = 401; 
+            Response.StatusCode = 401; 
             return View("~/Views/Shared/Error.cshtml");
         }
     }

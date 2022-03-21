@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace FinancialForecast.MVC.Controllers
 {
@@ -28,7 +29,7 @@ namespace FinancialForecast.MVC.Controllers
 
         [HttpGet, AllowAnonymous]
         public IActionResult Register()
-        {
+        {         
             return View();
         }
 
@@ -50,6 +51,11 @@ namespace FinancialForecast.MVC.Controllers
 
                     return RedirectToAction("Index", "Forecast");
                 }
+               
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
             }
 
             return View(registerUser);            
@@ -69,8 +75,15 @@ namespace FinancialForecast.MVC.Controllers
                     return RedirectToAction("Index", "Forecast");
                 }
 
-                this.ModelState.AddModelError("Invalid Login", "The user name and password are invalid.");
-                
+                string user = this.FinancialForecastDBContext.Users.Where(x => x.UserName == login.Username).Select(x => x.UserName).FirstOrDefault();
+                if (string.IsNullOrEmpty(user))
+                {
+                    ModelState.AddModelError(string.Empty, "Username does not exist");
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "The password is incorrect");
+                }
             }
 
             return View(login);

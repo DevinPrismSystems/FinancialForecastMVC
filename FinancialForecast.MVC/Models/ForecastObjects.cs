@@ -40,6 +40,14 @@ namespace FinancialForecast.MVC.Models
         [JsonPropertyName("Remaining Balance")]
         public string remainingBalance { get; set; }
 
+        [JsonPropertyName("Recurring")]
+        public bool isRecurring { get; set; }
+
+        [JsonPropertyName("Stop Date")]
+        public DateTime StopDate { get; set; }
+
+        [JsonPropertyName("Frequency")]
+        public int Frequency { get; set; }
 
         public ForecastObject()
         {
@@ -55,6 +63,9 @@ namespace FinancialForecast.MVC.Models
             this.Date = date;
             this.Active = active;
             this.UserRefID = userRefID;
+            this.StopDate = stopDate;
+            this.Frequency = frequency;
+            this.isRecurring = isRecurring;
         }
 
         public ForecastObject(Deposit deposit)
@@ -67,6 +78,9 @@ namespace FinancialForecast.MVC.Models
             this.Active = deposit.Active;
             this.UserRefID = deposit.UserRefID;
             this.Date = deposit.Date;
+            this.StopDate = deposit.StopDate;
+            this.Frequency = deposit.Frequency;
+            this.isRecurring = deposit.isRecurring;
         }
 
         public ForecastObject(Withdrawal withdrawal)
@@ -79,6 +93,9 @@ namespace FinancialForecast.MVC.Models
             this.Active = withdrawal.Active;
             this.UserRefID = withdrawal.UserRefID;
             this.Date = withdrawal.Date;
+            this.StopDate = withdrawal.StopDate;
+            this.Frequency = withdrawal.Frequency;
+            this.isRecurring = withdrawal.isRecurring;
         }
 
         public class DateTimeConverter : JsonConverter<DateTime>
