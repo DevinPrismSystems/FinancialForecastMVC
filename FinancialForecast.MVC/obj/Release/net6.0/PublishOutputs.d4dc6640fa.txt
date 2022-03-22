@@ -1,10 +1,4 @@
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Release\net6.0\PubTmp\Out\FinancialForecast.MVC.exe
-C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Release\net6.0\PubTmp\Out\web.config
-C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Release\net6.0\PubTmp\Out\appsettings.Development.json
-C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Release\net6.0\PubTmp\Out\appsettings.json
-C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Release\net6.0\PubTmp\Out\bundleconfig.json
-C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Release\net6.0\PubTmp\Out\libman.json
-C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Release\net6.0\PubTmp\Out\packages\EntityFramework.6.4.4\tools\netcoreapp3.0\any\ef6.runtimeconfig.json
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Release\net6.0\PubTmp\Out\FinancialForecast.MVC.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Release\net6.0\PubTmp\Out\FinancialForecast.MVC.runtimeconfig.json
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Release\net6.0\PubTmp\Out\FinancialForecast.MVC.pdb

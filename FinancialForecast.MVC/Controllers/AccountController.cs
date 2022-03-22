@@ -33,29 +33,47 @@ namespace FinancialForecast.MVC.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Register(LoginViewModel registerUser)
+        [AllowAnonymous, HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel registerUser)
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = registerUser.UserName };
-                var result = await UserManager.CreateAsync(user, registerUser.Password);
-
-                if (result.Succeeded)
+                if (registerUser.Password.Equals(registerUser.ConfirmPassword))
                 {
-                    await SignInManager.SignInAsync(user, isPersistent: true);
+                    Models.User existingUser = this.FinancialForecastDBContext.Users.Where(x => x.UserName == registerUser.Username).FirstOrDefault();
+                                
+                    if (existingUser != null)
+                    {
+                        ModelState.AddModelError(string.Empty, "Username already exists. Please try a different username");
+                        return View(registerUser);
+                    }
 
-                    
-                    //this.FinancialForecastDBContext.Users.Add(newUser);
-                    //this.db.SaveChanges();
-                    //return Convert.ToInt32(newUser.UserID);
+                    var user = new IdentityUser { UserName = registerUser.Username };
+                    var result = await UserManager.CreateAsync(user, registerUser.Password);
 
-                    return RedirectToAction("Index", "Forecast");
+                    if (result.Succeeded)
+                    {
+                        Models.User newUser = new User(0, null, null, registerUser.Username, registerUser.Password);
+
+                        await SignInManager.SignInAsync(user, isPersistent: true);
+
+                        this.FinancialForecastDBContext.Users.Add(newUser);
+                        this.FinancialForecastDBContext.SaveChanges();
+
+
+                        //return Convert.ToInt32(newUser.UserID);
+
+                        return RedirectToAction("Index", "Forecast");
+                    }
+
+
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
                 }
-               
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
+                else
+                    ModelState.AddModelError(string.Empty, "Passwords did not match. Please try again");
             }
 
             return View(registerUser);            

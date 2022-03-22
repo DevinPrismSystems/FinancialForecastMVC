@@ -415,7 +415,8 @@ var MultipleEditModalController = new Vue({
             });
         },
         "RemoveItem": function RemoveItem(Deposit) {
-
+            index = this.recurringDeposits.findIndex(x => x.id === Deposit.id);
+            this.recurringDeposits.splice(index, 1);
         },
         "resetForm": function resetForm() {
             DepositsController.refreshTable();
@@ -487,7 +488,6 @@ var MultipleDeleteModalController = new Vue({
     },
     methods: {
         "openMultipleDeleteModal": function openMultipleDeleteModal(Deposit) {
-            console.log(this.Deposit);
 
             axios.get(baseURL + 'api/deposits/getRecurringDeposits/' + DepositsController.selectedDepositID, Deposit).then(function (response) {
                 try {
@@ -521,6 +521,10 @@ var MultipleDeleteModalController = new Vue({
                 DepositsController.alertErrorMessage(error.response.data);
                 console.log(error);
             });
+        },
+        "RemoveItem": function RemoveItem(Deposit) {
+            index = this.recurringDeposits.findIndex(x => x.id === Deposit.id);
+            this.recurringDeposits.splice(index, 1);
         }
     },
     computed: {

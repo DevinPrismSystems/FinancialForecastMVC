@@ -106,13 +106,31 @@ nav.footer-nav {
     table-layout: auto;
 }
 
+
+
 .table-responsive table thead tr th {
     white-space: nowrap;
     min-width: 120px;
+    padding:12px;
+}
+
+.table .thead-dark th{
+    background-color:deepskyblue;
+    color:white;
+    padding:15px;
 }
 
 .table-responsive table tbody tr td {
     white-space: nowrap;
+    padding:1rem
+}
+
+.table-striped > tbody > tr:nth-of-type(odd){
+    background-color:whitesmoke;
+}
+
+.table > :not(:last-child) > :last-child > * {
+    border-bottom-color: black;
 }
 
 .table-footer nav .pagination {
@@ -282,10 +300,15 @@ nav.footer-nav {
     margin-bottom: 15px;
 }
 
-.table-striped tbody tr:nth-of-type(odd) {
-    background-color: #fffeed;
+
+
+.th{
+    background-color:black
 }
 
+.table{
+    padding:0em;
+}
 .table-footer {
     background-color: #efefef !important;
 }

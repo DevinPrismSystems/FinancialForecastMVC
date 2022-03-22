@@ -74,10 +74,9 @@
                             </td>
 @*                            <td>{{Item.balance}}</td>*@
                         </tr>
-                        <tr>
-                            <td v-for="col in columns" v-if="col !== 'id' && col !== 'UserID' && col !== 'Amount' && col !== 'Recurring' && 
-                                col !== 'Stop Date' && col !== 'Frequency'"></td>
-                        </tr>
+                        
+                    </tbody>
+                    <tfoot>
                         <tr style="font-style:italic">
                             <td>Totals</td>                 
                             <td></td>
@@ -86,7 +85,7 @@
                             <td class="withdraw-highlight">{{SumOfWithdrawals}}</td>
                             <td :class="{'deposit-highlight': NetDifference > 0,'withdraw-highlight': (NetDifference < 0)}"> {{StringNetDifference}}</td>
                         </tr>
-                    </tbody>
+                    </tfoot>
                 </table>
             </div>
         </div>
@@ -110,5 +109,5 @@
     <script>
         var baseURL = '@ViewBag.BaseURL';
     </script>
-    <script src="@Url.Content("~/js/FinancialForecast.Js?v="+DateTime.Now.Ticks)"></script>
+    <script src="@Url.Content("~/js/FinancialForecast.js?v="+DateTime.Now.Ticks)"></script>
 }

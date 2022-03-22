@@ -1,7 +1,7 @@
-﻿@model FinancialForecast.MVC.Models.LoginViewModel
+﻿@model FinancialForecast.MVC.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register Here";
-    //Layout = "~/Views/Shared/_LoginPartial.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="d-flex justify-content-center h-100 mt-5" id="Register">
@@ -28,17 +28,15 @@
                     </div>
                     @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.Password), @required = "" })
                 </div>
+                <div class="input-group mb-2">
+                    <div class="input-group-append">
+                        <span class="input-group-text bg-primary" style="padding:0.66rem"><i class="fas fa-key text-white"></i></span>
+                    </div>
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.ConfirmPassword), @required = "" })
+                </div>
 
                 <div class="d-flex justify-content-center mt-1">
-                    <form action="/Account/Register" method="post">
-                        <button asp-action="Register" type="submit" asp-controller="Account" class="btn btn-success"><i class="fas fa-sign-in-alt"></i> Register Account </button>                        
-                     </form>
-@*                    <button type="submit" form="webLogin" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Register Account </button>
-                    <input type="hidden" value="@ViewBag.ReturnUrl" name="returnUrl" />*@
-                </div>
-                <div class="text-left text-danger">
-                    @ViewBag.Error
-                    @Html.ValidationSummary()
+                    <button type="submit" class="btn btn-success"><i class="fas fa-user-cog"></i> Register Account </button>                        
                 </div>
             }
         </div>

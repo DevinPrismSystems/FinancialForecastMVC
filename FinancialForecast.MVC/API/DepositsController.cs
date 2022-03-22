@@ -15,7 +15,7 @@ namespace FinancialForecast.MVC.API
         [Route("api/deposits/all")]
         public IEnumerable<Deposit> Get()
         {
-            return this.db.Deposits.Select(u => new Deposit(u)).ToArray().OrderBy(u => u.Date);
+            return this.db.Deposits.Where(x => x.UserRefID == CurrentUserID).Select(u => new Deposit(u)).ToArray().OrderBy(u => u.Date);
         }
 
         [HttpGet]
@@ -24,7 +24,7 @@ namespace FinancialForecast.MVC.API
         {
             DateTime startDateTime = DateTime.Parse(start);
             DateTime endDateTime = DateTime.Parse(end);
-            return this.db.Deposits.Where(u => u.Date >= startDateTime && u.Date <= endDateTime).Select(u => new Deposit(u)).ToArray().OrderBy(u => u.Date);
+            return this.db.Deposits.Where(u => u.Date >= startDateTime && u.Date <= endDateTime && u.UserRefID == CurrentUserID).Select(u => new Deposit(u)).ToArray().OrderBy(u => u.Date);
         }
 
         [HttpGet]
