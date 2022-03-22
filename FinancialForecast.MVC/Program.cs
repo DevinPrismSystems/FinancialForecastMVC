@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FinancialForecast.MVC.Data;
 using Microsoft.Data.SqlClient;
+using System.IO;
 
 namespace FinancialForecast.MVC
 {
@@ -16,6 +17,14 @@ namespace FinancialForecast.MVC
     {
         public static void Main(string[] args)
         {
+            //var host = new WebHostBuilder()
+            //.UseKestrel()
+            //.UseContentRoot(Directory.GetCurrentDirectory())
+            //.UseIISIntegration()
+            //.UseStartup()
+            //.Build();
+
+            //host.Run();
             var host = CreateHostBuilder(args).Build();
             CreateDbIfNotExists(host);
             using (var scope = host.Services.CreateScope())
@@ -59,8 +68,11 @@ namespace FinancialForecast.MVC
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+//                    webBuilder.UseKestrel();
+                    webBuilder.UseContentRoot(Directory.GetCurrentDirectory());
                     webBuilder.UseStartup<Startup>();
                     webBuilder.UseIISIntegration();
+                    
                 });
     }
 }

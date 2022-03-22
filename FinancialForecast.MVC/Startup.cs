@@ -128,17 +128,17 @@ namespace FinancialForecast.MVC
 
 
             //Specify the MyCustomPage1.html as the default page
-            DefaultFilesOptions defaultFilesOptions = new DefaultFilesOptions();
-            defaultFilesOptions.DefaultFileNames.Clear();
-            defaultFilesOptions.DefaultFileNames.Add("/Forecast/Index.cshtml");
-            //Setting the Default Files
-            app.UseDefaultFiles(defaultFilesOptions);
+            //DefaultFilesOptions defaultFilesOptions = new DefaultFilesOptions();
+            //defaultFilesOptions.DefaultFileNames.Clear();
+            //defaultFilesOptions.DefaultFileNames.Add("/Forecast/Index.cshtml");
+            ////Setting the Default Files
+            //app.UseDefaultFiles(defaultFilesOptions);
             app.UseDefaultFiles();
-
+            
             app.UseStaticFiles();
             app.UseRouting();
             app.UseCors();
-
+            app.UseDirectoryBrowser();
             app.UseAuthentication();
             app.UseAuthorization();
 

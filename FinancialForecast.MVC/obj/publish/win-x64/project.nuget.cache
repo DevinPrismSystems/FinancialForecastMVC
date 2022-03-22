@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "QNgRqUY9pbEihds5SYqr6jEGwZzXt4H5CcgNN9pW37W5p+0VgQcH+xHuGTYKsyUcJZRMemWMeAv8MezOcwkOiA==",
+  "dgSpecHash": "x4F0SO4lXvBMNyNc5HpQkzmMGQ9gUETR1m0mnRg9LfNhJF2ep6uLfjZOucWNRQmIim2hNcZboEG6pVBpTU0rCA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\FinancialForecast.MVC.csproj",
   "expectedPackageFiles": [
@@ -277,11 +277,7 @@
     "C:\\Users\\Devin\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Devin\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Devin\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\Devin\\.nuget\\packages\\vue\\2.6.11\\vue.2.6.11.nupkg.sha512",
-    "C:\\Users\\Devin\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\6.0.1\\microsoft.netcore.app.runtime.win-x64.6.0.1.nupkg.sha512",
-    "C:\\Users\\Devin\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\6.0.1\\microsoft.windowsdesktop.app.runtime.win-x64.6.0.1.nupkg.sha512",
-    "C:\\Users\\Devin\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\6.0.1\\microsoft.aspnetcore.app.runtime.win-x64.6.0.1.nupkg.sha512",
-    "C:\\Users\\Devin\\.nuget\\packages\\microsoft.netcore.app.crossgen2.win-x64\\6.0.1\\microsoft.netcore.app.crossgen2.win-x64.6.0.1.nupkg.sha512"
+    "C:\\Users\\Devin\\.nuget\\packages\\vue\\2.6.11\\vue.2.6.11.nupkg.sha512"
   ],
   "logs": [
     {

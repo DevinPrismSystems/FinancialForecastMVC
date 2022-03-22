@@ -8,6 +8,7 @@
     <DockerfileContext>..\FinancialForecast</DockerfileContext>
     <OutputType>WinExe</OutputType>
     <EnforceCodeStyleInBuild>False</EnforceCodeStyleInBuild>
+	<EnableDefaultContentItems>false</EnableDefaultContentItems>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -18,12 +19,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <WarningLevel>1</WarningLevel>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Content Remove="wwwroot\css\Dollar.jpg" />
-    <Content Remove="wwwroot\Dollar.jpg" />
-    <Content Remove="wwwroot\js\FinancialForecast.js" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="bootstrap" Version="5.1.2" />
@@ -65,27 +60,20 @@
     <PackageReference Include="vue" Version="2.6.11" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Content\" />
-    <Folder Include="Scripts\" />
-    <Folder Include="Views\Period\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\css\Dollar.jpg" />
-    <None Include="wwwroot\Dollar.jpg" />
-    <None Include="wwwroot\js\FinancialForecast.js" />
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="wwwroot\**\*">
+			<CopyToPublishDirectory>Always</CopyToPublishDirectory>
+		</Content>
+	</ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\FinancialForecast.Data\FinancialForecast.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Views\Withdrawal\Index.cshtml">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -16,9 +16,16 @@ namespace FinancialForecast.MVC.API
         [Route("api/forecast/getFinancialProfile")]
         public double getFinancialInformation()
         {
-            FinancialProfile profile = this.db.FinancialProfiles.OrderByDescending(u => u.DateEntered).First();
-            IEnumerable<Deposit> deposits = this.db.Deposits.Where(x => x.Date > profile.DateEntered && x.Date < DateTime.Now && x.Active == true).Select(x => new Deposit(x)).ToArray();            
-            IEnumerable<Withdrawal> withdrawals = this.db.Withdrawals.Where(x => x.Date > profile.DateEntered && x.Date < DateTime.Now && x.Active == true).Select(x => new Withdrawal(x)).ToArray();
+            FinancialProfile profile = this.db.FinancialProfiles.Where(x => x.UserRefID == CurrentUserID).OrderByDescending(u => u.DateEntered).FirstOrDefault();
+            if(profile == null)
+            {
+                this.db.FinancialProfiles.Add(new FinancialProfile(CurrentUserID));
+                this.db.SaveChanges();
+                profile = this.db.FinancialProfiles.Where(x => x.UserRefID == CurrentUserID).OrderByDescending(u => u.DateEntered).FirstOrDefault();
+            }
+            
+            IEnumerable<Deposit> deposits = this.db.Deposits.Where(x => x.Date > profile.DateEntered && x.Date < DateTime.Now && x.Active == true && x.UserRefID == CurrentUserID).Select(x => new Deposit(x)).ToArray();            
+            IEnumerable<Withdrawal> withdrawals = this.db.Withdrawals.Where(x => x.Date > profile.DateEntered && x.Date < DateTime.Now && x.Active == true && x.UserRefID == CurrentUserID).Select(x => new Withdrawal(x)).ToArray();
             
             foreach(Deposit deposit in deposits)
             {
@@ -46,14 +53,14 @@ namespace FinancialForecast.MVC.API
         [Route("api/forecast/getDeposits/{start}/{end}")]
         public IEnumerable<Deposit> GetDeposits(DateTime start, DateTime end)
         {
-            return this.db.Deposits.Where(u => u.Date >= start && u.Date <= end).Select(u => new Deposit(u)).ToArray().OrderBy(u => u.Date);
+            return this.db.Deposits.Where(u => u.Date >= start && u.Date <= end && u.UserRefID == CurrentUserID).Select(u => new Deposit(u)).ToArray().OrderBy(u => u.Date);
         }
 
         [HttpGet]
         [Route("api/forecast/getWithdrawals/{start}/{end}")]
         public IEnumerable<Withdrawal> GetWithdrawals(DateTime start, DateTime end)
         {
-            IEnumerable<Withdrawal> withdrawals = this.db.Withdrawals.Where(u => u.Date >= start && u.Date <= end).Select(u => new Withdrawal(u)).ToArray().OrderBy(u => u.Date);
+            IEnumerable<Withdrawal> withdrawals = this.db.Withdrawals.Where(u => u.Date >= start && u.Date <= end && u.UserRefID == CurrentUserID).Select(u => new Withdrawal(u)).ToArray().OrderBy(u => u.Date);
             foreach(var withdrawal in withdrawals)
             {
                 withdrawal.Amount = withdrawal.Amount * (-1);
@@ -65,8 +72,8 @@ namespace FinancialForecast.MVC.API
         [Route("api/forecast/getItems/{start}/{end}")]
         public IEnumerable<ForecastObject> getForecastItems(DateTime start, DateTime end)
         {
-            IEnumerable<Withdrawal> withdrawals = this.db.Withdrawals.Where(u => u.Date >= start && u.Date <= end).Select(u => new Withdrawal(u)).ToArray().OrderBy(u => u.Date);
-            IEnumerable<Deposit> deposits = this.db.Deposits.Where(u => u.Date >= start && u.Date <= end).Select(u => new Deposit(u)).ToArray().OrderBy(u => u.Date);
+            IEnumerable<Withdrawal> withdrawals = this.db.Withdrawals.Where(u => u.Date >= start && u.Date <= end && u.UserRefID == CurrentUserID).Select(u => new Withdrawal(u)).ToArray().OrderBy(u => u.Date);
+            IEnumerable<Deposit> deposits = this.db.Deposits.Where(u => u.Date >= start && u.Date <= end && u.UserRefID == CurrentUserID).Select(u => new Deposit(u)).ToArray().OrderBy(u => u.Date);
             IEnumerable<ForecastObject> forecastItems = new List<ForecastObject>();
             foreach (var withdrawal in withdrawals)
             {

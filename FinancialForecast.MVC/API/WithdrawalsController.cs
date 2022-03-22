@@ -15,7 +15,7 @@ namespace FinancialForecast.MVC.API
         [Route("api/Withdrawals/all")]
         public IEnumerable<Withdrawal> Get()
         {
-            return this.db.Withdrawals.Select(u => new Withdrawal(u)).ToArray().OrderBy(u => u.Date);
+            return this.db.Withdrawals.Where(x => x.UserRefID == CurrentUserID).Select(u => new Withdrawal(u)).ToArray().OrderBy(u => u.Date);
         }
 
         [HttpGet]
@@ -24,7 +24,7 @@ namespace FinancialForecast.MVC.API
         {
             DateTime startDateTime = DateTime.Parse(start);
             DateTime endDateTime = DateTime.Parse(end);
-            return this.db.Withdrawals.Where(u => u.Date >= startDateTime && u.Date <= endDateTime).Select(u => new Withdrawal(u)).ToArray().OrderBy(u => u.Date);
+            return this.db.Withdrawals.Where(u => u.Date >= startDateTime && u.Date <= endDateTime && u.UserRefID == CurrentUserID).Select(u => new Withdrawal(u)).ToArray().OrderBy(u => u.Date);
         }
 
         [HttpGet]

@@ -10,5 +10,15 @@ namespace FinancialForecast.MVC.Models
 
         public DateTime DateEntered { get; set; }
 
+        public FinancialProfile(string userID)
+        {
+            UserRefID = userID;
+            StartAmount = 0;
+            DateEntered = DateTime.Now;
+        }
+
+        public FinancialProfile() { 
+
+        }
     }
 }

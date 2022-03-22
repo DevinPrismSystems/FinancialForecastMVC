@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+ENtSrQQEbiWuZIRJmfNJxYariNOgzFZPOV2wvBX1FM=",
+  "Hash": "i3sBIggfZ3YyWt8bSV46QnUcywoEM+0V0i3k3GJDEyY=",
   "Source": "FinancialForecast.MVC",
   "BasePath": "_content/FinancialForecast.MVC",
   "Mode": "Default",
@@ -1798,8 +1798,25 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\css\\bootstrap-datetimepicker.min.css"
+    },
+    {
+      "Identity": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\wwwroot\\css\\Dollar.jpg",
+      "SourceId": "FinancialForecast.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\wwwroot\\",
+      "BasePath": "_content/FinancialForecast.MVC",
+      "RelativePath": "css/Dollar.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "Always",
+      "OriginalItemSpec": "wwwroot\\css\\Dollar.jpg"
     },
     {
       "Identity": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\wwwroot\\css\\fontawesome.min.css",
@@ -1815,7 +1832,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\css\\fontawesome.min.css"
     },
     {
@@ -1832,7 +1849,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\css\\Font-Awesome-all.css"
     },
     {
@@ -1849,8 +1866,42 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\wwwroot\\css\\Table.css",
+      "SourceId": "FinancialForecast.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\wwwroot\\",
+      "BasePath": "_content/FinancialForecast.MVC",
+      "RelativePath": "css/Table.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "Always",
+      "OriginalItemSpec": "wwwroot\\css\\Table.css"
+    },
+    {
+      "Identity": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\wwwroot\\Dollar.jpg",
+      "SourceId": "FinancialForecast.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\wwwroot\\",
+      "BasePath": "_content/FinancialForecast.MVC",
+      "RelativePath": "Dollar.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "Always",
+      "OriginalItemSpec": "wwwroot\\Dollar.jpg"
     },
     {
       "Identity": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\wwwroot\\favicon.ico",
@@ -1866,7 +1917,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
@@ -1883,7 +1934,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\js\\Axios.min.js"
     },
     {
@@ -1900,8 +1951,25 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\js\\Deposit.js"
+    },
+    {
+      "Identity": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\wwwroot\\js\\FinancialForecast.js",
+      "SourceId": "FinancialForecast.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\wwwroot\\",
+      "BasePath": "_content/FinancialForecast.MVC",
+      "RelativePath": "js/FinancialForecast.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "Always",
+      "OriginalItemSpec": "wwwroot\\js\\FinancialForecast.js"
     },
     {
       "Identity": "C:\\Users\\Devin\\Documents\\GithubProjects\\FinancialForecast\\FinancialForecast.MVC\\wwwroot\\js\\Font-Awesome.js",
@@ -1917,7 +1985,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\js\\Font-Awesome.js"
     },
     {
@@ -1934,7 +2002,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
@@ -1951,7 +2019,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\js\\UsersController.js"
     },
     {
@@ -1968,7 +2036,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\js\\vue.min.js"
     },
     {
@@ -1985,7 +2053,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\js\\Vue-DateTimePicker.js"
     },
     {
@@ -2002,7 +2070,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\js\\Withdrawal.js"
     },
     {
@@ -2019,7 +2087,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
@@ -2036,7 +2104,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
@@ -2053,7 +2121,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
@@ -2070,7 +2138,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
@@ -2087,7 +2155,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
@@ -2104,7 +2172,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
@@ -2121,7 +2189,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
@@ -2138,7 +2206,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
@@ -2155,7 +2223,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
@@ -2172,7 +2240,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
@@ -2189,7 +2257,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
@@ -2206,7 +2274,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
@@ -2223,7 +2291,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
@@ -2240,7 +2308,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
@@ -2257,7 +2325,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
@@ -2274,7 +2342,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
@@ -2291,7 +2359,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
@@ -2308,7 +2376,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
@@ -2325,7 +2393,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
@@ -2342,7 +2410,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
@@ -2359,7 +2427,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\LICENSE"
     },
     {
@@ -2376,7 +2444,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\css\\all.css"
     },
     {
@@ -2393,7 +2461,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\css\\all.min.css"
     },
     {
@@ -2410,7 +2478,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\css\\brands.css"
     },
     {
@@ -2427,7 +2495,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\css\\brands.min.css"
     },
     {
@@ -2444,7 +2512,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\css\\fontawesome.css"
     },
     {
@@ -2461,7 +2529,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\css\\fontawesome.min.css"
     },
     {
@@ -2478,7 +2546,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\css\\regular.css"
     },
     {
@@ -2495,7 +2563,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\css\\regular.min.css"
     },
     {
@@ -2512,7 +2580,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\css\\solid.css"
     },
     {
@@ -2529,7 +2597,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\css\\solid.min.css"
     },
     {
@@ -2546,7 +2614,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\css\\svg-with-js.css"
     },
     {
@@ -2563,7 +2631,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\css\\svg-with-js.min.css"
     },
     {
@@ -2580,7 +2648,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\css\\v4-shims.css"
     },
     {
@@ -2597,7 +2665,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\css\\v4-shims.min.css"
     },
     {
@@ -2614,7 +2682,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\js\\all.js"
     },
     {
@@ -2631,7 +2699,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\js\\all.min.js"
     },
     {
@@ -2648,7 +2716,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\js\\brands.js"
     },
     {
@@ -2665,7 +2733,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\js\\brands.min.js"
     },
     {
@@ -2682,7 +2750,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\js\\conflict-detection.js"
     },
     {
@@ -2699,7 +2767,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\js\\conflict-detection.min.js"
     },
     {
@@ -2716,7 +2784,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\js\\fontawesome.js"
     },
     {
@@ -2733,7 +2801,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\js\\fontawesome.min.js"
     },
     {
@@ -2750,7 +2818,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\js\\regular.js"
     },
     {
@@ -2767,7 +2835,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\js\\regular.min.js"
     },
     {
@@ -2784,7 +2852,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\js\\solid.js"
     },
     {
@@ -2801,7 +2869,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\js\\solid.min.js"
     },
     {
@@ -2818,7 +2886,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\js\\v4-shims.js"
     },
     {
@@ -2835,7 +2903,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\js\\v4-shims.min.js"
     },
     {
@@ -2852,7 +2920,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\sprites\\brands.svg"
     },
     {
@@ -2869,7 +2937,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\sprites\\regular.svg"
     },
     {
@@ -2886,7 +2954,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\sprites\\solid.svg"
     },
     {
@@ -2903,7 +2971,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\webfonts\\fa-brands-400.eot"
     },
     {
@@ -2920,7 +2988,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\webfonts\\fa-brands-400.svg"
     },
     {
@@ -2937,7 +3005,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\webfonts\\fa-brands-400.ttf"
     },
     {
@@ -2954,7 +3022,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\webfonts\\fa-brands-400.woff"
     },
     {
@@ -2971,7 +3039,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\webfonts\\fa-brands-400.woff2"
     },
     {
@@ -2988,7 +3056,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\webfonts\\fa-regular-400.eot"
     },
     {
@@ -3005,7 +3073,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\webfonts\\fa-regular-400.svg"
     },
     {
@@ -3022,7 +3090,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\webfonts\\fa-regular-400.ttf"
     },
     {
@@ -3039,7 +3107,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\webfonts\\fa-regular-400.woff"
     },
     {
@@ -3056,7 +3124,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\webfonts\\fa-regular-400.woff2"
     },
     {
@@ -3073,7 +3141,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\webfonts\\fa-solid-900.eot"
     },
     {
@@ -3090,7 +3158,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\webfonts\\fa-solid-900.svg"
     },
     {
@@ -3107,7 +3175,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\webfonts\\fa-solid-900.ttf"
     },
     {
@@ -3124,7 +3192,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\webfonts\\fa-solid-900.woff"
     },
     {
@@ -3141,7 +3209,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\font-awesome\\webfonts\\fa-solid-900.woff2"
     },
     {
@@ -3158,7 +3226,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
     },
     {
@@ -3175,7 +3243,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
@@ -3192,7 +3260,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
@@ -3209,7 +3277,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
     },
     {
@@ -3226,7 +3294,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
@@ -3243,7 +3311,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
@@ -3260,7 +3328,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
@@ -3277,7 +3345,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
@@ -3294,7 +3362,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
     },
     {
@@ -3311,7 +3379,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
@@ -3328,7 +3396,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
@@ -3345,7 +3413,7 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Always",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     }
   ]

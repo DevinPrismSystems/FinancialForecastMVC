@@ -584,12 +584,6 @@ C:\Users\legen\Documents\GithubProjects\FinancialForecastMVC\FinancialForecast.M
 C:\Users\legen\Documents\GithubProjects\FinancialForecastMVC\FinancialForecast.MVC\obj\Debug\net6.0\FinancialForecast.MVC.genruntimeconfig.cache
 C:\Users\legen\Documents\GithubProjects\FinancialForecastMVC\FinancialForecast.MVC\obj\Debug\net6.0\ref\FinancialForecast.MVC.dll
 C:\Users\legen\Documents\GithubProjects\FinancialForecastMVC\FinancialForecast.MVC\bin\Debug\net6.0\web.config
-C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\web.config
-C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\appsettings.Development.json
-C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\appsettings.json
-C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\bundleconfig.json
-C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\libman.json
-C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\packages\EntityFramework.6.4.4\tools\netcoreapp3.0\any\ef6.runtimeconfig.json
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\FinancialForecast.MVC.staticwebassets.runtime.json
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\FinancialForecast.MVC.exe
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\FinancialForecast.MVC.deps.json
@@ -1155,8 +1149,6 @@ C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\FinancialForecast.MVC.AssemblyInfoInputs.cache
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\FinancialForecast.MVC.AssemblyInfo.cs
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\FinancialForecast.MVC.csproj.CoreCompileInputs.cache
-C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\FinancialForecast.MVC.RazorAssemblyInfo.cache
-C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\FinancialForecast.MVC.RazorAssemblyInfo.cs
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\scopedcss\bundle\FinancialForecast.MVC.styles.css
@@ -1165,3 +1157,4 @@ C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\ref\FinancialForecast.MVC.dll
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\FinancialForecast.MVC.pdb
 C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\obj\Debug\net6.0\FinancialForecast.MVC.genruntimeconfig.cache
+C:\Users\Devin\Documents\GithubProjects\FinancialForecast\FinancialForecast.MVC\bin\Debug\net6.0\appsettings.json

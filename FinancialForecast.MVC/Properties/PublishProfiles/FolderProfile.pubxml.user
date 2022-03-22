@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\Devin\Documents\GithubProjects\FinancialForecast\Publish</_PublishTargetUrl>
+    <History>True|2022-03-22T10:05:23.0852642Z;False|2022-03-22T05:04:45.2641900-05:00;False|2022-03-22T05:04:17.4689136-05:00;False|2022-03-22T05:00:20.2084647-05:00;True|2022-03-22T04:29:36.8045301-05:00;True|2022-03-22T04:24:02.2185207-05:00;True|2022-03-22T04:21:55.6105207-05:00;False|2022-03-22T04:20:34.3445175-05:00;</History>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Server=20.25.60.39\SQLEXPRESS,1433%3bDatabase=FinancialForecast%3bUser ID=sa%3bPassword=prism%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <File Include="wwwroot/css/Dollar.jpg">
+      <publishTime>01/05/2022 04:35:55</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
